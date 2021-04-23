@@ -3,10 +3,10 @@
    ========================================================================== */
 
 /* Colors */
-$text-color: #292929 !default;
+$text-color: #000 !default;
 $muted-text-color: $text-color !default;
 $primary-color: #fff !default;
-$border-color: mix(#fff, $text-color, 75%) !default;
+$border-color: #000 !default; //mix(#fff, $text-color, 75%)
 $footer-background-color: #fff !default;
 $link-color: #292929 !default;
 $masthead-link-color: $text-color !default;
