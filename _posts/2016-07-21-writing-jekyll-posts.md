@@ -7,10 +7,10 @@ title:  "Welcome to Jekyll!"
 
 **Hello world**, this is my first Jekyll blog post.
 
-I hope you like it! Ayuda Ayudaaaaaaaa
+I hope you like it! Ayuda Ayudaaaaaaaa.
 asada
 adadasda
-beunas tarde Ingredients
-A sass_dir
+beunas tarde Ingredients.
+A sass_dir.
 
-AP
+AP.
