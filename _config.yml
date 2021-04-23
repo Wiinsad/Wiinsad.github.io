@@ -26,7 +26,7 @@ baseurl                  : #"https://winsad.github.io/" # the subpath of your si
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "/assets/images/lobo_logo" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : "/assets/images/lobo_logo_opt.png"  # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : Winsaad # overrides the website title displayed in the masthead, use " " for no title
+masthead_title           : Winsad # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
