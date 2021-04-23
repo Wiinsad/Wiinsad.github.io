@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "Winsad | Hacking and Cibersecurity"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Winsad"
+name                     : "Winsa"
 description              : "An amazing website."
 url                      : "https://winsad.github.io/" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : #"https://winsad.github.io/" # the subpath of your site, e.g. "/blog"
