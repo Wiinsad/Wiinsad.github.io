@@ -19,14 +19,14 @@ locale                   : "en-US"
 title                    : "Wasad | Hacking and Cibersecurity"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Win"
+name                     : "Winsad"
 description              : "An amazing website."
 url                      : #"https://winsad.github.io/" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : #"https://winsad.github.io/" # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "/assets/images/lobo_logo1" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : "/assets/images/lobo_logo_opt.png"  # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : Winsad # overrides the website title displayed in the masthead, use " " for no title
+masthead_title           : Wi # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
