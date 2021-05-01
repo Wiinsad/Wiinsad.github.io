@@ -1,12 +1,12 @@
 # main links
 main:
   - title: "Quick-Start Guide"
-    url: 
+    url:
   - title: "About"
     url:
   - title: "Reciples"
     url: /recipes/
   - title: "Pages"
     url: /pages/
-  - title: "Docs"
-    url: /docs/
+  - title: "Tags"
+    url: /_layouts/tag.html
