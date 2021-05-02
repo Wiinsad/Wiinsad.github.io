@@ -6,7 +6,7 @@ main:
     url:
   - title: "Reciples"
     url: /recipes/
-  - title: "Pages"
-    url: /pages/
+  - title: "categories"
+    url: /_layouts/categories.hmtl
   - title: "Tags"
     url: /_layouts/tags.html
