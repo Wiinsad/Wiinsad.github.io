@@ -1,6 +1,6 @@
 ---
 layout: search
-title: "Buscador general de palabras clave"
+title: "General keyword search"
 permalink: /buscador/
 date: 2020-01-29
 ---
