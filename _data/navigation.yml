@@ -8,7 +8,7 @@ main:
     url: /categories/
   - title: "Tags"
     url: /tags/
-  - title: "Buscador"
+  - title: "Search
     url: /buscador/
   - title: "About"
     url: /about/
