@@ -26,7 +26,7 @@ baseurl                  : #"https://winsad.github.io/" # the subpath of your si
 repository               :  Wiinsad/winsad # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "/assets/images/lobo_logo1.png" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : "/assets/images/lobo_logo1.png"  # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : Win # overrides the website title displayed in the masthead, use " " for no title
+masthead_title           : Winsad # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
 comments:
@@ -96,7 +96,7 @@ analytics:
 author:
   name             : "Winsad"
   avatar           : https://avatars.githubusercontent.com/u/73716457?v=4 # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
+  bio              : "I am an **amazing** person. xd"
   location         : "Somewhere"
   email            : doxxeame@hotmail.com
   links:
