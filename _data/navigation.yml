@@ -9,4 +9,4 @@ main:
   - title: "categories"
     url: /_layouts/category.html
   - title: "Tags"
-    url: /_layouts/tags.html
+    url: /tags/
