@@ -7,6 +7,6 @@ main:
   - title: "Reciples"
     url: /recipes/
   - title: "categories"
-    url: /_layouts/category.html
+    url: /categories/
   - title: "Tags"
     url: /tags/
