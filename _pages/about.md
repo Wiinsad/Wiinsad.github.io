@@ -11,7 +11,7 @@ date: 2020-01-29
 <img src="/assets/images/about/photo-portada.jpeg">
 </p>
 
-Mi nombre es Marcelo Vázquez (aka **s4vitara**), actualmente trabajo en **ElevenPaths**.
+Mi nombre es Marcelo Vázquez (aka **s4vitara**), actualmente trabajo en **ElevenPathsaaa**.
 
 Estas son las certificaciones que actualmente dispongo:
 
