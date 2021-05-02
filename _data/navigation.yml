@@ -8,7 +8,12 @@ main:
     url: /categories/
   - title: "Tags"
     url: /tags/
+<<<<<<< HEAD
   - title: "Buscador"
     url: /buscador/
+=======
+    - title: "Buscador"
+      url: /buscador/
+>>>>>>> 6926906a2ee23f6b24e1a0b3e0466bb79207b9f5
   - title: "About"
     url: /about/
