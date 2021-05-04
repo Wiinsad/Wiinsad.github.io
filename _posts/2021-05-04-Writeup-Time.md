@@ -7,7 +7,7 @@ classes: wide
 header:
   teaser: "assets/images/teasers/"
   teaser_home_page: true
-  icon: "assets/images/icons/hackthebox2.png"
+  icon: "assets/images/icons/Hackthebox2.png"
 categories:
   - Writeup
   - HackTheBox
