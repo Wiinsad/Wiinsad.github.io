@@ -5,9 +5,9 @@ excerpt: In this article I will publish phrases that call my attention and nice 
 show_date: true
 classes: wide
 header:
-  teaser: /assets/images/teasers/phrase.png
+  teaser: "assets/images/teasers/phrase.png"
   teaser_home_page: true
-  icon: /assets/images/icons/hackthebox.webp
+  icon: "assets/images/icons/hackthebox.webp"
 categories:
   - Post Phases
 tags:
