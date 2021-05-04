@@ -14,6 +14,6 @@ tags:
 ---
 
 
-"El hombre inteligente aprende de sus errores pero el hombre sabio aprende de los errores de los demas."
--
+"El hombre inteligente aprende de sus errores pero el hombre sabio aprende de los errores de los demas.\n-Winsad maybe"
+
 Is the angry optimist
