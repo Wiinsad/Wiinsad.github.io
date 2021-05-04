@@ -1,7 +1,7 @@
 ---
 title: "Cool Phrases"
 layout: single
-#excerpt_separator: "<!--more-->"
+excerpt_separator: "<!--more-->"
 show_date: true
 classes: wide
 header:
