@@ -4,6 +4,7 @@ excerpt_separator: "<!--more-->"
 show_date: true
 header:
   teaser: "assets/images/teasers/phrases.png"
+  teaser_home_page: true
 categories:
   - Post Phases
 tags:
