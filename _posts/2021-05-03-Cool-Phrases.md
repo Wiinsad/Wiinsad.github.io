@@ -1,7 +1,9 @@
 ---
 title: "Cool Phrases"
-excerpt_separator: "<!--more-->"
+layout: single
+#excerpt_separator: "<!--more-->"
 show_date: true
+classes: wide
 header:
   teaser: "assets/images/teasers/phrase.png"
   teaser_home_page: true
