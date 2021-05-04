@@ -5,7 +5,7 @@ layout: single
 show_date: true
 classes: wide
 header:
-  teaser: "assets/images/teasers/pixlr-bg-result.png"
+  teaser: "assets/images/teasers/phrase.png"
   teaser_home_page: true
 categories:
   - Post Phases
