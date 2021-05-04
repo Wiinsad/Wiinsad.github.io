@@ -18,3 +18,8 @@ tags:
 
 
 Is the angry optimist
+
+
+"El que aprende y aprende y no practica lo que sabe, es como el que ara y ara y no siembre
+
+-Platon"
