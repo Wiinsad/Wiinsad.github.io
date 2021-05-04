@@ -14,9 +14,7 @@ tags:
 ---
 
 
-"El hombre inteligente aprende de sus errores, el sabio aprende de los errores de los demás.
-
-
+"El hombre inteligente aprende de sus errores, el sabio aprende de los errores de los demás."
 
 
 Is the angry optimist
