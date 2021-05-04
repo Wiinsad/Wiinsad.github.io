@@ -15,6 +15,7 @@ tags:
 
 
 "El hombre inteligente aprende de sus errores pero el hombre sabio aprende de los errores de los demas.
+
 -Winsad maybe"
 asadasda
 
