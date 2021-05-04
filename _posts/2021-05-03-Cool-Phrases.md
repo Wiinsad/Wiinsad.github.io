@@ -7,7 +7,7 @@ classes: wide
 header:
   teaser: "assets/images/teasers/phrase.png"
   teaser_home_page: true
-  icon: "assets/images/icons/hackthebox.webp"
+  icon: "assets/images/icons/certificate-6.png"
 categories:
   - Post Phases
 tags:
