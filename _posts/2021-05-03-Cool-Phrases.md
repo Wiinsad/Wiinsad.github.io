@@ -1,10 +1,9 @@
 ---
 title: "Cool Phrases"
 excerpt_separator: "<!--more-->"
-show_
+show_date: true
 categories:
-  - Post Phases-
-  -
+  - Post Phases
 tags:
   - Phrases
 ---
