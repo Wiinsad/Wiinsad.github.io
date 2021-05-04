@@ -1,7 +1,7 @@
 ---
 title: "Cool Phrases"
 layout: single
-excerpt_separator: "<!--more-->"
+excerpt: in this article I will publish phrases that call my attention and nice things that may or may not help you or just something curious, are not mine and are several that I have seen on the internet so many times I will not put author sorry.
 show_date: true
 classes: wide
 header:
