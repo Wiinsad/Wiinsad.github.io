@@ -3,7 +3,7 @@ title: "Cool Phrases"
 excerpt_separator: "<!--more-->"
 show_date: true
 header:
-  teaser: "assets/images/teasers/phrases.png"
+  teaser: "assets/images/teasers/phrase.png"
   teaser_home_page: true
 categories:
   - Post Phases
