@@ -7,3 +7,5 @@ categories:
 tags:
   - Phrases
 ---
+
+Is the angry optimist
