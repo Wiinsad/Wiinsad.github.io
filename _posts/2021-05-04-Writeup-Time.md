@@ -5,7 +5,7 @@ excerpt:
 show_date: true
 classes: wide
 header:
-  teaser: "assets/images/machines/data/time.png"
+  teaser: "assets/images/machines/time/data/time.png"
   teaser_home_page: true
   icon: "assets/images/icons/Hackthebox2.png"
 categories:
