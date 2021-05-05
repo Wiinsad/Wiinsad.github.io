@@ -22,7 +22,6 @@ tags:
 <img src="/assets/images/machines/time/data/TimeHTB.png">
 </p>
 
-![](/assets/images/machines/time/data/TimeHTB.png)
 
 La máquina **Time** es una máquina virtual vulnerable de la plataforma HackTheBox con un nivel de dificultad **medio** una calificación en el rank de 3.5, **5710 USER OWNS** y **5369 SYSTEM OWNS** con la ip **10.10.10.214** y un sistema operativo **Linux**.
 
