@@ -32,8 +32,8 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   - **-n:**     No hacen la resolución del DNS.
   - **-T5:**    El parámetro más agresivo y ruidoso pero más rápido para hacer una exploración rápida.
   - **-v:**     Aumenta el nivel de los mensajes verbose.
-  - **--open:** Muestra sólo los puertos con estado abierto.
-  - **-oG:**    Guarde la el output en formato Grepeable.
+  - **--open:** Muestra sólo los puertos con un estatus abierto.
+  - **-oG:**    Guarda la el output en formato Grepeable.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/scan/scanPort.png">
