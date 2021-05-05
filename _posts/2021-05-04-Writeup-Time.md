@@ -67,7 +67,7 @@ Si entramos en la página web desde el navegador podemos ver la aplicación **Js
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/scan/pageWeb.png">
 </p>
 
-Una vez que hemos identificado una posible ruta para nuestra auditoría, empezamos a jugar con la aplicación y vemos que tiene dos opciones **'embellecer'** y **'validar (beta)'** si introducimos datos en la segunda podemos ver que nos muestra el siguiente error:
+Una vez que hemos identificado una posible ruta para nuestra auditoría, empezamos a jugar con la aplicación y vemos que tiene dos opciones **'beautify'** y **'validate (beta)'** si introducimos datos en la segunda podemos ver que nos muestra el siguiente error:
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/scan/errorPage.png">
