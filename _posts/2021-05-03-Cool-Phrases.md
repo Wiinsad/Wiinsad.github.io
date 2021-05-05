@@ -16,18 +16,17 @@ tags:
 
 
 
-```
-"El hombre inteligente aprende de sus errores, el sabio aprende de los errores de los demás."
 
--Frase de vida mia.
-```
+>"El hombre inteligente aprende de sus errores, el sabio aprende de los errores de los demás."
+>
+>-Frase de vida mia.
 
-```
-Is the angry optimist
-```
 
-```
-"El que aprende y aprende y no practica lo que sabe, es como el que ara y ara y no siembra"
+>
+>Is the angry optimist
+>
 
--Platon
-```
+
+>"El que aprende y aprende y no practica lo que sabe, es como el que ara y ara y no siembra"
+>
+>-Platon
