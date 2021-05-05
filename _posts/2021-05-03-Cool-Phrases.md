@@ -14,7 +14,7 @@ tags:
 ---
 # My personal list
 
-
+-
 ```
 "El hombre inteligente aprende de sus errores, el sabio aprende de los errores de los demás."
 
