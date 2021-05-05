@@ -36,14 +36,14 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   - **-oG:**    Guarde la el output en formato Grepeable.
 
 <p align="center">
-<img src="/assets/images/machines/time/scan/scanPort.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/scan/scanPort.png">
 </p>
 
 
 Una vez que hicimos el escaneo de puertos con la herramienta **ExtractPort**, vemos que los puertos que destacaron en este caso fueron **22,80**:
 
 <p align="center">
-<img src="/assets/images/machines/time/scan/Ports.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/scan/Ports.png">
 </p>
 
 
@@ -55,7 +55,7 @@ Una vez identificados los puertos abiertos, realizaremos un escaneo de versiones
   - -oN: Formatos de Nmap en los que se guardará el archivo.
 
 <p align="center">
-<img src="/assets/images/machines/time/scan/PortServ.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/scan/PortServ.png">
 </p>
 
 
@@ -70,7 +70,7 @@ Si entramos en la página web desde el navegador podemos ver la aplicación **Js
 Una vez que hemos identificado una posible ruta para nuestra auditoría, empezamos a jugar con la aplicación y vemos que tiene dos opciones **'embellecer'** y **'validar (beta)'** si introducimos datos en la segunda podemos ver que nos muestra el siguiente error:
 
 <p align="center">
-<img src="assets/images/machines/time/scan/errorPage.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/scan/errorPage.png">
 </p>
 
 
@@ -92,13 +92,13 @@ Una vez creado el archivo me puse en el puerto **443** y levanté un servidor HT
 ```
 
 <p align="center">
-<img src="/assets/images/machines/time/intrusion/payload.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion%20/payload.png">
 </p>
 
 La respuesta que me dio fue un get al archivo **Inject.sql** en el lado del servidor que inicié y desde el puerto que abrí interpretó el comando dándome un shell:
 
 <p align="center">
-<img src="/assets/images/machines/time/intrusion/acces.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion%20/acces.png">
 </p>
 
 ## Movimiento Lateral
@@ -106,13 +106,13 @@ La respuesta que me dio fue un get al archivo **Inject.sql** en el lado del serv
 Haciendo un pequeño reconocimiento en el sistema podemos ver que hay una tarea cron que se ejecutan a intervalos de tiempo regulares en este caso cada **7 segundos** el cual es **'timer\_backup.timer'**:
 
 <p align="center">
-<img src="/assets/images/machines/time/intrusion/cron.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion%20/cron.png">
 </p>
 
 Una vez que sabemos que existe un CronJob procedemos a buscar el archivo para ver si es una ruta a seguir para conseguir la escalada de privilegios, utilizando el comando ```$ systemctl list-timers ``` podemos encontrar la ubicación de este archivo y concatenando un ls -la podemos ver que el archivo nos pertenece por lo que podemos editarlo sin problemas
 
 <p align="center">
-<img src="/assets/images/machines/time/intrusion/cronjon.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion%20/cronjob.png">
 </p>
 
 ## Escalacion de privilegios
@@ -129,9 +129,9 @@ chmod 4755 /bin/bash
 Una vez que modificamos el archivo **timer\_backup** esperamos a que la tarea cron se ejecute y root asigne el permiso **SUID** a la ruta **/bin/bash** lo cual nos permitira utilizar el parámetro ``` bash -p ``` que nos dará una shell como root ya que estamos ejecutando temporalmente el binario como el propiertario del mismo y asi teniendo acceso completo a la máquina y completado el rooteo de la misma.
 
 <p align="center">
-<img src="/assets/images/machines/time/intrusion/root.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion%20/root.png">
 </p>
 
 <p align="center">
-<img src="/assets/images/machines/time/intrusion/root2.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion%20/root2.png">
 </p>
