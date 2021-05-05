@@ -71,7 +71,7 @@ Si entramos en la página web desde el navegador podemos ver la aplicación **Js
 Una vez que hemos identificado una posible ruta para nuestra auditoría, empezamos a jugar con la aplicación y vemos que tiene dos opciones **'embellecer'** y **'validar (beta)'** si introducimos datos en la segunda podemos ver que nos muestra el siguiente error:
 
 <p align="center">
-<img src="/assets/images/machines/time/scan/errorPage.png">
+<img src="assets/images/machines/time/scan/errorPage.png">
 </p>
 
 
