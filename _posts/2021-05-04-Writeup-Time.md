@@ -19,7 +19,7 @@ tags:
 
 
 <p align="center">
-<img src="/assets/images/machines/time/data/TimeHTB.png">
+<img src="assets/images/machines/time/data/TimeHTB.png">
 </p>
 
 
