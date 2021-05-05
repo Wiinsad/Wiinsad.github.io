@@ -74,7 +74,7 @@ Una vez que hemos identificado una posible ruta para nuestra auditoría, empezam
 </p>
 
 
-Investigando el error y si tiene alguna forma de abusar de él ya sea para hacer algún tipo de **RCE** o otro potencial camino a seguir y haciendo una buena búsqueda en internet sobre este error encontré un documento en **[github](https://github.com/jas502n/CVE-2019-12384)** que hablaba de cómo hacer una ejecución de comandos en una aplicación aprovechando una vulnerabilidad existente en la misma. Sigo los pasos mencionados en la página que era crear un archivo **inject.sql** que tenía el siguiente contenido:
+Investigando el error y si tiene alguna forma de abusar de él ya sea para hacer algún tipo de **RCE** u otro potencial camino a seguir y haciendo una buena búsqueda en internet sobre este error encontré un documento en **[github](https://github.com/jas502n/CVE-2019-12384)** que habla de cómo hacer una ejecución de comandos en el  aplicativo aprovechando una vulnerabilidad existente en la misma. Siguiendo los pasos mencionados en la página que los cuales eran crear un archivo **inject.sql** que debe tener el siguiente contenido:
 
 ```sql
 CREATE ALIAS SHELLEXEC AS $$ String shellexec(String cmd) throws java.io.IOException {
