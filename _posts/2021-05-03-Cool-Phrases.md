@@ -1,21 +1,28 @@
 ---
 title: "Cool Phrases"
 layout: single
-excerpt: In this article I will publish phrases that call my attention and nice things that may or may not help you or just something curious, are not mine and are several that I have seen on the internet so many times I will not put author sorry.
+
 show_date: true
 classes: wide
 header:
   teaser: "assets/images/teasers/phrase.png"
   teaser_home_page: true
+  icon: "assets/images/icons/lib.ico"
 categories:
   - Post Phases
 tags:
   - Phrases
 ---
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/assets/images/teasers/phrase.png">
+</p>
+
+In this article I will publish phrases that call my attention and nice things that may or may not help you or just something curious.
+
+Are not mine and are several that I have seen on the internet so many times I will not put author sorry.
+
 # My personal list
-
-
-
 
 >"El hombre inteligente aprende de sus errores, el sabio aprende de los errores de los demás."
 >
