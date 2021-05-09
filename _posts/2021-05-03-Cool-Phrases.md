@@ -5,7 +5,7 @@ layout: single
 show_date: true
 classes: wide
 header:
-  teaser: "assets/images/teasers/phrase.png"
+  teaser: "assets/images/teasers/Phrase.png"
   teaser_home_page: true
   icon: "assets/images/icons/lib.ico"
 categories:
@@ -15,7 +15,7 @@ tags:
 ---
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/assets/images/teasers/phrase.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/assets/images/teasers/Phrase.png">
 </p>
 
 In this article I will publish phrases that call my attention and nice things that may or may not help you or just something curious.
