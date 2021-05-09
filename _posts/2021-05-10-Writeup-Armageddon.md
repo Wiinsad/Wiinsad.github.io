@@ -12,5 +12,5 @@ categories:
   - Writeup
   - HackTheBox
 tags:
-  - 
+  -
 ---
