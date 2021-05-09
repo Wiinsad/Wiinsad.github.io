@@ -82,10 +82,14 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   Examinando el exploit con el **id 49334** ya que pide autenticación usamos ese con las credenciales que acabamos de crear, examinando el exploit se modifico unas lineas ya que tenia algunos errores, se modifico la linea **29** ya que la variable **local_port** estaba tomando el argumento de la variable **password** y a al momento de ejecutar el esploit las credenciales se enviaban mal, tambien se modifico la linea **59** que esa linea corresponde a el payload, se le agrego el argumento **-e /bin/bash** ya que a la hora de ejecutar el exploit nos da la conexion pero no nos permite ejcutar ningun comando y a veces da error para asegurar la shell le agregamos estos parametros;
 
   <p align="center">
+  <figure>
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/expModpa.png">
   <figcaption>After.</figcaption>
+  </figure>
+  <figure>
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/expModpb.png">
   <figcaption>Before.</figcaption>
+  </figure>
   </p>
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/expModB.png">
