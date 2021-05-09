@@ -83,7 +83,12 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
 
   [after](https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/expModpa.png)
   [before](https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/expModpb.png)
-
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/expModpa.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/expModpb.png">
+  </p><p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/expModpb.png">
+  </p>
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/expModB.png">
   </p>
