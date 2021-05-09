@@ -93,3 +93,20 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/expModB.png">
   </p>
+
+Una vez que ya hice los cambios me puse por el puerto **443** en escucha con Netcat  ejecute el exploit me dio pasado menos de 5 seg. me llego la conexion y me dio la shell:
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/shell.png">
+</p>
+
+## Escalación de privilegios
+
+Una vez que ya estoy dentro me descargo el binario de **linpeas.sh** para poder hacer una enumeracion del sistema y encontrar una forma de escalar privilegios, ejecutando el binario me encontre una credencial en texto claro que pertenecia al usuario root dentro del archivo **/opt/backup/gitlab.rb**:
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/passwd.png">
+</p>
+
+Ya que tenemos las credenciales de **root** entramos a su directorio personal y vemos que la **flag** de root no esta lo que genera sospechas ya que podriamos estar en un **Doker**, ya que el mismo **linpeas** nos dio informacion que no puedo dar muchas pistas de esto mismo y agregar que el comando **ifconfig**, **ip -a** no estaban habilitados o disponibles en la maquina.
+Una prueba que podemos ver si estamos en un contenedor-**Doker**

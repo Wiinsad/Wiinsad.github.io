@@ -116,7 +116,7 @@ Una vez que sabemos que existe un CronJob procedemos a buscar el archivo para ve
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion/cronjob.png">
 </p>
 
-## Escalacion de privilegios
+## Escalación de privilegios
 
 Para la escalada de privilegios lo que hice fue ir al archivo y dentro del archivo modifiqué el contenido que tenía por el siguiente:
 
