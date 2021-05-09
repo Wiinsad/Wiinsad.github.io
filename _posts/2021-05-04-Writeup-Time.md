@@ -1,5 +1,5 @@
 ---
-title: "Time -Hack The Box"
+title: "Time - Hack The Box"
 layout: single
 excerpt:
 show_date: true
