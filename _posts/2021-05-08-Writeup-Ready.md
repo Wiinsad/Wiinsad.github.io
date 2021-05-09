@@ -117,3 +117,7 @@ cgroups significa "grupos de control". Es una característica de Linux que aísl
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/docker1.png">
 </p>
+
+Ya que sabemos que estamos en un **Docker** buscando en internet como escapar de un contenedor me encuentro con un articulo el cual explica el como poder escapar de estos mismo.
+
+En el articulo explican que para poder escapar tenemos que ver si el contenedor tiene algun privilegio establecido para ver esto usamos el comando ```--privileged``` y si
