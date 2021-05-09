@@ -14,8 +14,42 @@ categories:
 tags:
   - Doker
   - RCE (Remote Code Execution)
+  - GitLab
 ---
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/data/readyHTB.png">
 </p>
+
+La máquina **Ready** es una máquina virtual vulnerable de la plataforma HackTheBox con un nivel de dificultad **medio** una puntuación de 4.2, **6646 USER OWNS** y **5768 SYSTEM OWNS** con la ip **10.10.10.220** y un sistema operativo **Linux**.
+
+### Port Scan
+
+Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los puertos abiertos disponibles en la máquina con **[Ip:10.10.10.220]** utilizando los parámetros:
+  - **-p-:**    Escaneo a toda la gama de puertos (65536).
+  - **-n:**     No hacen la resolución del DNS.
+  - **-T5:**    El parámetro más agresivo y ruidoso pero más rápido para hacer una exploración rápida.
+  - **-v:**     Aumenta el nivel de los mensajes verbose.
+  - **--open:** Muestra sólo los puertos con un estatus abierto.
+  - **-oG:**    Guarda la el output en formato Grepeable.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/scan/scanPort.png">
+  </p>
+
+  Una vez que hicimos el escaneo de puertos con la herramienta **ExtractPort**, vemos que los puertos que destacaron en este caso fueron **22,5080**:
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/scan/Ports.png">
+  </p>
+
+  Una vez identificados los puertos abiertos, realizaremos un escaneo de versiones y servicios de estos puertos con la herramienta nmap configurando los siguientes parámetros:
+
+    - -sC: Script de enumeración básica de sondeo en puertos y servicios alojados.
+    - -sV: Detección de versiones en servicios alojados en puertos.
+    - -p : Puertos a inspeccionar.
+    - -oN: Formatos de Nmap en los que se guardará el archivo.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/scan/PortServ.png">
+  </p>
