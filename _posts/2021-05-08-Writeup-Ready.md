@@ -45,10 +45,10 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
 
   Una vez identificados los puertos abiertos, realizaremos un escaneo de versiones y servicios de estos puertos con la herramienta nmap configurando los siguientes parámetros:
 
-    - -sC: Script de enumeración básica de sondeo en puertos y servicios alojados.
-    - -sV: Detección de versiones en servicios alojados en puertos.
-    - -p : Puertos a inspeccionar.
-    - -oN: Formatos de Nmap en los que se guardará el archivo.
+    - **-sC:** Script de enumeración básica de sondeo en puertos y servicios alojados.
+    - **-sV:** Detección de versiones en servicios alojados en puertos.
+    - **-p :** Puertos a inspeccionar.
+    - **-oN:** Formatos de Nmap en los que se guardará el archivo.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/scan/PortServ.png">
