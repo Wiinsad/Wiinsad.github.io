@@ -1,5 +1,5 @@
 ---
-title: "Armageddon - Hack The Box"
+title: "Delivery - Hack The Box"
 layout: single
 excerpt:
 show_date: true
