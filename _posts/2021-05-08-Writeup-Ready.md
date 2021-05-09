@@ -73,5 +73,8 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   Ya dentro de la cuenta que acabo de crear enumerando un pude encontrar la versión de **GitLab** la cual es **11.4.7**, buscando con la herramienta de **searchsploit** la versión del CMS encontre que tiene varios exploits que nos permiten hacen un ataque de Remote Code Ejecution:
 
   <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/version.png">
+  </p>
+  <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/searchsploit.png">
   </p>
