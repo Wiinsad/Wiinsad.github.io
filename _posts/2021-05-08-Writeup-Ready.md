@@ -15,3 +15,7 @@ tags:
   - Doker
   - RCE (Remote Code Execution)
 ---
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/data/readyHTB.png">
+</p>
