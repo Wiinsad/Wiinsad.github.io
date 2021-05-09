@@ -53,3 +53,16 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/scan/PortServ.png">
   </p>
+
+  Lo que **nmap** nos muestra es exite un servicio *HTTP* en el puerto 5080 con un **robots.txt** habilitado.
+  Si entramos a la pagina web vemos que es tiene como **cms** un GitLab.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/scan/page.png">
+  </p>
+
+  Ya que nos permite crear una cuenta procedo a crear la cuenta:
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/scan/pageLogin.png">
+  </p>
