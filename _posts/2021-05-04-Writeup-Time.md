@@ -93,13 +93,13 @@ Una vez creado el archivo me puse en escucha por el puerto **443** y levanté un
 La consulta anterior lo que hace es decirle al aplicativo que ejecute el script de la url **http://10.10.15.125:8000/inject.sql** la cual es mi servicio http que levante en mi maquina y el cual tiene el script en sql el cual ejecuta una revershell a mi maquina por el puerto 443.
 
 <p align="center">
-<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/intrusion/payload.png?raw=true">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion/payload.png">
 </p>
 
 La respuesta que me dio fue un get al archivo **Inject.sql** en el lado del servidor que inicié y desde el puerto que abrí interpretó el comando dándome un shell:
 
 <p align="center">
-<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/intrusion/acces.png?raw=true">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion/acces.png">
 </p>
 
 ## Movimiento Lateral
@@ -107,13 +107,13 @@ La respuesta que me dio fue un get al archivo **Inject.sql** en el lado del serv
 Haciendo un pequeño reconocimiento en el sistema podemos ver que hay una tarea cron que se ejecutan a intervalos de tiempo regulares en este caso cada **7 segundos** el cual es **'timer\_backup.timer'**:
 
 <p align="center">
-<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/intrusion/cron.png?raw=true">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion/cron.png">
 </p>
 
 Una vez que sabemos que existe un CronJob procedemos a buscar el archivo para ver si es una ruta a seguir para conseguir la escalada de privilegios, utilizando el comando ```$ systemctl list-timers ``` podemos encontrar la ubicación de este archivo y concatenando un ls -la podemos ver que el archivo nos pertenece por lo que podemos editarlo sin problemas
 
 <p align="center">
-<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/intrusion/cronjob.png?raw=true">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion/cronjob.png">
 </p>
 
 ## Escalacion de privilegios
@@ -130,9 +130,9 @@ chmod 4755 /bin/bash
 Una vez que modificamos el archivo **timer\_backup** esperamos a que la tarea cron se ejecute y root asigne el permiso **SUID** a la ruta **/bin/bash** lo cual nos permitira utilizar el parámetro ``` bash -p ``` que nos dará una shell como root ya que estamos ejecutando temporalmente el binario como el propiertario del mismo y asi teniendo acceso completo a la máquina y completado el rooteo de la misma.
 
 <p align="center">
-<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/intrusion/root.png?raw=true">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion/root.png">
 </p>
 
 <p align="center">
-<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/intrusion/root2.png?raw=true">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion/root2.png">
 </p>
