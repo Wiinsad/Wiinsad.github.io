@@ -110,9 +110,10 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   </p>
 
   Usando los siguientes parametros pude entrar a mysql en forma interactiva:
-    - **-u:** Usuario con el que se logeara.
-    - **-D:** Database que se usara.
-    - **-p:** Estamos indicando que usaremos una password.
+
+  - **-u:** Usuario con el que se logeara.
+  - **-D:** Database que se usara.
+  - **-p:** Estamos indicando que usaremos una password.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/mysql.png">
