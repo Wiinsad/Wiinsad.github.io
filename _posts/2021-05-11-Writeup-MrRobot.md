@@ -14,3 +14,7 @@ categories:
 tags:
   -
 ---
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/data/mrrobot.png">
+  </p>
