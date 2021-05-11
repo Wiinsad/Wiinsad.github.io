@@ -68,7 +68,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   </p>
 
 
-## Movimiento Lateral
+## Lateral Movement
 
   Ya dentro de la cuenta que acabo de crear, enumerando pude encontrar la versión de **GitLab** la cual es **11.4.7**, buscando con la herramienta de **searchsploit** la versión del CMS encontre que tiene varios exploits que nos permiten hacen un ataque de Remote Code Execution:
 
@@ -100,7 +100,7 @@ Una vez que ya hice los cambios me puse por el puerto **443** en escucha con Net
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/ready/intrusion/shell.png">
 </p>
 
-## Escalación de privilegios
+## ## Privilege escalation
 
 Una vez que ya estoy dentro de la maquina como el usuario **git** me dirijo a la ruta **/tmp/** y creo un directorio llamado **/winsad** ahi dentro me descargo de mi maquina el binario de **linpeas.sh** con **wget** para poder hacer una enumeracion del sistema y encontrar una forma de escalar privilegios, ejecutando el binario me encontre una credencial en texto plano que pertenecia al usuario **root** dentro del archivo **/opt/backup/gitlab.rb**:
 
