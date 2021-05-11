@@ -12,7 +12,7 @@ categories:
   - Writeup
   - HackTheBox
 tags:
-  - encryption
+  - Encryption
   - Virtual Hosting
 ---
 
