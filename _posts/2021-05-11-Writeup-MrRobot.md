@@ -5,7 +5,7 @@ excerpt:
 show_date: true
 classes: wide
 header:
-  teaser: "assets/images/machines/armageddon/data/armageddon.png"
+  teaser: "assets/images/machines/THM|/MrRobot/data/mrrobot.png"
   teaser_home_page: true
   icon: "assets/images/icons/TryHackMe.png"
 categories:
