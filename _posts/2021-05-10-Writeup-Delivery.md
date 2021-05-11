@@ -119,4 +119,10 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/mysql.png">
   </p>  
 
-  Ya dentro de la sesión interactiva usando el comando ***select Username, Password from Users;***  podemos ver las credenciales de la cuenta root cifradas
+  Ya dentro de la sesión interactiva usando el comando ***select Username, Password from Users;***  podemos ver las credenciales de la cuenta root cifradas:
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/mysqlRoot.png">
+  </p>
+
+  Ahora que tengo la contraseña de root cifrada intente con john romperla y con el diccionario Rockyou pero no funciono, eso hace pensar en el mensaje que nos habia mensionado root cuando consguimos la cuenta donde vimos las llave de ssh que decia  ```PleaseSubscribe! may not be in RockYou but if any hacker manages to get our hashes, they can use hashcat rules to easily crack all variations of common words or phrases. ```
