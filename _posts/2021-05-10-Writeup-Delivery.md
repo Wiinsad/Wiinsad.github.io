@@ -92,3 +92,28 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   Una vez que verifico la cuenta y puedo acceder en el primer apartado veo que tengo una conversación con root, en esa conversación se muestra que nos dan una credenciales para ssh y aparte menciona lo siguiente '*Also please create a program to help us stop re-using the same passwords everywhere.... Especially those that are a variant of **"PleaseSubscribe!**"* '.
 
   Nos quedaremos con esto ultimo por si nos llega a ser util en el futuro.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/cred2.png">
+  </p>
+
+  Ya con las credenciales de ***ssh*** entramos a la maquina bajo el usuario de **maildeliverer**:
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/maildeliverer.png">
+  </p>
+
+  Enumerando un poco en el sistema pude ver que en el archivo que estaba en la ruta **/opt/mattermost/config/config.json** encontre unas credenciales para MySql:
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/mysqlCred.png">
+  </p>
+
+  Usando los siguientes parametros pude entrar a mysql en forma interactiva:
+    - **-u:** Usuario con el que se logeara.
+    - **-D:** Database que se usara.
+    - **-p:** Estamos indicando que usaremos una password.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/mysql.png">
+  </p>  
