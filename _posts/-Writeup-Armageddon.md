@@ -5,12 +5,12 @@ excerpt:
 show_date: true
 classes: wide
 header:
-  teaser: "assets/images/machines/armageddon/data/armageddon.png"
+  teaser: "assets/images/machines/HTB/armageddon/data/armageddon.png"
   teaser_home_page: true
   icon: "assets/images/icons/Hackthebox2.png"
 categories:
   - Writeup
   - HackTheBox
 tags:
-  - 
+  -
 ---
