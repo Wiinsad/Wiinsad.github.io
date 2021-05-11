@@ -17,7 +17,7 @@ tags:
 ---
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/data/deliveryHTB.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/data/deliveryHTB.png">
 </p>
 
 La máquina **Delivery** es una máquina virtual vulnerable de la plataforma HackTheBox con un nivel de dificultad **medio** una calificación en el rank de 4.6, **12347 USER OWNS** y **10865 SYSTEM OWNS** con la ip **10.10.10.222** y un sistema operativo **Linux**.
@@ -33,14 +33,14 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   - **-oG:**    Guarda la el output en formato Grepeable.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/scan/scanPort.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/time/scan/scanPort.png">
   </p>
 
 
   Una vez que hicimos el escaneo de puertos con la herramienta **ExtractPort**, vemos que los puertos que destacaron en este caso fueron **22,80 y 8065**:
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/Ports.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/scan/Ports.png">
   </p>
 
 
@@ -52,7 +52,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   - **-oN:** Formatos de Nmap en los que se guardará el archivo.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/PortServ.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/scan/PortServ.png">
   </p>
 
 
@@ -60,9 +60,9 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
 
   <div align="center">
   <table class="center"><tr>
-  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/web1.png">
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/scan/web1.png">
   <div class="caption" >10.10.10.22</div></center></td>
-  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/web2.png">
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/scan/web2.png">
   <div class="caption">10.10.10.22:8065</div></center></td>
   </tr></table>
   </div>
@@ -73,21 +73,21 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
 
   <div align="center">
   <table class="center"><tr>
-  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/host.png">
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/scan/host.png">
   <div class="caption" ></div></center></td>
-  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/EtcHosts.png">
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/scan/EtcHosts.png">
   <div class="caption"></div></center></td>
   </tr></table>
   </div>
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/helpDesk.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/scan/helpDesk.png">
   </p>
 
   En este mismas pagina fui a al apartado de **Open a New Ticket** y cree el ticket, haciendo esto veo que me dan unas credenciales con terminación delivery.htb y lo que parece ser un cuenta de correo.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/cred1.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/cred1.png">
   </p>
 
   Ya teniendo este correo habiliditado fui a la segunda pagina y vi que tenia la opción de creear una cuenta ahi tambien y me pedia un cuenta con dominio "delivery.htb" asi que use la que previamente me dieron ya que para crear la cuenta en este web necesitaba que verificara la cuenta con un correo que me iban a enviar.
@@ -97,21 +97,21 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   Nos quedaremos con esto ultimo por si nos llega a ser util en el futuro.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/cred2.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/cred2.png">
   </p>
 
   Ya con las credenciales de ***ssh*** entramos a la maquina bajo el usuario de **maildeliverer**:
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/maildeliverer.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/maildeliverer.png">
   </p>
 
   ## Privilege escalation
-  
+
   Enumerando un poco en el sistema pude ver que en el archivo que estaba en la ruta **/opt/mattermost/config/config.json** encontre unas credenciales para MySql:
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/mysqlCred.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/mysqlCred.png">
   </p>
 
   Usando los siguientes parametros pude entrar a mysql en forma interactiva:
@@ -121,13 +121,13 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   - **-p:** Estamos indicando que usaremos una password.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/mysql.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/mysql.png">
   </p>  
 
   Ya dentro de la sesión interactiva usando el comando ***select Username, Password from Users;***  podemos ver las credenciales de la cuenta root cifradas:
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/mysqlRoot.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/mysqlRoot.png">
   </p>
 
   Ahora que tengo la contraseña de root cifrada intente con john romperla y con el diccionario Rockyou pero no funciono, eso hace pensar en el mensaje que nos habia mensionado root cuando consguimos la cuenta donde vimos las llave de ssh que decia  ```PleaseSubscribe! may not be in RockYou but if any hacker manages to get our hashes, they can use hashcat rules to easily crack all variations of common words or phrases. ```
@@ -135,17 +135,17 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   Teniendo esto en cuenta y usando la erramienta de hashcat cree un diccionario con las pista que nos dieron que es **'PleaseSubscribe!'**
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/dic.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/dic.png">
   </p>
 
   Ya con el diccionario que me cree y usando **John The Ripper** pude romper la contraseña de root:
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/dic2.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/dic2.png">
   </p>
 
   Usando las credenciales que acabamos de encontrar usando **sudo su** y poniendo la contraseña vemos que efectivamente son las credenciales del usuraroi **Root** y de esta manera finalizando la maquina rooteandola.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/root.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/root.png">
   </p>
