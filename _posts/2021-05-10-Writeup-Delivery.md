@@ -55,7 +55,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   </p>
 
 
-  Lo que nmap nos ha mostrado sobre los servicios es que tiene un servicio ssh y un servicio web corriendo tanto en el puerto 80 como el 8065, entrando a cada servicio web desde el navegador podemos ver los siguiete de cada uno:
+  Lo que nmap nos ha mostrado sobre los servicios es que tiene un servicio ssh en el puerto **22** y un servicio web corriendo tanto en el puerto **80** como el **8065**, entrando a cada servicio web desde el navegador podemos ver los siguiete de cada uno:
 
   <div align="center">
   <table class="center"><tr>
@@ -72,7 +72,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <table class="center"><tr>
   <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/host.png">
   <div class="caption" >10.10.10.22</div></center></td>
-  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/EtcHost.png">
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/EtcHosts.png">
   <div class="caption">10.10.10.22:8065</div></center></td>
   </tr></table>
   </div>
