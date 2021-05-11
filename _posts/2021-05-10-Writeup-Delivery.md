@@ -71,12 +71,24 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <div align="center">
   <table class="center"><tr>
   <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/host.png">
-  <div class="caption" >10.10.10.22</div></center></td>
+  <div class="caption" ></div></center></td>
   <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/EtcHosts.png">
-  <div class="caption">10.10.10.22:8065</div></center></td>
+  <div class="caption"></div></center></td>
   </tr></table>
   </div>
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/helpDesk.png">
   </p>
+
+  En este mismas pagina fui a al apartado de **Open a New Ticket** y cree el ticket, haciendo esto veo que me dan unas credenciales con terminación delivery.htb y lo que parece ser un cuenta de correo.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/cred1.png">
+  </p>
+
+  Ya teniendo este correo habiliditado fui a la segunda pagina y vi que tenia la opción de creear una cuenta ahi tambien y me pedia un cuenta con dominio "delivery.htb" asi que use la que previamente me dieron ya que para crear la cuenta en este web necesitaba que verificara la cuenta con un correo que me iban a enviar.
+
+  Una vez que verifico la cuenta y puedo acceder en el primer apartado veo que tengo una conversación con root, en esa conversación se muestra que nos dan una credenciales para ssh y aparte menciona lo siguiente '*Also please create a program to help us stop re-using the same passwords everywhere.... Especially those that are a variant of **"PleaseSubscribe!**"* '.
+
+  Nos quedaremos con esto ultimo por si nos llega a ser util en el futuro.
