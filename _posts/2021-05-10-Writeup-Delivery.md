@@ -5,7 +5,7 @@ excerpt:
 show_date: true
 classes: wide
 header:
-  teaser: "assets/images/machines/delivery/delivery.png"
+  teaser: "assets/images/machines/delivery/data/delivery.png"
   teaser_home_page: true
   icon: "assets/images/icons/Hackthebox2.png"
 categories:
@@ -14,3 +14,7 @@ categories:
 tags:
   -
 ---
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/data/deliveryHTB.png">
+</p>
