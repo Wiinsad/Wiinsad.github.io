@@ -13,6 +13,7 @@ categories:
   - HackTheBox
 tags:
   - encryption
+  - Virtual Hosting
 ---
 
 <p align="center">
@@ -126,3 +127,15 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   </p>
 
   Ahora que tengo la contraseña de root cifrada intente con john romperla y con el diccionario Rockyou pero no funciono, eso hace pensar en el mensaje que nos habia mensionado root cuando consguimos la cuenta donde vimos las llave de ssh que decia  ```PleaseSubscribe! may not be in RockYou but if any hacker manages to get our hashes, they can use hashcat rules to easily crack all variations of common words or phrases. ```
+
+  Teniendo esto en cuenta y usando la erramienta de hashcat cree un diccionario con las pista que nos dieron que es **'PleaseSubscribe!'**
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/dic.png">
+  </p>
+
+  Ya teniendo esto usando **John The Ripper** pude romper la contraseña de root:
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/dic2.png">
+  </p>
