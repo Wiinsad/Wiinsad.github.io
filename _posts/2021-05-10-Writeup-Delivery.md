@@ -60,8 +60,23 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <div align="center">
   <table class="center"><tr>
   <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/web1.png">
-  <div class="caption" >10.10.10.22.</div></center></td>
+  <div class="caption" >10.10.10.22</div></center></td>
   <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/web2.png">
-  <div class="caption">10.10.10.22:8065.</div></center></td>
+  <div class="caption">10.10.10.22:8065</div></center></td>
   </tr></table>
   </div>
+
+  Enumerando la pagina con el puerto 80 veo que esta haciendo virtual hosting ya que en el hiperviculo de **HELPDESK** si hago hovering sobre el me sale el dominio **helpdesk.delivery.htb**, si agregó el dominio a la ruta ***/etc/hosts*** y entramos a la ruta se puede lograr ver los siguiete:
+
+  <div align="center">
+  <table class="center"><tr>
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/host.png">
+  <div class="caption" >10.10.10.22</div></center></td>
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/EtcHost.png">
+  <div class="caption">10.10.10.22:8065</div></center></td>
+  </tr></table>
+  </div>
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/scan/helpDesk.png">
+  </p>
