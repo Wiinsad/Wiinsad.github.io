@@ -106,7 +106,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   Enumerando un poco en el sistema pude ver que en el archivo que estaba en la ruta **/opt/mattermost/config/config.json** encontre unas credenciales para MySql:
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/mysqlCred.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/aassets/images/machines/delivery/instrusionmysqlCred.png">
   </p>
 
   Usando los siguientes parametros pude entrar a mysql en forma interactiva:
