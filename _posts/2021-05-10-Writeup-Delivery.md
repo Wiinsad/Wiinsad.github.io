@@ -12,7 +12,7 @@ categories:
   - Writeup
   - HackTheBox
 tags:
-  -
+  - encryption
 ---
 
 <p align="center">
@@ -118,3 +118,5 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/mysql.png">
   </p>  
+
+  Ya dentro de la sesión interactiva usando el comando ***select Username, Password from Users;***  podemos ver las credenciales de la cuenta root cifradas
