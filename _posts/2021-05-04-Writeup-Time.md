@@ -102,7 +102,7 @@ La respuesta que me dio fue un get al archivo **Inject.sql** en el lado del serv
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion/acces.png">
 </p>
 
-## Movimiento Lateral
+## Lateral Movement
 
 Haciendo un pequeño reconocimiento en el sistema podemos ver que hay una tarea cron que se ejecutan a intervalos de tiempo regulares en este caso cada **7 segundos** el cual es **'timer\_backup.timer'**:
 
@@ -116,7 +116,7 @@ Una vez que sabemos que existe un CronJob procedemos a buscar el archivo para ve
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/time/intrusion/cronjob.png">
 </p>
 
-## Escalación de privilegios
+## Privilege escalation
 
 Para la escalada de privilegios lo que hice fue ir al archivo y dentro del archivo modifiqué el contenido que tenía por el siguiente:
 
