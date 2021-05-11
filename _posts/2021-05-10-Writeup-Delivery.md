@@ -134,7 +134,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/dic.png">
   </p>
 
-  Ya teniendo esto usando **John The Ripper** pude romper la contraseña de root:
+  Ya con el diccionario que me cree y usando **John The Ripper** pude romper la contraseña de root:
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/dic2.png">
