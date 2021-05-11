@@ -139,3 +139,9 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/dic2.png">
   </p>
+
+  Usando las credenciales que acabamos de encontrar usando **sudo su** y poniendo la contraseña vemos que efectivamente son las credenciales del usuraroi **Root** y de esta manera finalizando la maquina rooteandola.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/delivery/intrusion/root.png">
+  </p>
