@@ -63,7 +63,13 @@ tags:
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/443.png">
   </p>
 
-  Haciendo **fuzzing** podemos ver que cuenta con un recurso **robots.txt** al entrar se pudieron ver el directorio **key-1-of-3.txt** y un recurso **fsocity.dic** el cual puedo descargar a mi maquina:
+  Haciendo **fuzzing** podemos ver que cuenta con un recurso **robots.txt** y un **wp-login**:
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/fuzzing.png">
+  </p>
+
+  Primero iremos por el robots.txt, al entrar se pudieron ver el directorio **key-1-of-3.txt** y un recurso **fsocity.dic** el cual puedo descargar a mi maquina:
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/robots.png">
@@ -79,4 +85,9 @@ tags:
   </tr></table>
   </div>
 
-  
+  Ya sabiendo esto me dirijo al la ruta **wp-login** ahi veo que es un login de wordpress, en algunas ocasiones los logins de wordpress te permiten enumerar usuarios ya que si ponemos uno valido nos saldria un mensaje diciendo '**ERROR: The password you entered for the username Winsad is incorrect. Lost your password?**' por ejemplo.
+  Para esto y ya que no conocemos los usuarios usaremos el dic para hacer un ataque de fuerza bruta, para este ataque hare un script personalizado en python el cual es el siguiete:
+
+  '''python3
+     import si
+  '''
