@@ -12,18 +12,21 @@ categories:
   - Writeup
   - TryHackMe
 tags:
-  -
+  - SUID
+  - Wordpress
+  - Python
+  - BruteForce
 ---
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/data/MR-ROBOT.jpg">
   </p>
 
-  La máquina **MrRobot** es una máquina virtual vulnerable de la plataforma Try Hack Me con un nivel de dificultad **medio**  desarrollada por DarkStar7471 y publicada **24 de Septiembre del 2020** con un sistema operativo **Linux**.
+  La máquina **MrRobot** es una máquina virtual vulnerable de la plataforma **Try Hack Me** con un nivel de dificultad **medio**  desarrollada por **DarkStar7471** y publicada **24 de Septiembre del 2020** con un sistema operativo **Linux**.
 
 ## Port Scan
 
-  Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los puertos abiertos disponibles en la máquina con **[Ip:10.10.11.112]** utilizando los parámetros:
+  Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los puertos abiertos disponibles en la máquina con **[Ip:10.10.197.4]** utilizando los parámetros:
 
   - **-p-:**    Escaneo a toda la gama de puertos (65536).
   - **-n:**     No hacen la resolución del DNS.
@@ -124,7 +127,7 @@ with open('fsocity.dic', 'r') as f:
   Con el script que me acabo de desarollar pude descubrir que el usuario **Elliot** es un usuario valido:
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/fuzzU.png">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/fuzzU.png?raw=true">
   </p>
 
   Ahora que tenemos el usuario haremos una fuerza bruta a la password del usuario **Elliot**, para esto adapataremos un poco el script para que ahora itere sobre la password y no el usuario:
@@ -167,7 +170,7 @@ with open('smallwordlist', 'r') as f:
   Yo acote el diccionario ya que eran demasiadas lineas, la constraseña se encontraba en la linea **5627:ER28-0652**, seria un gran punto si le metieramos hilos pero en esta ocasion no lo hare yo.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/fuzzp.png">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/fuzzP.png?raw=true">
   </p>
 
   Ya que encontramos el usuario y la passwod vamos al login de wordpress y ingresamos con las credenciales.
@@ -179,7 +182,7 @@ with open('smallwordlist', 'r') as f:
   - Entrar a la url **https://[IP Machine]/wp-content/themes/twentyfifteen/archive.php**.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/paginaApparence.png">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/paginaApparence.png?raw=true">
   </p>
 
   Ya una vez que hicimos los pasos y entramos a la url especificada podemos ver que nos da la conexion en nuestra maquina.
@@ -187,7 +190,7 @@ with open('smallwordlist', 'r') as f:
   Una vez dentro nos dirijimos a la rutar **/home/robot** y vemos que se encuentra la segunda flag y aparte un archivo **password.raw-md5**
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/shell.png">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/shell.png?raw=true">
   </p>
 
 
@@ -195,9 +198,9 @@ with open('smallwordlist', 'r') as f:
 
   <div align="center">
   <table class="center"><tr>
-  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/hash1.png">
+  <td><center><img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/hash1.png?raw=true">
   <div class="caption" >Maquina visctima.</div></center></td>
-  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/hash2.png">
+  <td><center><img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/hash2.png?raw=true">
   <div class="caption">Maquina del atacante.</div></center></td>
   </tr></table>
   </div>
@@ -205,13 +208,13 @@ with open('smallwordlist', 'r') as f:
   Con el hash en nuestra maquina usamos la herramienta de john con el diccionario de **Rockyou** para ver si podemos romper el hash que esta en **md5**
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/crak.png">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/crack.png?raw=true">
   </p>
 
   Ahora que tenemos el password lo usamos para entrar como el usuario **robot**:
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/robot.png">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/robot.png?raw=true">
   </p>
 
 ## Privilege escalation
@@ -221,7 +224,7 @@ with open('smallwordlist', 'r') as f:
   Usamos el comando ```find / -perm -4000 2>/dev/null``` para poder encontrar algun binario **SUID**.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/nmap.png">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/nmap.png?raw=true">
   </p>
 
   Ejecutando este comando vemos que hay un uno el cual es **/usr/local/bin/nmap**, si buscamos en la pagina **[GTFOBINS](https://gtfobins.github.io)** el binario nmap podemos ver que cuenta con una forma para spawnearnos la shell si es **SUID**
@@ -233,5 +236,5 @@ with open('smallwordlist', 'r') as f:
   Haciendo esto podemos ya entrar al directorio root y visualizar la ultima flag:
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/root.png">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/root.png?raw=true">
   </p>
