@@ -25,7 +25,7 @@ tags:
 La máquina **Time** es una máquina virtual vulnerable de la plataforma HackTheBox con un nivel de dificultad **medio** una calificación en el rank de 3.5, **5710 USER OWNS** y **5369 SYSTEM OWNS** con la ip **10.10.10.214** y un sistema operativo **Linux**.
 
 
-### Port Scan
+## Port Scan
 
 Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los puertos abiertos disponibles en la máquina con **[Ip:10.10.10.214]** utilizando los parámetros:
   - **-p-:**    Escaneo a toda la gama de puertos (65536).
