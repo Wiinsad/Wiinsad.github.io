@@ -124,7 +124,7 @@ with open('fsocity.dic', 'r') as f:
   Con el script que me acabo de desarollar pude descubrir que el usuario **Elliot** es un usuario valido:
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/fuzzU.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/fuzzU.png">
   </p>
 
   Ahora que tenemos el usuario haremos una fuerza bruta a la password del usuario **Elliot**, para esto adapataremos un poco el script para que ahora itere sobre la password y no el usuario:
@@ -167,7 +167,7 @@ with open('smallwordlist', 'r') as f:
   Yo acote el diccionario ya que eran demasiadas lineas, la constraseña se encontraba en la linea **5627:ER28-0652**, seria un gran punto si le metieramos hilos pero en esta ocasion no lo hare yo.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/fuzzp.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/fuzzp.png">
   </p>
 
   Ya que encontramos el usuario y la passwod vamos al login de wordpress y ingresamos con las credenciales.
@@ -179,7 +179,7 @@ with open('smallwordlist', 'r') as f:
   - Entrar a la url **https://[IP Machine]/wp-content/themes/twentyfifteen/archive.php**.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/paginaApparence.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/paginaApparence.png">
   </p>
 
   Ya una vez que hicimos los pasos y entramos a la url especificada podemos ver que nos da la conexion en nuestra maquina.
@@ -187,7 +187,7 @@ with open('smallwordlist', 'r') as f:
   Una vez dentro nos dirijimos a la rutar **/home/robot** y vemos que se encuentra la segunda flag y aparte un archivo **password.raw-md5**
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/shell.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/shell.png">
   </p>
 
 
@@ -195,9 +195,9 @@ with open('smallwordlist', 'r') as f:
 
   <div align="center">
   <table class="center"><tr>
-  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/hash1.png">
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/hash1.png">
   <div class="caption" >Maquina visctima.</div></center></td>
-  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/hash2.png">
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/hash2.png">
   <div class="caption">Maquina del atacante.</div></center></td>
   </tr></table>
   </div>
