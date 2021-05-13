@@ -170,3 +170,19 @@ with open('smallwordlist', 'r') as f:
   </p>
 
   Ya que encontramos el usuario y la passwod vamos al login de wordpress y ingresamos con las credenciales.
+
+  Ya dentro es muy facil darnos una shell los pasos serian:
+  - Entrar a Apparence
+  - Editar el archivo **archive.php** y ingresar la shell en php en el archivo **archive.php**
+  - Ponernos en escuchar por el puerto especificado en el **archive.php**
+  - Entrar a la url **https://[IP Machine]/wp-content/themes/twentyfifteen/archive.php**
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/paginaApparence.png">
+  </p>
+
+  Ya una vez que hicimos los pasos y entramos a la url especificada podemos ver que nos da la conexion en nuestra maquina:
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/shell.png">
+  </p>
