@@ -181,8 +181,21 @@ with open('smallwordlist', 'r') as f:
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/paginaApparence.png">
   </p>
 
-  Ya una vez que hicimos los pasos y entramos a la url especificada podemos ver que nos da la conexion en nuestra maquina:
+  Ya una vez que hicimos los pasos y entramos a la url especificada podemos ver que nos da la conexion en nuestra maquina.
+
+  Ya dentro nos dirijimos a la rutar **/home/robot** y vemos que se encuentra la segunda flag y aparte un archivo **password.raw-md5**
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/shell.png">
   </p>
+
+  Si en la maquina victima hacemos un **cat password.raw-md5 | base64** al archivo y el output que no sales le hacemos un **echo '[output]' | base64 -d >> hash** en nuestra maquina tenemos el mismo archivo ya en nuestra maquina y asi podemos usar la herramienta de john para poder romper el hash:
+
+  <div align="center">
+  <table class="center"><tr>
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/scan/hash1.png">
+  <div class="caption" >Maquina visctima.</div></center></td>
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/scan/hash2.png">
+  <div class="caption">Maquina del atacante.</div></center></td>
+  </tr></table>
+  </div>
