@@ -37,7 +37,7 @@ tags:
   </p>
 
 
-  Una vez que hicimos el escaneo de puertos con la herramienta **ExtractPort**, vemos que los puertos que destacaron en este caso fueron **22 y 443**:  
+  Una vez que hicimos el escaneo de puertos con la herramienta **ExtractPort**, vemos que los puertos que destacaron en este caso fueron **80 y 443**:  
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/Ports.png">
@@ -55,7 +55,7 @@ tags:
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/PortServ.png">
   </p>
 
-  Lo que **nmap** nos muestra es que hay un servicio **ssh** en el puerto **22** y un servicio **HTTP** en el puerto **443**.
+  Lo que **nmap** nos muestra es que hay un servicio **HTTP** en el puerto **80** y un servicio **HTTPS** en el puerto **443**.
 
   Cuando entre al servicio **HTTP** desde mi navegador pude ver lo siguiente:
 
@@ -85,6 +85,7 @@ tags:
   </tr></table>
   </div>
 
+## Lateral Movement
   Ya sabiendo esto me dirijo al la ruta **wp-login** ahi veo que es un login de wordpress, en algunas ocasiones los logins de wordpress te permiten enumerar usuarios ya que si ponemos uno valido nos saldria un mensaje diciendo '**ERROR: The password you entered for the username Winsad is incorrect. Lost your password?**' por ejemplo.
 
   Para esto y ya que no conocemos los usuarios usaremos el dic para hacer un ataque de fuerza bruta, para este ataque hare un script personalizado en python el cual es el siguiete:
@@ -96,7 +97,7 @@ import requests, time
 from pwn import *
 
 
-url = 'http://10.10.197.4/wp-login.php'
+url = 'http://[IP Machine]/wp-login.php'
 
 s = requests.Session()
 print ''
@@ -134,7 +135,7 @@ with open('fsocity.dic', 'r') as f:
 import requests, time
 from pwn import *
 
-url = 'http://10.10.7.71/wp-login.php'
+url = 'http://[Ip Machine]/wp-login.php'
 user = 'Elliot'
 s = requests.Session()
 
@@ -163,7 +164,7 @@ with open('smallwordlist', 'r') as f:
 			break
 
   ```
-  Yo acote el diccionario ya que eran demasiadas lineas, la constraseña se encontraba en la linea 5627:ER28-0652, seria un gran punto si le metieramos hilos pero en esta ocasion no lo hare yo.
+  Yo acote el diccionario ya que eran demasiadas lineas, la constraseña se encontraba en la linea **5627:ER28-0652**, seria un gran punto si le metieramos hilos pero en esta ocasion no lo hare yo.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/fuzzp.png">
@@ -171,11 +172,11 @@ with open('smallwordlist', 'r') as f:
 
   Ya que encontramos el usuario y la passwod vamos al login de wordpress y ingresamos con las credenciales.
 
-  Ya dentro es muy facil darnos una shell los pasos serian:
-  - Entrar a Apparence
-  - Editar el archivo **archive.php** y ingresar la shell en php en el archivo **archive.php**
-  - Ponernos en escuchar por el puerto especificado en el **archive.php**
-  - Entrar a la url **https://[IP Machine]/wp-content/themes/twentyfifteen/archive.php**
+  Dentro de una cuenta con persimos de adminitrador en wordpress es muy facil darnos una shell los pasos serian:
+  - Entrar a Appearence.
+  - Editar el archivo **archive.php** e ingresar la shell en php en el archivo.
+  - Ponernos en escuchar por el puerto especificado en el **archive.php**.
+  - Entrar a la url **https://[IP Machine]/wp-content/themes/twentyfifteen/archive.php**.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/paginaApparence.png">
@@ -183,19 +184,54 @@ with open('smallwordlist', 'r') as f:
 
   Ya una vez que hicimos los pasos y entramos a la url especificada podemos ver que nos da la conexion en nuestra maquina.
 
-  Ya dentro nos dirijimos a la rutar **/home/robot** y vemos que se encuentra la segunda flag y aparte un archivo **password.raw-md5**
+  Una vez dentro nos dirijimos a la rutar **/home/robot** y vemos que se encuentra la segunda flag y aparte un archivo **password.raw-md5**
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/shell.png">
   </p>
 
-  Si en la maquina victima hacemos un **cat password.raw-md5 | base64** al archivo y el output que no sales le hacemos un **echo '[output]' | base64 -d >> hash** en nuestra maquina tenemos el mismo archivo ya en nuestra maquina y asi podemos usar la herramienta de john para poder romper el hash:
+
+  Si en la maquina victima hacemos un **cat password.raw-md5 \| base64** al archivo y el output que no sales le hacemos un **echo '[output]' \| base64 -d >> hash** en nuestra maquina tenemos el mismo archivo ya en nuestra maquina y asi podemos usar la herramienta de john para poder romper el hash:
 
   <div align="center">
   <table class="center"><tr>
-  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/scan/hash1.png">
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/hash1.png">
   <div class="caption" >Maquina visctima.</div></center></td>
-  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/scan/hash2.png">
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/hash2.png">
   <div class="caption">Maquina del atacante.</div></center></td>
   </tr></table>
   </div>
+
+  Con el hash en nuestra maquina usamos la herramienta de john con el diccionario de **Rockyou** para ver si podemos romper el hash que esta en **md5**
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/crak.png">
+  </p>
+
+  Ahora que tenemos el password lo usamos para entrar como el usuario **robot**:
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/robot.png">
+  </p>
+
+## Privilege escalation
+
+  Para seguir poder buscar el camino a convertinos en **root** enumeramos el sistema para ver como poder escalar privilegios.
+
+  Usamos el comando ```find / -perm -4000 2>/dev/null``` para poder encontrar algun binario **SUID**.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/nmap.png">
+  </p>
+
+  Ejecutando este comando vemos que hay un uno el cual es **/usr/local/bin/nmap**, si buscamos en la pagina **[GTFOBINS](https://gtfobins.github.io)** el binario nmap podemos ver que cuenta con una forma para spawnearnos la shell si es **SUID**
+
+  ```bash
+  nmap --interactive
+  nmap> !sh
+  ```
+  Haciendo esto podemos ya entrar al directorio root y visualizar la ultima flag:
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/intrusion/root.png">
+  </p>
