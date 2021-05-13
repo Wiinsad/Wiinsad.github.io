@@ -90,7 +90,7 @@ tags:
   Para esto y ya que no conocemos los usuarios usaremos el dic para hacer un ataque de fuerza bruta, para este ataque hare un script personalizado en python el cual es el siguiete:
 
   ```python
-    #!/usr/bin/python
+#!/usr/bin/python
 
 import requests, time
 from pwn import *
@@ -126,6 +126,4 @@ with open('fsocity.dic', 'r') as f:
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/fuzzU.png">
   </p>
 
-  Ahora que tenemos el usuario haremos una fuerza bruta a la password del usuario Elliot, para esto adapataremos un poco el script para que ahora itere sobre la password y no el usuario:
-
-  
+  Ahora que tenemos el usuario haremos una fuerza bruta a la password del usuario **Elliot**, para esto adapataremos un poco el script para que ahora itere sobre la password y no el usuario:
