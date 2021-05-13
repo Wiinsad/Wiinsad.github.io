@@ -68,3 +68,13 @@ tags:
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/robots.png">
   </p>
+
+  Viendo el contenido de **fsocity.dic** puedo ver que es un diccionario con muchos strings variados, y con **858160** lineas:
+  <div align="center">
+  <table class="center"><tr>
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/dic1.png">
+  <div class="caption" ></div></center></td>
+  <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/scan/dic2.png">
+  <div class="caption"></div></center></td>
+  </tr></table>
+  </div>
