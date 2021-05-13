@@ -23,7 +23,7 @@ tags:
 
 La máquina **Ready** es una máquina virtual vulnerable de la plataforma HackTheBox con un nivel de dificultad **medio** una puntuación de 4.2, **6646 USER OWNS** y **5768 SYSTEM OWNS** con la ip **10.10.10.220** y un sistema operativo **Linux**.
 
-### Port Scan
+## Port Scan
 
 Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los puertos abiertos disponibles en la máquina con **[Ip:10.10.10.220]** utilizando los parámetros:
   - **-p-:**    Escaneo a toda la gama de puertos (65536).
@@ -100,7 +100,7 @@ Una vez que ya hice los cambios me puse por el puerto **443** en escucha con Net
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/ready/intrusion/shell.png">
 </p>
 
-## ## Privilege escalation
+## Privilege escalation
 
 Una vez que ya estoy dentro de la maquina como el usuario **git** me dirijo a la ruta **/tmp/** y creo un directorio llamado **/winsad** ahi dentro me descargo de mi maquina el binario de **linpeas.sh** con **wget** para poder hacer una enumeracion del sistema y encontrar una forma de escalar privilegios, ejecutando el binario me encontre una credencial en texto plano que pertenecia al usuario **root** dentro del archivo **/opt/backup/gitlab.rb**:
 
