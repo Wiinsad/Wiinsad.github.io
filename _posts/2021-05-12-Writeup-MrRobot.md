@@ -19,11 +19,11 @@ tags:
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/MrRobot/data/MR-ROBOT.jpg">
   </p>
 
-  La máquina **Delivery** es una máquina virtual vulnerable de la plataforma HackTheBox con un nivel de dificultad **medio** una calificación en el rank de 4.6, **12347 USER OWNS** y **10865 SYSTEM OWNS** con la ip **10.10.10.222** y un sistema operativo **Linux**.
+  La máquina **MrRobot** es una máquina virtual vulnerable de la plataforma Try Hack Me con un nivel de dificultad **medio**  desarrollada por DarkStar7471 y publicada **24 de Septiembre del 2020** con un sistema operativo **Linux**.
 
 ## Port Scan
 
-  Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los puertos abiertos disponibles en la máquina con **[Ip:10.10.10.214]** utilizando los parámetros:
+  Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los puertos abiertos disponibles en la máquina con **[Ip:10.10.11.112]** utilizando los parámetros:
 
   - **-p-:**    Escaneo a toda la gama de puertos (65536).
   - **-n:**     No hacen la resolución del DNS.
