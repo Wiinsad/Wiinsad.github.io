@@ -67,7 +67,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   </tr></table>
   </div>
 
-  ## Lateral Movement
+## Lateral Movement
 
   Enumerando la pagina con el puerto 80 veo que esta haciendo virtual hosting ya que en el hiperviculo de **HELPDESK** si hago hovering sobre el me sale el dominio **helpdesk.delivery.htb**, si agregó el dominio a la ruta ***/etc/hosts*** y entramos a la ruta se puede lograr ver los siguiete:
 
@@ -106,7 +106,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/maildeliverer.png">
   </p>
 
-  ## Privilege escalation
+## Privilege escalation
 
   Enumerando un poco en el sistema pude ver que en el archivo que estaba en la ruta **/opt/mattermost/config/config.json** encontre unas credenciales para MySql:
 
