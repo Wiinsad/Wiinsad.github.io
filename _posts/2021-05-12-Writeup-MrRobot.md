@@ -92,7 +92,7 @@ tags:
 ## Lateral Movement
   Ya sabiendo esto me dirijo al la ruta **wp-login** ahí veo que es un login de wordpress, en algunas ocasiones los logins de wordpress te permiten enumerar usuarios ya que si ponemos uno valido nos saldría un mensaje diciendo '**ERROR: The password you entered for the username Winsad is incorrect. Lost your password?**' por ejemplo.
 
-  Para esto y ya que no conocemos los usuarios usaremos el dic para hacer un ataque de fuerza bruta, para este ataque hare un script personalizado en python el cual es el siguiente:
+  Para esto y ya que no conocemos los usuarios usaremos el diccionario para hacer un ataque de fuerza bruta, para este ataque hare un script personalizado en python el cual es el siguiente:
 
   ```python
 #!/usr/bin/python
@@ -125,7 +125,7 @@ with open('fsocity.dic', 'r') as f:
 			break
   ```
 
-  Con el script que me acabo de desarrollar pude descubrir que el usuario **Elliot** es un usuario valido:
+  Con el script que me acabo de desarrollar lo que hace es hacer un loggeo y comparar la respuesta por parte del servidor enviando un usuario y una contraseña cualquiera, si en ella se encuentra la cadena **"Invalid username."** significa que el usuario es valido gracias a esto pude descubrir que el usuario **Elliot** es un usuario valido:
 
   <p align="center">
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/fuzzU.png?raw=true">
