@@ -186,7 +186,7 @@ with open('smallwordlist', 'r') as f:
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/paginaApparence.png?raw=true">
   </p>
 
-  Lo que hacemos aquí es editar una plantilla de la web, en este caso es **archive.php** y una vez que la editamos entramos mediante el navegador y lo que pasa es que la pagina nos interpreta el contenido en php que en este caso es una revershell la cual en este caso conseguí de esta pagina en **[github](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php)**. 
+  Lo que hacemos aquí es editar una plantilla de la web, en este caso es **archive.php** y una vez que la editamos entramos mediante el navegador y lo que pasa es que la pagina nos interpreta el contenido en php que en este caso es una revershell la cual en este caso conseguí de esta pagina en **[github](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php)**.
 
   Ya una vez que hicimos los pasos y entramos a la url especificada podemos ver que nos da la conexión en nuestra maquina.
 
@@ -199,15 +199,15 @@ with open('smallwordlist', 'r') as f:
 
   Si en la maquina victima hacemos un **cat password.raw-md5 \| base64** al archivo y el output que no sales le hacemos un **echo '[output]' \| base64 -d >> hash** en nuestra maquina tenemos el mismo archivo ya en nuestra maquina y así podemos usar la herramienta de john para poder romper el hash:
 
-  <div align="center">
-  <table class="center"><tr>
-  <td><center><img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/hash1.png?raw=true">
-  <div class="caption" >Maquina visctima.</div></center></td>
-  <td><center><img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/hash2.png?raw=true">
-  <div class="caption">Maquina del atacante.</div></center></td>
-  </tr></table>
-  </div>
+  <p align="center">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/hash1.png?raw=true">
+  <div class="caption" align="center" >  <strong>Maquina victima. </strong></div>
+  </p>
 
+  <p align="center">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/hash2.png?raw=true">
+  <div class="caption" align="center"> <strong>Maquina del atacante</strong></div>
+  </p>  
   Con el hash en nuestra maquina usamos la herramienta de john con el diccionario de **Rockyou** para ver si podemos romper el hash que esta en **md5**
 
   <p align="center">
