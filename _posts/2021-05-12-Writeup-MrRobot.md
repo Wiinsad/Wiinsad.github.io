@@ -178,7 +178,7 @@ with open('smallwordlist', 'r') as f:
 
   Dentro de una cuenta con permisos de administrador en wordpress es muy fácil darnos una shell los pasos serian:
   - Entrar a Appearence y en edit.
-  - Editar el archivo **archive.php** e ingresar la shell en php en el archivo.
+  - Editar el archivo **archive.php** ingresando la revershell en php.
   - Ponernos en escuchar por el puerto especificado en el **archive.php**.
   - Entrar a la url **https://[IP Machine]/wp-content/themes/twentyfifteen/archive.php**.
 
