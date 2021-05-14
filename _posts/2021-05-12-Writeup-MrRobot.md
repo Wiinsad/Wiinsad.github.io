@@ -186,6 +186,8 @@ with open('smallwordlist', 'r') as f:
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/paginaApparence.png?raw=true">
   </p>
 
+  Lo que hacemos aquí es editar una plantilla de la web, en este caso es **archive.php** y una vez que la editamos entramos mediante el navegador y lo que pasa es que la pagina nos interpreta el contenido en php que en este caso es una revershell la cual en este caso conseguí esta pagina en **[github](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php)** de a nuestro equipo. 
+
   Ya una vez que hicimos los pasos y entramos a la url especificada podemos ver que nos da la conexión en nuestra maquina.
 
   Una vez dentro nos dirigimos a la rutar **/home/robot** y vemos que se encuentra la segunda flag y aparte un archivo **password.raw-md5**
