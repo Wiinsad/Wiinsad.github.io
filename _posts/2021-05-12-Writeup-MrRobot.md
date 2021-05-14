@@ -197,7 +197,9 @@ with open('smallwordlist', 'r') as f:
   </p>
 
 
-  Si en la máquina victima hacemos un **cat password.raw-md5 \| base64** al archivo y el output que no sales le hacemos un **echo '[output]' \| base64 -d >> hash** en nuestra máquina tenemos el mismo archivo ya en nuestra máquina y así podemos usar la herramienta de john para poder romper el hash:
+  Si en la máquina victima hacemos un **cat password.raw-md5 \| base64** al archivo y el output que nos sale le hacemos un **echo '[output]' \| base64 -d >> hash** en nuestra máquina tenemos el mismo archivo, ya en nuestra máquina.
+
+  Esto sirve para que a la hora de tranferirlo no se dañe el archivo se puede hacer también para binarios compilados o otros archivos ya que al codificarlo en **base64** es como si hiciéramos un **ctrl+c** y **ctrl+v*** pero un poco hacker, ahora con el hash en nuestra podemos usar la herramienta de john para poder romper el hash:
 
   <p align="center">
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/hash1.png?raw=true">
@@ -222,9 +224,9 @@ with open('smallwordlist', 'r') as f:
 
 ## Privilege escalation
 
-  Para seguir poder buscar el camino a convertirnos en **root** enumeramos el sistema para ver como poder escalar privilegios.
+  Para poder convertirnos en **root** enumeramos el sistema para ver como poder hacer la escalación de privilegios.
 
-  Usamos el comando ```find / -perm -4000 2>/dev/null``` para poder encontrar algún binario **SUID**.
+  Usamos el comando ```find / -perm -4000 2>/dev/null``` para poder encontrar algún binario con permisos de **SUID**.
 
   <p align="center">
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/nmap.png?raw=true">
