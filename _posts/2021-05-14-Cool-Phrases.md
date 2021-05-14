@@ -39,5 +39,6 @@ Are not mine and are several that I have seen on the internet so many times I wi
 >-Platon
 
 >Tu yo de ahora debe ser mejor que tu yo de ayer.
->Si es al revés toma una pausa y al hacerlo ya estarás mejorando.
+>
+>Si es al revés toma una pausa analiza y al hacerlo ya estarás mejorando.
 >
