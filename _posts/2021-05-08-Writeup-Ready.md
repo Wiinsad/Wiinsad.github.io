@@ -54,7 +54,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/ready/scan/PortServ.png">
   </p>
 
-  Lo que **nmap** nos muestra es exite un servicio ***HTTP*** en el puerto 5080 con un **robots.txt** habilitado.
+  Lo que **nmap** nos muestra es existe un servicio ***HTTP*** en el puerto 5080 con un **robots.txt** habilitado.
   Si entramos a la pagina web vemos que es tiene como **cms** un GitLab.
 
   <p align="center">
@@ -70,7 +70,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
 
 ## Lateral Movement
 
-  Ya dentro de la cuenta que acabo de crear, enumerando pude encontrar la versión de **GitLab** la cual es **11.4.7**, buscando con la herramienta de **searchsploit** la versión del CMS encontre que tiene varios exploits que nos permiten hacen un ataque de Remote Code Execution:
+  Ya dentro de la cuenta que acabo de crear, enumerando pude encontrar la versión de **GitLab** la cual es **11.4.7**, buscando con la herramienta de **searchsploit** la versión del CMS encontré que tiene varios exploits que nos permiten hacen un ataque de Remote Code Execution:
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/ready/intrusion/version.png">
@@ -79,7 +79,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/ready/intrusion/searchsploit.png">
   </p>
 
-  Examinando el exploit con el **id 49334** ya que pide autenticación usamos ese con las credenciales que acabamos de crear, examinando el exploit se modifico unas lineas ya que tenia algunos errores, se modifico la linea **29** ya que la variable **local_port** estaba tomando el argumento de la variable **password** y a al momento de ejecutar el exploit las credenciales se enviaban mal, tambien se modifico la linea **59** que esa linea corresponde a el payload, se le agrego el argumento **-e /bin/bash** esto fue asi porque a la hora de ejecutar el exploit nos da la conexion pero no nos permite ejcutar ningun comando y a veces da un error, para asegurar la shell le agregamos estos parametros:
+  Examinando el exploit con el **id 49334** ya que pide autenticación usamos ese con las credenciales que acabamos de crear, examinando el exploit se modifico unas lineas ya que tenia algunos errores, se modifico la linea **29** ya que la variable **local_port** estaba tomando el argumento de la variable **password** y a al momento de ejecutar el exploit las credenciales se enviaban mal, también se modifico la linea **59** que esa linea corresponde a el payload, se le agrego el argumento **-e /bin/bash** esto fue asi porque a la hora de ejecutar el exploit nos da la conexión pero no nos permite ejecutar ningún comando y a veces da un error, para asegurar la shell le agregamos estos parámetros:
 
   <div align="center">
   <table class="center"><tr>
@@ -94,7 +94,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/ready/intrusion/expModB.png">
   </p>
 
-Una vez que ya hice los cambios me puse por el puerto **443** en escucha con Netcat  ejecute el exploit pasado menos de 5 seg. me llego la conexion y con ella la shell:
+Una vez que ya hice los cambios me puse por el puerto **443** en escucha con Netcat  ejecute el exploit pasado menos de 5 seg. me llego la conexión y con ella la shell:
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/ready/intrusion/shell.png">
@@ -102,17 +102,17 @@ Una vez que ya hice los cambios me puse por el puerto **443** en escucha con Net
 
 ## Privilege escalation
 
-Una vez que ya estoy dentro de la maquina como el usuario **git** me dirijo a la ruta **/tmp/** y creo un directorio llamado **/winsad** ahi dentro me descargo de mi maquina el binario de **linpeas.sh** con **wget** para poder hacer una enumeracion del sistema y encontrar una forma de escalar privilegios, ejecutando el binario me encontre una credencial en texto plano que pertenecia al usuario **root** dentro del archivo **/opt/backup/gitlab.rb**:
+Una vez que ya estoy dentro de la maquina como el usuario **git** me dirijo a la ruta **/tmp/** y creo un directorio llamado **/winsad** ahí dentro me descargo de mi maquina el binario de **linpeas.sh** con **wget** para poder hacer una enumeración del sistema y encontrar una forma de escalar privilegios, ejecutando el binario me encontré una credencial en texto plano que pertenecía al usuario **root** dentro del archivo **/opt/backup/gitlab.rb**:
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/ready/intrusion/passwd.png">
 </p>
 
-Ya que tenemos las credenciales de **root** entramos a su directorio personal y vemos que la **flag** de root no esta, lo que genera sospechas ya que podriamos estar en un **Doker**, ya que el mismo **linpeas** nos dio informacion que no puedo dar muchas pistas de esto mismo y agregar que el comando **ifconfig**, **ip -a** no estaban habilitados o disponibles en la maquina.
+Ya que tenemos las credenciales de **root** entramos a su directorio personal y vemos que la **flag** de root no esta, lo que genera sospechas ya que podríamos estar en un **Doker**, ya que el mismo **linpeas** nos dio información que no puedo dar muchas pistas de esto mismo y agregar que el comando **ifconfig**, **ip -a** no estaban habilitados o disponibles en la maquina.
 
 Una prueba que podemos ver si estamos en un **Contenedor-Doker** es haciendo un **cat** a la ruta ```/proc/1/cgroup```.
 
-cgroups significa "grupos de control". Es una característica de Linux que aísla el uso de recursos y es lo que Docker utiliza para aislar los contenedores. Puedes saber si estás en un contenedor comprobando el grupo de control del proceso init en /proc/1/cgroup. Si no estás dentro de un contenedor, el grupo de control debería ser /. Por otro lado, si estás dentro de un contenedor, deberías ver /docker/CONTAINER_ID en su lugar.
+Cgroups significa "grupos de control". Es una característica de Linux que aísla el uso de recursos y es lo que Docker utiliza para aislar los contenedores. Puedes saber si estás en un contenedor comprobando el grupo de control del proceso init en /proc/1/cgroup. Si no estás dentro de un contenedor, el grupo de control debería ser /. Por otro lado, si estás dentro de un contenedor, deberías ver /docker/CONTAINER_ID en su lugar.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/ready/intrusion/docker1.png">
@@ -120,9 +120,9 @@ cgroups significa "grupos de control". Es una característica de Linux que aísl
 
 Ya que sabemos que estamos en un **Docker** buscando en internet como escapar de un contenedor me encuentro con un articulo el cual explica el como poder escapar de estos mismo.
 
-En el articulo explican que para poder escapar tenemos que ver si el contenedor tiene algun privilegio establecido para ver esto usamos el comando ```#ip link add dummy0 type dummy ```  esto se hace ya que este comando requiere la capacidad **NET_ADMIN**, que el contenedor tendría si tiene privilegios y si este comando se ejecuta con éxito, puede concluir que el contenedor tiene la capacidad **NET_ADMIN**.
+En el articulo explican que para poder escapar tenemos que ver si el contenedor tiene algún privilegio establecido para ver esto usamos el comando ```#ip link add dummy0 type dummy ```  esto se hace ya que este comando requiere la capacidad **NET_ADMIN**, que el contenedor tendría si tiene privilegios y si este comando se ejecuta con éxito, puede concluir que el contenedor tiene la capacidad **NET_ADMIN**.
 
-En este caso ya que el comando **ip** esta desabilitado no podemos hacer la prueba pero en el mismo articulo nos explican como podriamos ejecutar comandos en la maquina host estando dentro del contenedor, se seguiria los siguientes comandos:
+En este caso ya que el comando **ip** esta deshabilitado no podemos hacer la prueba pero en el mismo articulo nos explican como podríamos ejecutar comandos en la maquina host estando dentro del contenedor, se seguiría los siguientes comandos:
 
 ```
 mkdir /tmp/cgrp && mount -t cgroup -o rdma cgroup /tmp/cgrp && mkdir /tmp/cgrp/x
