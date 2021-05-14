@@ -59,7 +59,7 @@ Una vez identificados los puertos abiertos, realizaremos un escaneo de versiones
 </p>
 
 
-Lo que nmap nos ha mostrado sobre los servicios es que tiene un servicio ssh y una página http que está soportada por apache 2.4.41 que tiene un **Online Json parser** corriendo. Aparte de estos datos no vemos nada fuera de lo normal o que indique un foco a seguir que no sea la página con el Json.
+Lo que nmap nos ha mostrado sobre los servicios es que tiene un servicio ssh y una página **http** que está soportada por apache 2.4.41 que tiene un **Online Json parser** corriendo. Aparte de estos datos no vemos nada fuera de lo normal o que indique un foco a seguir que no sea la página con el Json.
 
 Si entramos en la página web desde el navegador podemos ver la aplicación **Json** que está montada en la web:
 
@@ -127,7 +127,7 @@ chmod 4755 /bin/bash
 
 ```
 
-Una vez que modificamos el archivo **timer\_backup** esperamos a que la tarea cron se ejecute y root asigne el permiso **SUID** a la ruta **/bin/bash** lo cual nos permitira utilizar el parámetro ``` bash -p ``` que nos dará una shell como root ya que estamos ejecutando temporalmente el binario como el propiertario del mismo y asi teniendo acceso completo a la máquina y completado el rooteo de la misma.
+Una vez que modificamos el archivo **timer\_backup** esperamos a que la tarea cron se ejecute y root asigne el permiso **SUID** a la ruta **/bin/bash** lo cual nos permitirá utilizar el parámetro ``` bash -p ``` que nos dará una shell como root ya que estamos ejecutando temporalmente el binario como el propietario del mismo y asi teniendo acceso completo a la máquina y completado el rooteo de la misma.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/time/intrusion/root.png">
