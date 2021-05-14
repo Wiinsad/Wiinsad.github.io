@@ -238,7 +238,7 @@ with open('smallwordlist', 'r') as f:
   nmap --interactive
   nmap> !sh
   ```
-  Haciendo esto podemos ya entrar al directorio root y visualizar la ultima flag:
+  Haciendo esto podemos nos otorgaría una shell como root y ya entrar al directorio root y visualizar la ultima flag:
 
   <p align="center">
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/root.png?raw=true">
