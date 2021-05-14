@@ -56,7 +56,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   </p>
 
 
-  Lo que nmap nos ha mostrado sobre los servicios es que tiene un servicio ssh en el puerto **22** y un servicio web corriendo tanto en el puerto **80** como el **8065**, entrando a cada servicio web desde el navegador podemos ver los siguiete de cada uno:
+  Lo que nmap nos ha mostrado sobre los servicios es que tiene un servicio ssh en el puerto **22** y un servicio web corriendo tanto en el puerto **80** como el **8065**, entrando a cada servicio web desde el navegador podemos ver los siguiente de cada uno:
 
   <div align="center">
   <table class="center"><tr>
@@ -69,7 +69,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
 
 ## Lateral Movement
 
-  Enumerando la pagina con el puerto 80 veo que esta haciendo virtual hosting ya que en el hiperviculo de **HELPDESK** si hago hovering sobre el me sale el dominio **helpdesk.delivery.htb**, si agregó el dominio a la ruta ***/etc/hosts*** y entramos a la ruta se puede lograr ver los siguiete:
+  Enumerando la pagina con el puerto 80 veo que esta haciendo virtual hosting ya que en el hipervínculo de **HELPDESK** si hago hovering sobre el me sale el dominio **helpdesk.delivery.htb**, si agregó el dominio a la ruta ***/etc/hosts*** y entramos a la ruta se puede lograr ver los siguiente:
 
   <div align="center">
   <table class="center"><tr>
@@ -90,11 +90,11 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/cred1.png">
   </p>
 
-  Ya teniendo este correo habiliditado fui a la segunda pagina y vi que tenia la opción de creear una cuenta ahi tambien y me pedia un cuenta con dominio "delivery.htb" asi que use la que previamente me dieron ya que para crear la cuenta en este web necesitaba que verificara la cuenta con un correo que me iban a enviar.
+  Ya teniendo este correo habilitado fui a la segunda pagina y vi que tenia la opción de crear una cuenta ahí también y me pedía un cuenta con dominio "delivery.htb" así que use la que previamente me dieron ya que para crear la cuenta en este web necesitaba que verificara la cuenta con un correo que me iban a enviar.
 
   Una vez que verifico la cuenta y puedo acceder en el primer apartado veo que tengo una conversación con root, en esa conversación se muestra que nos dan una credenciales para ssh y aparte menciona lo siguiente '*Also please create a program to help us stop re-using the same passwords everywhere.... Especially those that are a variant of **"PleaseSubscribe!**"* '.
 
-  Nos quedaremos con esto ultimo por si nos llega a ser util en el futuro.
+  Nos quedaremos con esto ultimo por si nos llega a ser útil en el futuro.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/cred2.png">
@@ -108,15 +108,15 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
 
 ## Privilege escalation
 
-  Enumerando un poco en el sistema pude ver que en el archivo que estaba en la ruta **/opt/mattermost/config/config.json** encontre unas credenciales para MySql:
+  Enumerando un poco en el sistema pude ver que en el archivo que estaba en la ruta **/opt/mattermost/config/config.json** encontré unas credenciales para MySql:
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/mysqlCred.png">
   </p>
 
-  Usando los siguientes parametros pude entrar a mysql en forma interactiva:
+  Usando los siguientes parámetros pude entrar a mysql en forma interactiva:
 
-  - **-u:** Usuario con el que se logeara.
+  - **-u:** Usuario con el que se loggeara.
   - **-D:** Database que se usara.
   - **-p:** Estamos indicando que usaremos una password.
 
@@ -130,9 +130,9 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/mysqlRoot.png">
   </p>
 
-  Ahora que tengo la contraseña de root cifrada intente con john romperla y con el diccionario Rockyou pero no funciono, eso hace pensar en el mensaje que nos habia mensionado root cuando consguimos la cuenta donde vimos las llave de ssh que decia  ```PleaseSubscribe! may not be in RockYou but if any hacker manages to get our hashes, they can use hashcat rules to easily crack all variations of common words or phrases. ```
+  Ahora que tengo la contraseña de root cifrada intente con john romperla y con el diccionario Rockyou pero no funciono, eso hace pensar en el mensaje que nos había mencionado root cuando conseguimos la cuenta donde vimos las llave de ssh que decía  ```PleaseSubscribe! may not be in RockYou but if any hacker manages to get our hashes, they can use hashcat rules to easily crack all variations of common words or phrases. ```
 
-  Teniendo esto en cuenta y usando la erramienta de hashcat cree un diccionario con las pista que nos dieron que es **'PleaseSubscribe!'**
+  Teniendo esto en cuenta y usando la herramienta de hashcat cree un diccionario con las pista que nos dieron que es **'PleaseSubscribe!'**
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/dic.png">
@@ -144,7 +144,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/dic2.png">
   </p>
 
-  Usando las credenciales que acabamos de encontrar usando **sudo su** y poniendo la contraseña vemos que efectivamente son las credenciales del usuraroi **Root** y de esta manera finalizando la maquina rooteandola.
+  Usando las credenciales que acabamos de encontrar usando **sudo su** y poniendo la contraseña vemos que efectivamente son las credenciales del usurario **Root** y de esta manera finalizando la maquina rooteandola.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/intrusion/root.png">
