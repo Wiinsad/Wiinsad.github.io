@@ -174,10 +174,10 @@ with open('smallwordlist', 'r') as f:
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/fuzzP.png?raw=true">
   </p>
 
-  Ya que encontramos el usuario y la passwod vamos al login de wordpress y ingresamos con las credenciales.
+  Ya que encontramos el usuario y la passwod vamos al login de wordpress y ingresamos con las credenciales encontradas.
 
   Dentro de una cuenta con permisos de administrador en wordpress es muy fácil darnos una shell los pasos serian:
-  - Entrar a Appearence.
+  - Entrar a Appearence y en edit.
   - Editar el archivo **archive.php** e ingresar la shell en php en el archivo.
   - Ponernos en escuchar por el puerto especificado en el **archive.php**.
   - Entrar a la url **https://[IP Machine]/wp-content/themes/twentyfifteen/archive.php**.
