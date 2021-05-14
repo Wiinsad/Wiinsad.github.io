@@ -186,7 +186,7 @@ with open('smallwordlist', 'r') as f:
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/instrusion/paginaApparence.png?raw=true">
   </p>
 
-  Lo que hacemos aquí es editar una plantilla de la web, en este caso es **archive.php** y una vez que la editamos entramos mediante el navegador y lo que pasa es que la pagina nos interpreta el contenido en php que en este caso es una revershell la cual en este caso conseguí de esta pagina en **[github](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php)** de a nuestro equipo. 
+  Lo que hacemos aquí es editar una plantilla de la web, en este caso es **archive.php** y una vez que la editamos entramos mediante el navegador y lo que pasa es que la pagina nos interpreta el contenido en php que en este caso es una revershell la cual en este caso conseguí de esta pagina en **[github](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php)**. 
 
   Ya una vez que hicimos los pasos y entramos a la url especificada podemos ver que nos da la conexión en nuestra maquina.
 
