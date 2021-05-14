@@ -42,3 +42,7 @@ Are not mine and are several that I have seen on the internet so many times I wi
 >
 >Si es al revés toma una pausa analiza y al hacerlo ya estarás mejorando.
 >
+
+>"Nadie nos advirtió que extrañar, es el costo que tiene los buenos momentos."
+>
+>-Mario Benedetti
