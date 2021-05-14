@@ -20,7 +20,7 @@ tags:
 
 In this article I will publish phrases that call my attention and nice things that may or may not help you or just something curious.
 
-Are not mine and are several that I have seen on the internet so many times I will not put author sorry.
+Are not mine and are several that i have seen on the internet, in some cases i will not put author sorry.
 
 # My personal list
 
