@@ -26,7 +26,7 @@ Are not mine and are several that I have seen on the internet so many times I wi
 
 >"El hombre inteligente aprende de sus errores, el sabio aprende de los errores de los demás."
 >
->-Frase de vida mia.
+>-Frase de vida miá.
 
 
 >
