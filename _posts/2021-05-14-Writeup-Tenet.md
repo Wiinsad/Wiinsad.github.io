@@ -1,11 +1,11 @@
 ---
 title: "Tenet - Hack The Box"
 layout: single
-excerpt: 
+excerpt:
 show_date: true
 classes: wide
 header:
-  teaser: "assets/images/machines/HTB/tenet/data/Tenet.png"
+  teaser: "https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/data/Tenet.png?raw=true"
   teaser_home_page: true
   icon: "assets/images/icons/Hackthebox2.png"
 categories:
