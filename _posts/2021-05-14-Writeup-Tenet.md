@@ -54,3 +54,36 @@ Una vez identificados los puertos abiertos, realizaremos un escaneo de versiones
 <p align="center">
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/PortServ.png?raw=true">
 </p>
+
+De el escaneo de puertos y servicios no pudimos recolectar mucha informacion solo que en el puerto **22** esta alojado un servicio **ssh** y en el puerto **80** esta alojado un servicio **HTTP**, asi que el camino que seguiremos sera por este serviciom entrando al servicio por el navegador se logra ve lo siguiente:
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/web.png?raw=true">
+</p>
+
+Un camino para poder descubrir subdirectorios es haciendo un **fuzzing** en la web en este caso usare la herramienta **gobuster**.
+
+
+Haciendo el fuzzing pude descubrir que hay un wordpress corriendo en la web:
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/wordpress.png?raw=true">
+</p>
+
+Al entrar a la ruta veo que la pagina se ve como si estuviera mal montada lo que puede ser un indicio de que probablemente se esta haciendo virtual hosting y entrando al código fuente de la pagina de puedo ver efectivamente que en algunas parte del código fuente se hace mención a **tenet.htb** así que agrego este host al **/etc/hosts** y al entrar volver a entrar a la pagina ya carga correctamente.
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/web2.png?raw=true">
+</p>
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/web3.png?raw=true">
+</p>
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/web4.png?raw=true">
+</p>
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/web5.png?raw=true">
+</p>
