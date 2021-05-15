@@ -14,7 +14,7 @@ categories:
 tags:
   - Deserialization Attacks
   - Virtual Hosting
-  -
+  - Bash
 ---
 
 <p align="center">
@@ -148,10 +148,10 @@ Si entramos a archivo en la url vemos que existe:
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/users.png?raw=true">
 </p>
 
-Encontre un post el cual explica a detalle como funciona una [**Exploiting PHP Deserialization**](https://medium.com/swlh/exploiting-php-deserialization-56d71f03282a) en el post explica muy bien como explotar esto para poder conseguir un **RCE**.
+Encontré un post el cual explica a detalle como funciona una [**Exploiting PHP Deserialization**](https://medium.com/swlh/exploiting-php-deserialization-56d71f03282a) en el post explica muy bien como explotar esto para poder conseguir un **RCE**.
 
 
-Con lo visto en la web arme el siguiente archivo php para poder crear un arachivo php el cual contenga una **revershell**
+Con lo visto en la web arme el siguiente archivo php para poder crear un archivo php el cual contenga una **revershell**
 
 ```php
 class DatabaseExport{
@@ -183,7 +183,7 @@ Como se ve en la pagina que **Database updated** intuyo que todo salio correcto 
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/shell.png?raw=true">
 </p>
 
-Ya que estamos dentro y yendo a la ruta **/var/www/html/wordpress** puedo encontrar un archivo **wp-config.php** el cual contenia las credenciales del usuario **neil** y con estas misma entramos como ese usuario.
+Ya que estamos dentro y yendo a la ruta **/var/www/html/wordpress** puedo encontrar un archivo **wp-config.php** el cual contenía las credenciales del usuario **neil** y con estas misma entramos como ese usuario.
 
 <p align="center">
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/neil.png?raw=true">
@@ -193,7 +193,7 @@ Ya que estamos dentro y yendo a la ruta **/var/www/html/wordpress** puedo encont
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/neilU.png?raw=true">
 </p>
 
-Ahora que soy el usuario **neil** empece a enumerar el sistema para encontrar un camino potencial para escalar privilegios a root, usando el comando **sudo -l** pude ver que tenia los siguiente permisos sin proporcinar contraseña a nivel sudo:
+Ahora que soy el usuario **neil** empece a enumerar el sistema para encontrar un camino potencial para escalar privilegios a root, usando el comando **sudo -l** pude ver que tenia los siguiente permisos sin proporcionar contraseña a nivel sudo:
 
 ```sql
 neil@tenet:/var/www/html/wordpress$ sudo -l
@@ -205,7 +205,7 @@ User neil may run the following commands on tenet:
 ```
 
 
-Examinando el archivo veo que lo que hace es plantar una llave publica de ssh en el directorio **/root/.ssh/authorized_keys** en especifico es esta función addkey la cual primero crear un archivo en **/tmp/** con un nombre aleatorio pero que siempre empieza con **'ssh-''** (esto es muy importante ya que puede ser una forma potencial para nosotros), despues verifica que exista ese directorio y si el archivo archivo imprime el contenido de la variable **$key** en el cual es la llave publica.
+Examinando el archivo veo que lo que hace es plantar una llave publica de ssh en el directorio **/root/.ssh/authorized_keys** en especifico es esta función **addkey** la cual primero crear un archivo en **/tmp/** con un nombre aleatorio pero que siempre empieza con **'ssh-''** (esto es muy importante ya que puede ser una forma potencial para nosotros), después verifica que exista ese directorio y si el archivo archivo imprime el contenido de la variable **$key** en el cual es la llave publica.
 
 
 
@@ -233,9 +233,9 @@ Para continuar en mi maquina me cree un par de llaves ssh una privada y una publ
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/ssh.png?raw=true">
 </p>
 
-Ya teniendo la llave publica mia lo que hice es tener dos sesiones de la maquina ya que en una ejecutare el siguiente ciclo anidado lo cual hace es entrar en un bucle infinito si algun archivo se encuentre en /tmp/ con el nombre de **ssh-***( el asterico sirve para iindica que es un archivo que empieza con ssh- y luego tiene un contenido cualquier)
+Ya teniendo la llave publica miá lo que hice es tener dos sesiones de la maquina ya que en una ejecutare el siguiente ciclo anidado lo cual hace es entrar en un bucle infinito si algún archivo se encuentre en /tmp/ con el nombre de **ssh-***( el asterisco sirve para indica que es un archivo que empieza con ssh- y luego tiene un contenido cualquier)
 
-El ciclo que me arme es el siguite:
+El ciclo que me arme es el siguiente:
 
 ```bash
 if [ -f /tmp/ssh-* ]; then while true; do rm /tmp/ssh-* ; echo ' public key ' >> /tmp/ssh-* ;done ; else echo 'No funciono' ;fi
@@ -246,8 +246,10 @@ Ya teniendo lo que hago creara un archivo en **/tmp/** que empiece con **ssh-** 
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/root.png?raw=true">
 </p>
 
-Haciendo el proceso de crera un archivo y en paralelo iniciar el bucle puedo ejecutar el archivo **enableSSH** con permisos de sudo y veo que al hacerlo en la parte de arriba me sale que **'rm: cannot remove '/tmp/ssh-BKxf6iDh': Operation not permitted'** lo que indica que efecticamente el bucle tomo un archivo que se genero y injecto mi llave publica, ahora desde mi maquina y con mi llave **id_rsa** en teoria puedo entrar a la maquina como root ya que ahi es donde se generan las llaves del script **enableSSH**.
+Haciendo el proceso de crear un archivo y en paralelo iniciar el bucle puedo ejecutar el archivo **enableSSH** con permisos de sudo y veo que al hacerlo en la parte de arriba me sale que **'rm: cannot remove '/tmp/ssh-BKxf6iDh': Operation not permitted'** lo que indica que efectivamente el bucle tomo un archivo que se genero y injecto mi llave publica, ahora desde mi maquina y con mi llave **id_rsa** en teoría puedo entrar a la maquina como root ya que ahí es donde se generan las llaves del script **enableSSH**.
 
 <p align="center">
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/root1.png?raw=true">
 </p>
+
+Efectivamente pude acceder a la maquina como root con mi llave injertando mi llave publica en el directorio **/roo/.ssh/authorized_keys** y de esta manera finalizando la maquina rooteandola.
