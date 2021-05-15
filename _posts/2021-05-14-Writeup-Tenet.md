@@ -249,5 +249,5 @@ Ya teniendo lo que hago creara un archivo en **/tmp/** que empiece con **ssh-** 
 Haciendo el proceso de crera un archivo y en paralelo iniciar el bucle puedo ejecutar el archivo **enableSSH** con permisos de sudo y veo que al hacerlo en la parte de arriba me sale que **'rm: cannot remove '/tmp/ssh-BKxf6iDh': Operation not permitted'** lo que indica que efecticamente el bucle tomo un archivo que se genero y injecto mi llave publica, ahora desde mi maquina y con mi llave **id_rsa** en teoria puedo entrar a la maquina como root ya que ahi es donde se generan las llaves del script **enableSSH**.
 
 <p align="center">
-<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/root2.png?raw=true">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/root1.png?raw=true">
 </p>
