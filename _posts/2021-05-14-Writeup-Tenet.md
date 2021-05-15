@@ -182,3 +182,13 @@ Como se ve en la pagina que **Database updated** intuyo que todo salio correcto 
 <p align="center">
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/shell.png?raw=true">
 </p>
+
+Ya que estamos dentro y yendo a la ruta **/var/www/html/wordpress** puedo encontrar un archivo **wp-config.php** el cual contenia las credenciales del usuario **neil** y con estas misma entramos como ese usuario.
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/neil.png?raw=true">
+</p>
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/neilU.png?raw=true">
+</p>
