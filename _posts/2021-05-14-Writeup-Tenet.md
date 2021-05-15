@@ -77,7 +77,7 @@ Al entrar a la ruta veo que la pagina se ve como si estuviera mal montada lo que
 </p>
 
 <p align="center">
-<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/web3.png?raw=true">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/web3_000.png?raw=true">
 </p>
 
 <p align="center">
@@ -86,4 +86,61 @@ Al entrar a la ruta veo que la pagina se ve como si estuviera mal montada lo que
 
 <p align="center">
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/web5.png?raw=true">
+</p>
+
+Ya que podemos ver bien la pagina empezamos a enumerar y buscar información útil. En la pagina se encuentran unos posts y en uno de ellos se menciona que la pagina esta siendo migrada y ese mismo post tiene un comentario de un usuario "**neil**" el cual menciona lo siguiente:
+
+```
+  did you remove the sator php file and the backup?? the migration program is incomplete! why would you do this?!
+```
+
+Ya sabiendo esto sabemos que puede existir un un sator.php y un archivo backup, haciendo fuzzing con gobuster no pude encontrar ningún recurso de estos, ya que tocamos el tema de visual hosting puede que esta misma tenga un subdominio así que probando **backup.tenet.htb** y **sator.tenet.php** ya que son los datos que conocemos y estamos buscamos.
+
+Una vez que los agregamos al **/etc/hosts** y entramos vemos que el subdominio **sator.tenet.htb** nos funciono y ahi se encuentra el recurso **sator.php**.
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/sator.png?raw=true">
+</p>
+
+En el post se menciona que hay un backup de este recurso asi que intente ver si existia un archivo **.bak** y efectivamente asi fue, este archivo lo pude descargar en mi maquina y contenia lo siguiente:
+
+```bash
+<?php
+
+class DatabaseExport
+{
+	public $user_file = 'users.txt';
+	public $data = '';
+
+	public function update_db()
+	{
+		echo '[+] Grabbing users from text file <br>';
+		$this-> data = 'Success';
+	}
+
+
+	public function __destruct()
+	{
+		file_put_contents(__DIR__ . '/' . $this ->user_file, $this->data);
+		echo '[] Database updated <br>';
+	//	echo 'Gotta get this working properly...';
+	}
+}
+
+$input = $_GET['arepo'] ?? '';
+$databaseupdate = unserialize($input);
+
+$app = new DatabaseExport;
+$app -> update_db();
+
+
+?>
+```
+
+Lo que hace este archivo en php es deserializar un contenido que es envido por **GET** a **aerpo** y el contenido serializado se envia a la funcion database y actualiza un archivo users.txt que es el nombre que viene ya predefinido y la data que esta en blanco de este archivo pero con la funcion **update_db()** actualiza la data de **users.txt** a **Success**
+
+Si entramos a archivo en la url vemos que exite:
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/users.png?raw=true">
 </p>
