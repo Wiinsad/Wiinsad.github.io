@@ -12,7 +12,9 @@ categories:
   - Writeup
   - HackTheBox
 tags:
-  - Bash
+  - Deserialization Attacks
+  - Virtual Hosting
+  -
 ---
 
 <p align="center">
@@ -161,3 +163,22 @@ print urlencode(serialize(new DatabaseExport));
 ```
 
 Lo que hace es crear la clases **DatabaseExport** la cual contiene los mismo valores que requiere el archivo y serializar **sator.php** para poder deserializarlo y actualizar la supuesta base de datos y el contenido es la revershell a mi equipo.
+Una vez que ejecuto el php con **php -a** y me pasa la data serializada voy a al recurso **sator.php** le mando por get y a la variable **aerpo** la data serializada:
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/seria.png?raw=true">
+</p>
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/get.png?raw=true">
+</p>
+
+Como se ve en la pagina que **Database updated** intuyo que todo salio correcto así que en teoría si me dirijo a la ruta **http://sator.tenet.htb/winsad.php** el contenido que tiene este archivo php se interpretara dándome la shell. Para esto yo ya estaba en mi maquina en escucha por el puerto 443 que es el puerto que especifique en el php y yendo a la url se ve que efectivamente se interpreta el php y me da la conexión y con ella la shell.
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/load.png?raw=true">
+</p>
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/shell.png?raw=true">
+</p>
