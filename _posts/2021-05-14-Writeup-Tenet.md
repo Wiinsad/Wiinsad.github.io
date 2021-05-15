@@ -210,10 +210,12 @@ User neil may run the following commands on tenet:
     (ALL : ALL) NOPASSWD: /usr/local/bin/enableSSH.sh
 ```
 
+Examinando el archivo veo que lo que hace es plantar una llave publica de ssh en el directorio **/root/.ssh/authorized_keys** en especifico es la función **addkey** la que se encarga de hacer estp los pasos que sigue son:
 
-Examinando el archivo veo que lo que hace es plantar una llave publica de ssh en el directorio **/root/.ssh/authorized_keys** en especifico es esta función **addkey** la cual primero crear un archivo en **/tmp/** con un nombre aleatorio pero que siempre empieza con **'ssh-''** (esto es muy importante ya que puede ser una forma potencial para nosotros), después verifica que exista ese directorio y si el archivo archivo imprime el contenido de la variable **$key** en el cual es la llave publica.
-
-
+  - Crear un archivo en **/tmp/** con un nombre aleatorio pero que siempre empieza con **'ssh-''** (esto es muy importante ya que puede ser una forma potencial para nosotros).
+  - Verifica que exista ese archivo en el directorio.
+  - Si existe el archivo imprime el contenido de la variable **$key** en el cual es la llave publica.
+  - Elimina el archivo generado en **/tmp**
 
 ```bash
 addKey() {
