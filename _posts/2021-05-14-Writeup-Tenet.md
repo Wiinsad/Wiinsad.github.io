@@ -205,7 +205,7 @@ User neil may run the following commands on tenet:
 ```
 
 
-Examinando el archivo veo que lo que hace es plantar una llave publica de ssh en el directorio **/root/.ssh/authorized_keys** en especifico es esta función addkey la cual primero crear un archivo en **/tmp/** con un nombre aleatorio pero que siempre empieza con **ssh-** (esto es muy importante ya que puede ser una forma potencial para nosotros), despues verifica que exista ese directorio y si el archivo archivo imprime el contenido de la variable **$key** en el cual es la llave publica.
+Examinando el archivo veo que lo que hace es plantar una llave publica de ssh en el directorio **/root/.ssh/authorized_keys** en especifico es esta función addkey la cual primero crear un archivo en **/tmp/** con un nombre aleatorio pero que siempre empieza con **'ssh-''** (esto es muy importante ya que puede ser una forma potencial para nosotros), despues verifica que exista ese directorio y si el archivo archivo imprime el contenido de la variable **$key** en el cual es la llave publica.
 
 
 
@@ -233,28 +233,21 @@ Para continuar en mi maquina me cree un par de llaves ssh una privada y una publ
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/ssh.png?raw=true">
 </p>
 
+Ya teniendo la llave publica mia lo que hice es tener dos sesiones de la maquina ya que en una ejecutare el siguiente ciclo anidado lo cual hace es entrar en un bucle infinito si algun archivo se encuentre en /tmp/ con el nombre de **ssh-***( el asterico sirve para iindica que es un archivo que empieza con ssh- y luego tiene un contenido cualquier)
+
+El ciclo que me arme es el siguite:
 
 ```bash
- winsad@parrot# ssh-keygen            
-Generating public/private rsa key pair.
-Enter file in which to save the key (/root/.ssh/id_rsa):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in /root/.ssh/id_rsa
-Your public key has been saved in /root/.ssh/id_rsa.pub
-The key fingerprint is:
-SHA256:cnGxbkmWf8VfpJzn6Lr5A166BE21EELifVWKLNvTIeI root@parrot
-The key's randomart image is:
-+---[RSA 3072]----+
-|        ..+ o.o.o|
-|       . o * * B |
-|        o X * B =|
-|         B @ o *o|
-|      . S E = + o|
-|       o . ..+.  |
-|           ..+.  |
-|           .oo.  |
-|            =+.. |
-+----[SHA256]-----+
-
+if [ -f /tmp/ssh-* ]; then while true; do rm /tmp/ssh-* ; echo ' public key ' >> /tmp/ssh-* ;done ; else echo 'No funciono' ;fi
 ```
+Ya teniendo lo que hago creara un archivo en **/tmp/** que empiece con **ssh-** esto lo hago para que el if inicie el ciclo while, ahora una vez que entra el mismo while elimina el archivo que creamos para que no haya conflicto con el que se creara con el que el **enableSSH-sh**
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/root.png?raw=true">
+</p>
+
+Haciendo el proceso de crera un archivo y en paralelo iniciar el bucle puedo ejecutar el archivo **enableSSH** con permisos de sudo y veo que al hacerlo en la parte de arriba me sale que **'rm: cannot remove '/tmp/ssh-BKxf6iDh': Operation not permitted'** lo que indica que efecticamente el bucle tomo un archivo que se genero y injecto mi llave publica, ahora desde mi maquina y con mi llave **id_rsa** en teoria puedo entrar a la maquina como root ya que ahi es donde se generan las llaves del script **enableSSH**.
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/root2.png?raw=true">
+</p>
