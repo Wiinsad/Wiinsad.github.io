@@ -141,6 +141,7 @@ $app -> update_db();
 
 ?>
 ```
+## Lateral Movement
 
 Lo que hace este archivo en php es deserializar un contenido que es envido por **GET** a **aerpo** y el contenido serializado se enviá a la clase **DatabaseExport** ya deserializado lo que hace la clase es actualizar un archivo users.txt que es el nombre que viene ya predefinido y el campo data que esta en blanco por defecto todo esto es gracias a la función **update_db()** actualiza la data de **users.txt** a **Success** y luego con la clase **__destruct()** elimina el **users.txt** antiguo.
 
@@ -175,7 +176,7 @@ Una vez que serializo la clase del php con **php -a** la data que imprime ya ser
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/get.png?raw=true">
 </p>
 
-Como se ve en la pagina que **Database updated** intuyo que todo salio correcto así que en teoría si me dirijo a la ruta **http://sator.tenet.htb/winsad.php** el contenido que tiene este archivo php se interpretara dándome la shell. Para esto yo ya estaba en mi maquina en escucha por el puerto 443 que es el puerto que especifique en el php y yendo a la url se ve que efectivamente se interpreta el php y me da la conexión y con ella la shell.
+Como sale en la pagina **[]Database updated** intuyo que todo salio correcto así que en teoría si me dirijo a la ruta **http://sator.tenet.htb/winsad.php** el contenido que tiene este archivo php se interpretara dándome la shell. Para esto yo ya estaba en mi maquina en escucha por el puerto 443 que es el puerto que especifique en el php y yendo a la url se ve que efectivamente se interpreta el php y me da la conexión y con ella la shell.
 
 <p align="center">
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/load.png?raw=true">
@@ -185,6 +186,7 @@ Como se ve en la pagina que **Database updated** intuyo que todo salio correcto 
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/shell.png?raw=true">
 </p>
 
+## Privilege escalation - User(Neil)
 Ya que estamos dentro y yendo a la ruta **/var/www/html/wordpress** puedo encontrar un archivo **wp-config.php** el cual contenía las credenciales del usuario **neil** y con estas misma entramos como ese usuario.
 
 <p align="center">
@@ -194,6 +196,8 @@ Ya que estamos dentro y yendo a la ruta **/var/www/html/wordpress** puedo encont
 <p align="center">
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/neilU.png?raw=true">
 </p>
+
+## Privilege escalation - Root
 
 Ahora que soy el usuario **neil** empece a enumerar el sistema para encontrar un camino potencial para escalar privilegios a root, usando el comando **sudo -l** pude ver que tenia los siguiente permisos sin proporcionar contraseña a nivel sudo:
 
