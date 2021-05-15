@@ -33,14 +33,14 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   - **-oG:**    Guarda la el output en formato Grepeable.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/tenet/scan/scanPort.png">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/scanPort.png?raw=true">
 </p>
 
 
 Una vez que hicimos el escaneo de puertos con la herramienta **ExtractPort**, vemos que los puertos que destacaron en este caso fueron **22,80**:
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/tenet/scan/Ports.png">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/Ports.png?raw=true">
 </p>
 
 
@@ -52,5 +52,5 @@ Una vez identificados los puertos abiertos, realizaremos un escaneo de versiones
   - -oN: Formatos de Nmap en los que se guardará el archivo.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/tenet/scan/PortServ.png">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/PortServ.png?raw=true">
 </p>
