@@ -1,5 +1,5 @@
 ---
-title: "Mr Robot - Try Hack Me"
+title: "Pickle Rick - Try Hack Me"
 layout: single
 excerpt:
 show_date: true
@@ -19,5 +19,5 @@ tags:
 ---
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/pickleRick/data/pickleRickHTB.png">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/PickleRick/data/pickleRickTHMpng.png?raw=true">
 </p>
