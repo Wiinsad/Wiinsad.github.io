@@ -192,3 +192,69 @@ Ya que estamos dentro y yendo a la ruta **/var/www/html/wordpress** puedo encont
 <p align="center">
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/neilU.png?raw=true">
 </p>
+
+Ahora que soy el usuario **neil** empece a enumerar el sistema para encontrar un camino potencial para escalar privilegios a root, usando el comando **sudo -l** pude ver que tenia los siguiente permisos sin proporcinar contraseña a nivel sudo:
+
+```sql
+neil@tenet:/var/www/html/wordpress$ sudo -l
+Matching Defaults entries for neil on tenet:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:
+
+User neil may run the following commands on tenet:
+    (ALL : ALL) NOPASSWD: /usr/local/bin/enableSSH.sh
+```
+
+
+Examinando el archivo veo que lo que hace es plantar una llave publica de ssh en el directorio **/root/.ssh/authorized_keys** en especifico es esta función addkey la cual primero crear un archivo en **/tmp/** con un nombre aleatorio pero que siempre empieza con **ssh-** (esto es muy importante ya que puede ser una forma potencial para nosotros), despues verifica que exista ese directorio y si el archivo archivo imprime el contenido de la variable **$key** en el cual es la llave publica.
+
+
+
+```bash
+addKey() {
+
+	tmpName=$(mktemp -u /tmp/ssh-XXXXXXXX)
+
+	(umask 110; touch $tmpName)
+
+	/bin/echo $key >>$tmpName
+
+	checkFile $tmpName
+
+	/bin/cat $tmpName >>/root/.ssh/authorized_keys
+
+	/bin/rm $tmpName
+
+}
+```
+
+Para continuar en mi maquina me cree un par de llaves ssh una privada y una publica con la herramienta ssh-keygen:
+
+<p align="center">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/ssh.png?raw=true">
+</p>
+
+
+```bash
+ winsad@parrot# ssh-keygen            
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/id_rsa
+Your public key has been saved in /root/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:cnGxbkmWf8VfpJzn6Lr5A166BE21EELifVWKLNvTIeI root@parrot
+The key's randomart image is:
++---[RSA 3072]----+
+|        ..+ o.o.o|
+|       . o * * B |
+|        o X * B =|
+|         B @ o *o|
+|      . S E = + o|
+|       o . ..+.  |
+|           ..+.  |
+|           .oo.  |
+|            =+.. |
++----[SHA256]-----+
+
+```
