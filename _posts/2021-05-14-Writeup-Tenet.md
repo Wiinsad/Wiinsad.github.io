@@ -1,7 +1,7 @@
 ---
 title: "Tenet - Hack The Box"
 layout: single
-excerpt:
+excerpt: 
 show_date: true
 classes: wide
 header:

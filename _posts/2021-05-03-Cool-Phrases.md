@@ -1,11 +1,11 @@
 ---
 title: "Cool Phrases"
 layout: single
-
+excerpt:
 show_date: true
 classes: wide
 header:
-  teaser: "assets/images/teasers/Phrase2.png"
+  teaser: "https://github.com/Wiinsad/winsad/blob/master/assets/images/teasers/Phrase2.png?raw=true"
   teaser_home_page: true
   icon: "assets/images/icons/lib.ico"
 categories:
@@ -17,6 +17,7 @@ tags:
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/teasers/Phrase2.png">
 </p>
+
 
 In this article I will publish phrases that call my attention and nice things that may or may not help you or just something curious.
 
