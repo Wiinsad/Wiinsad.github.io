@@ -47,3 +47,7 @@ Are not mine and are several that i have seen on the internet, in some cases i w
 >"Nadie nos advirtió que extrañar, es el costo que tiene los buenos momentos."
 >
 >-Mario Benedetti
+
+>"Las ideas no son de quien las piense sino de quien las ejecute"
+>
+>-Simón Levy
