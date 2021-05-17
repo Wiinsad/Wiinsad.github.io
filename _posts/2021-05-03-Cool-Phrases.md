@@ -51,3 +51,12 @@ Are not mine and are several that i have seen on the internet, in some cases i w
 >"Las ideas no son de quien las piense sino de quien las ejecute"
 >
 >-Simón Levy
+
+
+>"Jamás envidé la riqueza de un hombre, ni me sentí inferior a él. Sólo reconocí superioridad en quien me aventajaba en virtudes y conocimiento."
+>
+>-Díogones de Sinope
+
+>"Si una persona quiere aprender y te pregunta algo, explicáselo, en lugar de hacerla sentir tonta...
+>Porque hace tiempo tú tampoco lo sabias"
+>
