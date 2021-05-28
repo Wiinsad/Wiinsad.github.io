@@ -5,7 +5,7 @@ excerpt:
 show_date: true
 classes: wide
 header:
-  teaser: "assets/images/machines/THM/MrRobot/data/mrrobot.png"
+  teaser: "https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/MrRobot/data/mrrobot.png?raw=true"
   teaser_home_page: true
   icon: "assets/images/icons/TryHackMe.png"
 categories:

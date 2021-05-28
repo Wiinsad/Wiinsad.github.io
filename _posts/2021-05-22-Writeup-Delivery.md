@@ -5,7 +5,7 @@ excerpt:
 show_date: true
 classes: wide
 header:
-  teaser: "assets/images/machines/HTB/delivery/data/delivery.png"
+  teaser: "https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/delivery/data/delivery.png?raw=true"
   teaser_home_page: true
   icon: "assets/images/icons/Hackthebox2.png"
 categories:
