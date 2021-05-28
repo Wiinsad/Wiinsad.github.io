@@ -20,7 +20,7 @@ tags:
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/PickleRick/data/pickleRickTHMpng.png?raw=true">
 </p>
 
-La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma **Try Hack Me** con un nivel de dificultad **medio**  desarrollada por **tryhackme** y publicada **10 de marzo del 2019** con un sistema operativo **Linux**.
+La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma **Try Hack Me** con un nivel de dificultad **facil**  desarrollada por **tryhackme** y publicada **10 de marzo del 2019** con un sistema operativo **Linux**.
 
 # Port Scan
 
@@ -134,7 +134,7 @@ La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma 
   ```bash
   sudo /bin/bash
   ```
-  Y como vemos ya somos root en la maquina a si que nos dirigimos al directorio de **root** y podemos visualizar la ultima flag y así concluyendo esta maquina.
+  Y como vemos ya somos root en la maquina a si que nos dirigimos al directorio de **root** y podemos visualizar la ultima **flag** y así concluyendo esta maquina.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/instrusion/root.png">
