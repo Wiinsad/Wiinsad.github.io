@@ -12,10 +12,8 @@ categories:
   - Writeup
   - TryHackMe
 tags:
-  - SUID
-  - Wordpress
-  - Python
-  - BruteForce
+  - Enumeración
+  - Bash
 ---
 
 <p align="center">
