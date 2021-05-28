@@ -22,7 +22,7 @@ tags:
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/PickleRick/data/pickleRickTHMpng.png?raw=true">
 </p>
 
-La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma **Try Hack Me** con un nivel de dificultad **medio**  desarrollada por **tryhackme** y publicada **24 de Septiembre del 2020** con un sistema operativo **Linux**.
+La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma **Try Hack Me** con un nivel de dificultad **medio**  desarrollada por **tryhackme** y publicada **10 de marzo del 2019** con un sistema operativo **Linux**.
 
 # Port Scan
 
