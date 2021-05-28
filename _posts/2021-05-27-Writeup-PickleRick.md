@@ -91,7 +91,7 @@ La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma 
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/scan/webcmd.png">
   </p>
 
-  ## Lateral Movement
+# Lateral Movement
 
   Super bien vemos que tenemos un panel el cual se llama **"Command Panel"** lo que es mas que obvio que es una gran pista, ingresamos un **"whoami"** y vemos que nos responde la maquina como el usuario **"www-data"**
 
@@ -107,28 +107,28 @@ La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma 
   ```
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/intrusion/shell1.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/instrusion/shell1.png">
   </p>
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/intrusion/shell2.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/instrusion/shell2.png">
   </p>
 
   Como vemos en nuestra consola ya tenemos acceso a la maquina y vemos que el mismo directorio se encuentra la primer flag y yendo a la ruta /home veo que hay dos usuarios, la carpeta de usuario **rick** se puede encontrar la segunda flag:
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/intrusion/flag1.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/instrusion/flag1.png">
   </p>
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/intrusion/flag2.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/instrusion/flag2.png">
   </p>
 
-  ## Privilege escalation
+# Privilege escalation
 
   Ahora es momento de escalar privilegios para eso vemos si el usuario en el que actualmente estamos tiene algún permiso especial a nivel de **sudo** sin proporcionar contraseña eso lo vemos con el comando ```sudo -l```.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/intrusion/sudo.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/instrusion/sudo.png">
   </p>
 
   Y sorprendentemente tenemos a nivel de **sudo** si proporcionar contraseña tenemos permisos absolutos así que podemos spawnearnos una shell con el siguiente comando:
@@ -139,9 +139,9 @@ La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma 
   Y como vemos ya somos root en la maquina a si que nos dirigimos al directorio de root y podemos visualizar la ultima flag y así concluyendo esta maquina.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/intrusion/root.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/instrusion/root.png">
   </p>
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/intrusion/flag3.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/PickleRick/instrusion/flag3.png">
   </p>
