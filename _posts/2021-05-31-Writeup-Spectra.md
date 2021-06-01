@@ -20,7 +20,7 @@ tags:
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/data/SpectraHTB.png">
 </p>
 
-La máquina **Spectra** es una máquina virtual vulnerable de la plataforma HackTheBox con un nivel de3 dificultad **Easy** una calificación en el rank de 4.6, **12347 USER OWNS** y **10865 SYSTEM OWNS** con la ip **10.10.10.229** y una clasificación de sistema operativo **Other**.
+La máquina **Spectra** es una máquina virtual vulnerable de la plataforma HackTheBox con un nivel de3 dificultad **Easy** una calificación en el rank de 3.5, **6899 USER OWNS** y **6626 SYSTEM OWNS** con la ip **10.10.10.229** y una clasificación de sistema operativo **Other**.
 
 ## Port Scan
 
@@ -33,11 +33,11 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   - **-oG:**    Guarda la el output en formato Grepeable.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/scan/scanPort.png">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/spectra/scan/ScanPorts.png?raw=true">
   </p>
 
 
-  Una vez que hicimos el escaneo de puertos con la herramienta **ExtractPort**, vemos que los puertos que destacaron en este caso fueron **22,80 y 8065**:
+  Una vez que hicimos el escaneo de puertos con la herramienta **ExtractPort**, vemos que los puertos que destacaron en este caso fueron **22,80 y 3306**:
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/scan/Ports.png">
@@ -53,4 +53,20 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/scan/PortServ.png">
+  </p>
+
+  Viendo que namp nos mostró que cuenta con un servicio **http** en el puerto **80** hice un pequeño reconocimiento a nivel web y veo que la pagina tiene este aspecto como incompleto, al inspeccionar el código fuente puedo ver que hace mención al host **"http://spectra.htb/"**
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/scan/web1.png">
+  </p>
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/scan/web2.png">
+  </p>
+
+  Con base a esto fui a mi **/etc/hosts** y asocie este dominio con la ip de la maquina.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/scan/etecejost.png">
   </p>
