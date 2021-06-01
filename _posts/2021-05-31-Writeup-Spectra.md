@@ -110,3 +110,9 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/intrusion/panel.png">
   </p>
+
+  Una vez que ya se tiene acceso al panel de administrador de un gestor de contenido es facil poder acceder a la maquina que esta montando la pagina web. En este caso los pasos son los siguientes:
+
+  - Entrar **Appearence - Theme Editor**.
+  - Buscar y editar el archivo **404 Template** con un revershell en php (Puedes usar un revershell de php que esta en mi pagina de github la shell pertenece a **[pentestmonkey](https://github.com/Wiinsad/Pentest/blob/main/Shell/reverShell.php)**).
+  -
