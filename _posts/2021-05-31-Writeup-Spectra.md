@@ -77,8 +77,13 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/scan/web3.png">
   </p>
 
-  Con la herramienta de **Wappalyzer** la cual nos enumera la pagina llegandonos a mostra gestores de contenido y lenguajes en los que estan las paginas se puede ver que la pagina esta montada sobre un **wordpress 5.4.2**, usa el lenguaje de programacion **php** y esta usando la base de datos de **MySql**
+  Con la herramienta de **Wappalyzer** la cual nos enumera la pagina llegandonos a mostra gestores de contenido y lenguajes en los que estan las paginas se puede ver que la pagina esta montada sobre un **wordpress 5.4.2**, usa el lenguaje de programacion **php** y esta usando la base de datos de **MySql**.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/scan/wappa.png">
+  </p>
+
+  De parte de el apartado con **/main** en la url no se encontró mucho de otra parte la url con el apartado **/testing** si entrabamos via web se podia ver un apartado con los archivos que conformaban la pagina y entre ellos se alcanza a ver un archivo **wp-config.php.save **.
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/scan/wp.png">
   </p>
