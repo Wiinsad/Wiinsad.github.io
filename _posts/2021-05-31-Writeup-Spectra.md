@@ -83,7 +83,24 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/scan/wappa.png">
   </p>
 
-  De parte de el apartado con **/main** en la url no se encontró mucho de otra parte la url con el apartado **/testing** si entrabamos via web se podia ver un apartado con los archivos que conformaban la pagina y entre ellos se alcanza a ver un archivo **wp-config.php.save **.
+  De parte de el apartado con **/main** en la url no se encontró mucho pero haciendo fuzzing y un reconocimiento basico en la misma web se puede llegar a un login.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/scan/wp-l.png">
+  </p>
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/scan/wp-lo.png">
+  </p>
+
+  De otra parte la url con el apartado **/testing** si entrabamos via web se podía ver un apartado con los archivos que conformaban la pagina y entre ellos se alcanza a ver un archivo **wp-config.php.save **.
+
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/scan/wp.png">
+  </p>
+
+  Al entrar al a ese recuero y inspeccionando el código se puede ver unas credenciales de un usuario **devteam01** y un password **"devteam01"**.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/intrusion/cred.png">
   </p>
