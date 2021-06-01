@@ -24,7 +24,7 @@ La máquina **Delivery** es una máquina virtual vulnerable de la plataforma Hac
 
 ## Port Scan
 
-Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los puertos abiertos disponibles en la máquina con **[Ip:10.10.10.214]** utilizando los parámetros:
+Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los puertos abiertos disponibles en la máquina con **[Ip:10.10.10.222]** utilizando los parámetros:
   - **-p-:**    Escaneo a toda la gama de puertos (65536).
   - **-n:**     No hacen la resolución del DNS.
   - **-T5:**    El parámetro más agresivo y ruidoso pero más rápido para hacer una exploración rápida.
@@ -33,7 +33,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   - **-oG:**    Guarda la el output en formato Grepeable.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/time/scan/scanPort.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/delivery/scan/scanPort.png">
   </p>
 
 
