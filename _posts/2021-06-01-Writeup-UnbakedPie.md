@@ -180,7 +180,7 @@ done; wait
   Como vimos que en **bash_history** estaba entrado por **ssh** con el usuario **ramsey** nosotros también entraremos con ese usuario pero como no conocemos la contraseña haré un pequeño script en python para hacer fuerza bruta a el servicio **ssh**.
 
   ```python
-  #!/usr/bin/python3
+#!/usr/bin/python3
 
 from pexpect import pxssh
 from pwn import *
