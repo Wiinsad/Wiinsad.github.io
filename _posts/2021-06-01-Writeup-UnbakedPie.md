@@ -12,16 +12,16 @@ categories:
   - Writeup
   - TryHackMe
 tags:
-  - Pivot
+  - Pivoting
   - Python
   - Pickle
-  - Bash
-  - RCE
+  - RCE (Remote Code Execution)
   - Path Hijacking
+  - BruteForce
 ---
 
 <p align="center">
-<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/data/UnbakedPie.png?raw=true">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/data/UnbacketPie.png?raw=true">
 </p>
 
 La máquina **Unbaked Pie** es una máquina virtual vulnerable de la plataforma **Try Hack Me** con un nivel de dificultad **Medium**  desarrollada por **ch4rm & H0j3n** y publicada **6 de octubre de 2020s** con un sistema operativo **Linux**.
@@ -83,7 +83,7 @@ La máquina **Unbaked Pie** es una máquina virtual vulnerable de la plataforma 
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/scan/cookie.png?raw=true">
   </p>
 
-  Buscando como aprovecharnos sobre esto encontré el siguiente **(articulo)[https://davidhamann.de/2020/04/05/exploiting-python-pickle/]** que habla como usar python para serializar la data con pickle y enviarla mediante curl la data que serializamos.
+  Buscando como aprovecharnos sobre esto encontré el siguiente **[articulo](https://davidhamann.de/2020/04/05/exploiting-python-pickle/)** que habla como usar python para serializar la data con pickle y enviarla mediante curl la data que serializamos.
 
   El codigo que podemos usar es el siguiente:
 
@@ -105,7 +105,7 @@ La máquina **Unbaked Pie** es una máquina virtual vulnerable de la plataforma 
   print base64.b64encode(cPickle.dumps(PickleRce()))
   ```
 
-  Este código ya es suficiente para poder conseguir un **RCE** en la maquina victima, esto se haría usando curl y seria de la siguiente forma.
+  Este código ya es suficiente para poder conseguir un **RCE** en la maquina victima, esto se haría usando curl para enviar una petición Get con la cookie serializada y seria de la siguiente forma.
 
   ```bash
 curl -X GET "http://[Ip Machine]:5003/search" -H 'Cookie: search_cookie="[Data Serializada]"'
@@ -141,7 +141,7 @@ done; wait
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/script.png?raw=true">
   </p>
 
-  Como vemos efectivamente tiene el puerto **22** abierto la otra maquina que esta en el otro segmento de red así que lo que haremos sera un **pivoting** para saltar a la otra maquina para eso usaremos la herramienta **[chisel](https://github.com/jpillora/chisel)** para hacer un **Port Forwarding**.
+  Como vemos efectivamente tiene el puerto **22** abierto la otra maquina que está en el otro segmento de red así que lo que haremos sera un **pivoting** para saltar a la otra maquina para eso usaremos la herramienta **[chisel](https://github.com/jpillora/chisel)** para hacer un **Port Forwarding**.
 
   Para esto tienes que compilar el binario de **chisel** puede ser con la primer opción que es una compilación normal ó la segunda que es para reducir su peso sin afectar su funcionamiento:
 
@@ -205,13 +205,13 @@ import os
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/oshell.png?raw=true">
   </p>
 
-  Ahora como el usuario **oliver** viendo los permisos que tiene como a nivel de sudo, se puede ver que puede ejecutar como el usuario **root** el archivo **/opt/dockerScript.py**
+  Ahora como el usuario **oliver** viendo los permisos que tiene como a nivel de sudo, se puede ver que es posible ejecutar como el usuario **root** el archivo **/opt/dockerScript.py**
 
   <p align="center">
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/sudo2.png?raw=true">
   </p>
 
-  El archivo **dockerScript.py** importa la librería **docker** una forma de poder escalar privilegios aqui es haciendo un **path hijacking**, python por defecto busca los archivos importados primero en el directorio actual y luego los que estan especificados en el **path** para ver esto podemos usar la siguiente sentencia en python.
+  El archivo **dockerScript.py** importa la librería **docker** una forma de poder escalar privilegios aquí es haciendo un **path hijacking**, python por defecto busca los archivos importados primero en el directorio actual y luego los que están especificados en el **path** para ver esto podemos usar la siguiente sentencia en python.
 
   ```python
   python -c 'import sys; print sys.path'
