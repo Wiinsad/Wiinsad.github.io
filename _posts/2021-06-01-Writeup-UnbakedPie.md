@@ -5,7 +5,7 @@ excerpt:
 show_date: true
 classes: wide
 header:
-  teaser: ""
+  teaser: "https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/data/image.png?raw=true"
   teaser_home_page: true
   icon: "assets/images/icons/TryHackMe.png"
 categories:
