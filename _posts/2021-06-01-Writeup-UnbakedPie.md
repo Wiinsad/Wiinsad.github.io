@@ -21,10 +21,10 @@ tags:
 ---
 
 <p align="center">
-<img src="">
+<img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/data/UnbakedPie.png?raw=true">
 </p>
 
-La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma **Try Hack Me** con un nivel de dificultad **Medium**  desarrollada por **tryhackme** y publicada **10 de marzo del 2019** con un sistema operativo **Linux**.
+La máquina **Unbaked Pie** es una máquina virtual vulnerable de la plataforma **Try Hack Me** con un nivel de dificultad **Medium**  desarrollada por **ch4rm & H0j3n** y publicada **6 de octubre de 2020s** con un sistema operativo **Linux**.
 
 # Port Scan
 
@@ -67,6 +67,9 @@ La máquina **Pickle Rick** es una máquina virtual vulnerable de la plataforma 
   </p>
 
   Efectivamente tiene un servicio **http**, la herramienta de wappalyzer no muestra mucha información acerca de la web por eso intuyo que es un servicio web simple sin gestores de contenido.
+
+
+# Lateral Movement
 
   Investigando en la pagina vemos que podemos generar un error si entramos directamente a la url **"http://[IP]:5003/search"**
 
@@ -182,6 +185,8 @@ done; wait
   <p align="center">
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/script2.png?raw=true">
   </p>
+
+# Privilege escalation
 
   Ya que tenemos las credenciales del usuario **ramsey** entramos por ssh y empezamos a enumerar el sistema, vemos que a nivel de sudo puede ejecutar **"/home/ramsey/vuln.py"** sin proporcionar contraseña como el usuario **oliver**.
 
