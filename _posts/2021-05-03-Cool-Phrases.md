@@ -7,7 +7,7 @@ classes: wide
 header:
   teaser: "https://github.com/Wiinsad/winsad/blob/master/assets/images/teasers/Phrase2.png?raw=true"
   teaser_home_page: true
-  icon: "assets/images/icons/lib.ico"
+  icon: "https://raw.githubusercontent.com/Wiinsad/Wiinsad.github.io/master/assets/images/icons/lib.ico"
 categories:
   - Post Phases
 tags:

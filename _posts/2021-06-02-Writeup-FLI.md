@@ -7,7 +7,7 @@ classes: wide
 header:
   teaser: "/assets/images/machines/THM/LFI/data/lfi.png"
   teaser_home_page: true
-  icon: "assets/images/icons/TryHackMe.png"
+  icon: "https://github.com/Wiinsad/Wiinsad.github.io/blob/master/assets/images/icons/TryHackMe.png?raw=true"
 categories:
   - Writeup
   - TryHackMe
