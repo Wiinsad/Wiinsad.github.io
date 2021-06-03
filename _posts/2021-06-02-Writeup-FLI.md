@@ -39,9 +39,9 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
 
 
 Una vez que hicimos el escaneo de puertos con la herramienta **ExtractPort**, vemos que los puertos que destacaron en este caso fueron **22 y 80**:  
-2
+
 <p align="center">
-<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/LFI/scan/Ports.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/LFI/scan/Port.png">
 </p>
 
 
