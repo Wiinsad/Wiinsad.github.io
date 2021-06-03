@@ -20,7 +20,7 @@ tags:
 <img src="/assets/images/machines/THM/LFI/data/LFI.png">
 </p>
 
-La máquina **LFI** es una máquina virtual vulnerable de la plataforma **Try Hack Me** con un nivel de dificultad **medio**  desarrollada por **DarkStar7471** y publicada **24 de Septiembre del 2020** con un sistema operativo **Linux**.
+La máquina **LFI** es una máquina virtual vulnerable de la plataforma **Try Hack Me** con un nivel de dificultad **Easy**  desarrollada por **falconfeast** y publicada **13 de marzo de 2020** con un sistema operativo **Linux**.
 
 ## Port Scan
 
