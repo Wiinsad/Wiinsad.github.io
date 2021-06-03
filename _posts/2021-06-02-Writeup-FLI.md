@@ -103,8 +103,28 @@ Usare esta key para ver si con ellas puedo acceder por ssh.
 
 Y efectivamente estas eran las credenciales del usuario **falconfeast**, ahora que ya estamos dentro de la maquina empezamos a enumerar para encontrar la forma de escalar privilegios.
 
-Una forma seria ver los comandos que tiene el usuario **falconfeast** para ejecutar a con **sudo** sin proporcinar contraseña.
+Una forma seria ver los comandos que tiene el usuario **falconfeast** para ejecutar a con **sudo** sin proporcionar contraseña.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/LFI/intrusion/sudo.png">
+</p>
+
+Se puede ver que puede ejecuar el binario **/usr/bin/socat** como el usuario **root** sin propocionar contraseña.
+
+>**¿Qué es socat?**
+>
+>socat significa SOcket CAT. Es una utilidad para la transferencia de datos entre dos direcciones.
+>
+>Lo que hace que socat sea tan versátil es el hecho de que una dirección puede representar un zócalo de red, cualquier descriptor de archivo, un datagrama de dominio Unix o un zócalo de flujo, TCP y UDP (sobre IPv4 e IPv6), SOCKS 4/4a sobre IPv4/IPv6, SCTP, PTY, zócalos de datagramas y de flujo, tuberías con y sin nombre, zócalos IP sin procesar, OpenSSL, o en Linux incluso cualquier dispositivo de red arbitrario.
+>
+> Mas sobre socat [Aqui](https://copyconstruct.medium.com/socat-29453e9fc8a6)
+
+En la pagina de [gtfobins](https://gtfobins.github.io/gtfobins/socat/#sudo) se puede ver como aprovechar este binario para otorgarnos una shell como root que se haria con la siguiente secuencia de comandos.
+
+
+```bash
+socat stdin exec:/bin/sh
+```
+<p align="center">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/LFI/intrusion/root.png">
 </p>
