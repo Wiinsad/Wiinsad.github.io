@@ -68,8 +68,43 @@ Enumerando la web puedo ver que cuenta con articulos que al entrar a ellos te mu
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/LFI/scan/article.png">
 </p>
 
+
+# Lateral Movement
+
 Algo que llama mucho la atención es la **url** que hace mención a una variable **name** en el apartado de **article**, esta variable name llama **lfiname** y si cambiamos el valor por **hacking** que es otro articulo no lo muestra, algo que se puede intentar es hacer mención al **/etc/passwd** para ver si la web esta mal satinizada y podemos incluir archivos locales.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/LFI/scan/lfi.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/LFI/intrusion/lfi.png">
+</p>
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/LFI/intrusion/lfi2.png">
+</p>
+
+Y efectivamente podemos ver archivos locales de la maquina, una vez que vemos que tenemos acceso a archivos locales podemos probar enumerando el sistema y podemos ver que existe un usuario llamad **falconfeast** algo que podemos probar es ver si en su directorio **.ssh** tiene algunas credenciales que podemos aprovechar para entrar por ssh sabiendo que el puerto 22 esta abierto.
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/LFI/intrusion/noRsa.png">
+</p>
+
+En este caso no es así pero el **/etc/passwd** se alcanza a ver en formato comentado algo que parece una key.
+<p align="center">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/LFI/intrusion/really.png">
+</p>
+
+Usare esta key para ver si con ellas puedo acceder por ssh.
+
+# Privilege escalation
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/LFI/intrusion/really2.png">
+</p>
+
+
+Y efectivamente estas eran las credenciales del usuario **falconfeast**, ahora que ya estamos dentro de la maquina empezamos a enumerar para encontrar la forma de escalar privilegios.
+
+Una forma seria ver los comandos que tiene el usuario **falconfeast** para ejecutar a con **sudo** sin proporcinar contraseña.
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/LFI/intrusion/sudo.png">
 </p>
