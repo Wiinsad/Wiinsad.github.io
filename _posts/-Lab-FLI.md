@@ -15,5 +15,5 @@ tags:
 ---
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/Laboratorio/LFI//.png">
+<img src="https://github.com/Wiinsad/Wiinsad.github.io/blob/master/assets/images/machines/Laboratorios/LFI/LFIPost.png?raw=true">
 </p>
