@@ -69,7 +69,7 @@ Enumerando la web puedo ver que cuenta con articulos que al entrar a ellos te mu
 </p>
 
 
-# Lateral Movement
+## Lateral Movement
 
 Algo que llama mucho la atención es la **url** que hace mención a una variable **name** en el apartado de **article**, esta variable name llama **lfiname** y si cambiamos el valor por **hacking** que es otro articulo no lo muestra, algo que se puede intentar es hacer mención al **/etc/passwd** para ver si la web esta mal satinizada y podemos incluir archivos locales.
 
