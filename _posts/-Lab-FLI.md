@@ -161,4 +161,6 @@ Lo que estamos indicando aquí es que le estamos diciendo a la función **includ
 <img src="https://github.com/Wiinsad/Wiinsad.github.io/blob/master/assets/images/machines/Laboratorios/LFI/images/web7.png?raw=true">
 </p>
 
-Tal vez te preguntaras ¿Entonces ya no podemos ver archivos locales? y la respuesta es **Claro que si!!**. Aqui agregamos el concepto de **"treversal path"**
+Tal vez te preguntaras ¿Entonces ya no podemos ver archivos locales? y la respuesta es **Claro que si!!**. Aqui agregamos el concepto de **"treversal path"**.
+
+Cuando estamos navegando por consola si nosotros especificamos un **"cd .."** este comando lo que hará es llevarnos un directorio atrás ahora este concepto funciona también con la función **"include()"**
