@@ -5,14 +5,15 @@ excerpt:
 show_date: true
 classes: wide
 header:
-  teaser: "https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/data/Tenet.png?raw=true"
+  teaser: " "
   teaser_home_page: true
   icon: "https://raw.githubusercontent.com/Wiinsad/Wiinsad.github.io/master/assets/images/icons/lib.ico"
 categories:
-  - Writeup
-  - HackTheBox
+  - Laboratorio
 tags:
-  - Deserialization Attacks
-  - Virtual Hosting
-  - Bash
+  - LFI
 ---
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/Laboratorio/LFI//.png">
+</p>
