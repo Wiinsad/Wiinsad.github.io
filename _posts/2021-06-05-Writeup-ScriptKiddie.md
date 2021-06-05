@@ -20,7 +20,7 @@ tags:
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/ScriptKiddie/data/scriptkiddie.png">
 </p>
 
-La máquina **Script Kiddie** es una máquina virtual vulnerable de la plataforma **HackTheBox** con un nivel de dificultad **facil** una calificación en el rank de 4.1, **5039 USER OWNS** y **4475 SYSTEM OWNS** con la ip **10.10.10.226** y un sistema operativo **Linux**.
+La máquina **Script Kiddie** es una máquina virtual vulnerable de la plataforma **HackTheBox** con un nivel de dificultad **fácil** una calificación en el rank de 4.1, **5039 USER OWNS** y **4475 SYSTEM OWNS** con la ip **10.10.10.226** y un sistema operativo **Linux**.
 
 
 # Port Scan
