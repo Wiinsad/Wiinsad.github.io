@@ -241,23 +241,23 @@ Para continuar en mi maquina me cree un par de llaves ssh una privada y una publ
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/ssh.png?raw=true">
 </p>
 
-Ya teniendo la llave publica miá lo que hice es tener dos sesiones de la maquina ya que en una ejecutare el siguiente ciclo anidado, ño hace es entrar en un bucle infinito si algún archivo se encuentre en /tmp/ con el nombre de **ssh-***( el asterisco sirve para indica que es un archivo que empieza con ssh- y luego tiene un contenido cualquier)
+Tomando el contenido de la **id_rsa.pub** lo que hice es tener dos sesiones de la maquina ya que en una ejecutare el siguiente ciclo anidado, lo que hace es entrar en un bucle infinito si algún archivo se encuentre en /tmp/ con el nombre de **ssh-***( el asterisco sirve para indica que es un archivo que empieza con ssh- y luego tiene un contenido cualquier)
 
 El ciclo que me arme es el siguiente:
 
 ```bash
 if [ -f /tmp/ssh-* ]; then while true; do rm /tmp/ssh-* ; echo ' public key ' >> /tmp/ssh-* ;done ; else echo 'No funciono' ;fi
 ```
-Ya teniendo esto preparado lo que hago creara un archivo en **/tmp/** que empiece con **ssh-** u un valor cualquiera, esto lo hago para que el if inicie el ciclo while, ya que entra el while elimina el archivo que creamos para que no haya conflicto con el que se creara con el que el **enableSSH-sh** o cualquier otro que este en la carpeta **/tmp**.
+Ya teniendo esto preparado lo que hago crear un archivo en **/tmp/** que empiece con **ssh-** y un valor cualquiera, esto lo hago para que el if pueda dar paso al while, ya que entra el while elimina el archivo que creamos para que no haya conflicto con el que se creara con el que crea el **enableSSH-sh**.
 
 <p align="center">
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/root.png?raw=true">
 </p>
 
-Haciendo el proceso de crear un archivo y en paralelo iniciar el bucle puedo ejecutar el archivo **enableSSH** con permisos de sudo y veo que al hacerlo en la parte de arriba me sale que **'rm: cannot remove '/tmp/ssh-BKxf6iDh': Operation not permitted'** lo que indica que efectivamente el bucle tomo un archivo que se genero y injecto mi llave publica, ahora desde mi maquina y con mi llave **id_rsa** en teoría puedo entrar a la maquina como root ya que ahí es donde se agregan las llaves del script **enableSSH**.
+Haciendo el proceso de crear un archivo y en paralelo iniciar el bucle, ejecute el archivo **enableSSH** con permisos de sudo y veo que al hacerlo en la parte de arriba me sale que **'rm: cannot remove '/tmp/ssh-BKxf6iDh': Operation not permitted'** lo que indica que efectivamente el bucle tomo un archivo que se genero y inyecto mi llave publica, ahora desde mi maquina y con mi llave **id_rsa** en teoría puedo entrar a la maquina como root ya que ahí es donde se agregan las llaves del script **enableSSH**.
 
 <p align="center">
 <img src="https://github.com/Wiinsad/winsad/blob/master/assets/images/machines/HTB/tenet/intrusion/root1.png?raw=true">
 </p>
 
-Efectivamente pude acceder a la maquina como root con mi llave injectando mi llave publica en el directorio **/roo/.ssh/authorized_keys** abusando del script **enableSSH** y de esta manera finalizando la maquina y rooteandola.
+Efectivamente pude acceder a la maquina como root inyectando mi llave publica en el archivo **/roo/.ssh/authorized_keys** abusando del script **enableSSH** y de esta manera finalizando la maquina y rooteandola.
