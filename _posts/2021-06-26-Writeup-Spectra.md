@@ -12,9 +12,10 @@ categories:
   - Writeup
   - HackTheBox
 tags:
-  - SUID
   - Wordpress
   - Virtual Hosting
+  - Sudo
+  - SUID
 ---
 
 <p align="center">
@@ -146,7 +147,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/intrusion/passwd.png">
   </p>
 
-  Enumerando el sistema si vamos a la ruta **/opt** podemos ver un archivo llamado **"autologin.conf.orig"** vemos que el archivo lo que hace es inyectar unas keys en la ruta **/etc/autologin** y si vamos a esa ruta podemos ver las credenciales de el usuario **katie** en la maquina no se puede usar el comando **"su"** para poder ingresar como otro usuario asi que las credenciales las use en **ssh** aprovechando que estaba abierto.
+  Enumerando el sistema si vamos a la ruta **/opt** podemos ver un archivo llamado **"autologin.conf.orig"** vemos que el archivo lo que hace es inyectar unas keys en la ruta **/etc/autologin** y si vamos a esa ruta podemos ver las credenciales de el usuario **katie** en la maquina no se puede usar el comando **"su"** para poder ingresar como otro usuario así que las credenciales las use en **ssh** aprovechando que estaba abierto.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/spectra/intrusion/pass.png">
