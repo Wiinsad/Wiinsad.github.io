@@ -12,8 +12,9 @@ categories:
   - Writeup
   - HackTheBox
 tags:
-  -
-  -
+  - Deserilización
+  - Sudo
+  - RCE
 ---
 
 <p align="center">
@@ -63,7 +64,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Ophiuchi/scan/web.png">
   </p>
 
-  La estética es bastante similar a la maquina **[Time](https://wiinsad.github.io/writeup/hackthebox/Writeup-Time/)** la cual se encuentra disponible en mi blog, investigando **Online YAML Parser** en google llegue a un articulo el cual habla como explotar una vulnerabilidad existente en este aplicativo el cual te permite ejecutar comando ([**articulo aquí**](https://swapneildash.medium.com/snakeyaml-deserilization-exploited-b4a2c5ac0858)).
+  La estética es bastante similar a la maquina **[Time](https://wiinsad.github.io/writeup/hackthebox/Writeup-Time/)** la cual se encuentra disponible en mi blog, investigando **Online YAML Parser** en google llegue a un articulo el cual habla como explotar una vulnerabilidad existente en este aplicativo el cual te permite ejecutar comandos. ([**articulo aquí**](https://swapneildash.medium.com/snakeyaml-deserilization-exploited-b4a2c5ac0858))
 
   El articulo explica como un atcante usando un ataque de deserilización de **snakeyaml** mediante la llamada a un archivo remoto el cual tieene un archivo copilado java puede ser interpretado para hacer una **RCE**.
 
@@ -164,7 +165,7 @@ User admin may run the following commands on ophiuchi:
 
  Lo que estoy indicando es que si el archivo **main.wasm** que esta en la ruta **/opt/wasm-functions/** tiene el valor seteado de **$info** en **1** a la hora de hacer el comando con sudo me enviara un whoami a mi maquina. Para esto pase el **main.wasm** a **/tmp/winsad** con el comando cp:
 
-```
+```python
 admin@ophiuchi:/opt/wasm-functions$ ll
 total 3928
 drwxr-xr-x 3 root root    4096 Oct 14  2020 ./
@@ -190,7 +191,7 @@ admin@ophiuchi:/tmp/winsad$ md5sum main.wasm
  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Ophiuchi/intrusion/pru.png">
  </p>
 
-Como se puede ver en **main.wasm** no esta seteado el valor una forma de cambiar esto es compartiendo me el binario a mi maquina y con la utilidad **[wabt](https://github.com/webassembly/wabt)** modificar ese valor descompilado el **main.wasm**.
+Como se puede ver en **main.wasm** no esta seteado el valor una forma de cambiar esto es compartiendo me el binario a mi maquina y con la utilidad **[wabt](https://github.com/webassembly/wabt)** modificar ese valor de **main.wasm**.
 
 Para esto me enviare el binario a mi maquina con nc.
 
@@ -198,7 +199,7 @@ Para esto me enviare el binario a mi maquina con nc.
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Ophiuchi/intrusion/com.png">
 </p>
 
-Una vez que ya esta en mi maquina con la herramienta **wasm2wat** convertimos el binario a wat para podemos modificar su valor:
+Una vez que ya esta en mi maquina con la herramienta **wasm2wat** convertimos el binario a wat para poder modificar su valor:
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Ophiuchi/intrusion/com1.png">
@@ -212,13 +213,13 @@ Ahora que tengo el **main.wat** puedo modificar el valor de **$info** para eso c
   after
    4   │     i32.const 1)
 ```
-Una vez que se cambia el valor uso la herramienta **wat2wasm** me comparto con python un servicio http en mi maquina para que desde la maquina victima con wget descargarme el archivo **main.wasm** modificado.
+Una vez que se cambia el valor uso la herramienta **wat2wasm** y me comparto con python un servicio http en mi equipo para que desde la maquina victima con **wget** descargarme el archivo **main.wasm** modificado.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Ophiuchi/intrusion/com2.png">
 </p>
 
-Ya con el binario modificado en mi maquina vuelvo a ejecutar el comando con sudo recordando que si me ejecuta el **deploy.sh** me enviar el output del whoami a mi maquina por el puerto 443.
+Ya con el binario modificado en mi maquina vuelvo a ejecutar el comando con **sudo** recordando que si me ejecuta el **deploy.sh** me enviar el output del **whoami** a mi maquina por el puerto 443.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Ophiuchi/intrusion/who.png">
