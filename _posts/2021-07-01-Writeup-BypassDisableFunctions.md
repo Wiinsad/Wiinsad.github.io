@@ -41,7 +41,7 @@ La máquina **Bypass Disable Functions** es una máquina virtual vulnerable de l
   </p>
 
 
-  Una vez que hicimos el escaneo de puertos con la herramienta **ExtractPorts   **, vemos que los puertos que destacaron en este caso fueron **22 y 80**:  
+  Una vez que hicimos el escaneo de puertos con la herramienta **ExtractPorts**, vemos que los puertos que destacaron en este caso fueron **22 y 80** :  
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/BypassDisableFunctions/scan/Ports.png">
@@ -79,7 +79,7 @@ La máquina **Bypass Disable Functions** es una máquina virtual vulnerable de l
   <img src="https://github.com/Wiinsad/Wiinsad.github.io/blob/master/assets/images/machines/THM/BypassDisableFunctions/scan/wap.png?raw=true">
   </p>
 
-  Con esto en mete podemos ver que el archivo **phpinfo.php** esta disponible, esté archivo sirve para poder ver información acerca de como que tanto nos interpretara un archivo **php** en la web:
+  Con esto en mete podemos ver que el archivo **phpinfo.php** esta disponible, esté archivo nos da información sobre la configuración del servidor y las configuraciones para interpretar un **php** por ejemplo.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/BypassDisableFunctions/scan/phpi.png">
@@ -98,7 +98,7 @@ La máquina **Bypass Disable Functions** es una máquina virtual vulnerable de l
 
   Al podemos ver que estamos muy limitados a la hora de subir un archivo **php** el cual contenga código malicioso a nuestro beneficio pero investigando y gracias a la información que nos brinda esta maquina podemos hacer uso de la herramienta **[Chankro](https://github.com/TarlogicSecurity/Chankro)**.
 
-  Esta herramienta nos permite ejecutar comando mediante la función **mail()** y **putenv()**. Una explicación de lo que hace es a bajo nivel lo explican bien en este **[articulo](https://www.tarlogic.com/blog/evadir-disable_functions-open_basedir/)**.
+  Esta herramienta nos permite ejecutar comando mediante la función **mail()** y **putenv()** cambiando una variable de entorno con la cual ejecuta el binario **sendmail**. Una explicación de lo que hace es a bajo nivel lo explican en este **[articulo](https://www.tarlogic.com/blog/evadir-disable_functions-open_basedir/)**.
 
   Para probar si la herramienta funciona vamos a ejecutar un **whoami** y depositar lo en la ruta absoluta de la web, la cual se alojan en **/var/www/html/fa5fba5f5a39d27d8bb7fe5f518e00db/** esto se sabe ya que ene le **phpinfo** se puede ver la ruta en donde esta alojada la web.
 
@@ -155,7 +155,7 @@ La máquina **Bypass Disable Functions** es una máquina virtual vulnerable de l
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/BypassDisableFunctions/intrusion/web3.png">
   </p>
 
-  Si entramos a nuestro archivo podemos ver que el código en php lo interpreta y según las instrucciones a la hora de interpretarlo debería crear nuestro archivo en la raíz el cual indicamos que se llama **"winsad.txt"** y si vamos vemos que efectivamente el archivo existe:
+  Si entramos a nuestro archivo podemos ver que el código en php lo interpreta y según las instrucciones a la hora de interpretarlo debería crear nuestro archivo en la raíz el cual indicamos que se llama **"winsad.txt"** y si accedemos a la ruta podemos ver que efectivamente el archivo existe:
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/THM/BypassDisableFunctions/intrusion/web4.png">
