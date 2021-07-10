@@ -14,7 +14,7 @@ categories:
 tags:
   - Deserilización
   - Sudo
-  - RCE
+  - RCE (Remote Code Execution)
   - Linux
 ---
 
