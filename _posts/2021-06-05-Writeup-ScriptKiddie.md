@@ -14,6 +14,7 @@ categories:
 tags:
   - Bash
   - Sudo
+  - Linux
 ---
 
 <p align="center">

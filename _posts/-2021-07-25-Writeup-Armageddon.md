@@ -14,7 +14,8 @@ categories:
 tags:
   - Drupalgeddon
   - John
-  - Snap  
+  - Snap
+  - Linux
 ---
 
 <p align="center">

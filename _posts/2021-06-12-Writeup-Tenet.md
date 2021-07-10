@@ -15,6 +15,7 @@ tags:
   - Deserialization Attacks
   - Virtual Hosting
   - Bash
+  - Linux
 ---
 
 <p align="center">

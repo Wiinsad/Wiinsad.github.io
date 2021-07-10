@@ -15,6 +15,7 @@ tags:
   - Deserilización
   - Sudo
   - RCE
+  - Linux
 ---
 
 <p align="center">

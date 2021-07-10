@@ -16,6 +16,7 @@ tags:
   - Wordpress
   - Python
   - BruteForce
+  - Linux
 ---
 
   <p align="center">

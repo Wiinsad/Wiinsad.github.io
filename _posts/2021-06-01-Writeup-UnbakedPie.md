@@ -18,6 +18,7 @@ tags:
   - RCE (Remote Code Execution)
   - Path Hijacking
   - BruteForce
+  - Linux
 ---
 
 <p align="center">

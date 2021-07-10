@@ -14,6 +14,7 @@ categories:
 tags:
   - Enumeración
   - Bash
+  - Linux
 ---
 
 <p align="center">

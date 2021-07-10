@@ -14,6 +14,7 @@ categories:
 tags:
   - Encryption
   - Virtual Hosting
+  - Linux
 ---
 
 <p align="center">

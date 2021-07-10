@@ -14,6 +14,7 @@ categories:
 tags:
   - LFI
   - Sudo
+  - Linux
 ---
 
 <p align="center">

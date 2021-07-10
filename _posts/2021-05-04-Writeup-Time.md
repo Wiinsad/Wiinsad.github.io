@@ -15,6 +15,7 @@ tags:
   - Bash
   - RCE (Remote Code Execution)
   - Json
+  - Linux
 ---
 
 

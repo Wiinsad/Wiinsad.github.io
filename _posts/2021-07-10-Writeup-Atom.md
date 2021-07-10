@@ -14,6 +14,7 @@ categories:
 tags:
   - Smb
   - Redis
+  - Encryption
   - Windows
 ---
 

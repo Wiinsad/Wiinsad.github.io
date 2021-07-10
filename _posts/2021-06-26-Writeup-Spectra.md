@@ -16,6 +16,7 @@ tags:
   - Virtual Hosting
   - Sudo
   - SUID
+  - Linux
 ---
 
 <p align="center">
