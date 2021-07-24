@@ -176,7 +176,7 @@ fpm -n xxxx -s dir -t snap -a all meta
   Lo que estoy haciendo aquí es crear un binario **.snap** el cual apunte a mi binario y como es un contenido en bash lo va a interpretar, esto lo hago así ya que haciendo pruebas es la manera mas eficiente para evitar errores a la hora de crear el binario, así solo apunto a uno ya existente y que interprete el contenido del mismo.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/armageddon/intrusion/pre|root.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/armageddon/intrusion/preroot.png">
   </p>
 
   <p align="center">
