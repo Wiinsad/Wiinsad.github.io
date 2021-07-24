@@ -13,8 +13,9 @@ categories:
   - HackTheBox
 tags:
   - Smb
-  - Windows
   - Kerberoasting
+  - Encryption
+  - Windows
 ---
 
 <p align="center">
