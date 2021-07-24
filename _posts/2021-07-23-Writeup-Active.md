@@ -55,7 +55,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Active/scan/PortServ.png">
   </p>
 
-  Con este escaneo se puede ver que la maquina cuenta con una gran cantidad de puertos abiertos lo que haré primero sera examinar el puerto **445** que pertenece a **smb** para esto usare la herramienta de **smbcliet** entrando con una **null** sesión.
+  Con este escaneo se puede ver que la maquina cuenta con una gran cantidad de puertos abiertos, lo que haré primero sera examinar el puerto **445** que pertenece a **smb** para esto usare la herramienta de **smbcliet** entrando con una **null** sesión.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Active/scan/smb.png">
@@ -79,7 +79,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Active/scan/cpasswd.png">
   </p>
 
-  Si investigamos podemos llegar con un articulo el cual nos cuenta la historia de como **Microsoft** publico la key privada con la cual se cifran las contraseñas cifradas en **AES-256** lo cual nos permite descifrar estas contraseñas para verla en **plain text**(Articulo [aqui](https://adsecurity.org/?p=2288)).
+  Si investigamos podemos llegar con un articulo el cual nos cuenta la historia de como **Microsoft** publico la key privada con la cual se cifran las contraseñas en **AES-256** lo cual nos permite descifrar estas contraseñas para verla en **plain text** (Articulo [aqui](https://adsecurity.org/?p=2288)).
 
   Sabiendo esto podemos usar la herramienta de **gpp-decrypt** para descifrar esta password.
 
@@ -87,15 +87,15 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Active/scan/passwd.png">
   </p>
 
-  Ya teniendo la contraseña en texto plano puedo usarla para efectuar un ataque **Kerberoasting** el cual consiste en
+  Ya teniendo la contraseña en texto plano puedo usarla para efectuar un ataque **Kerberoasting** que consiste en solicitar un **ticket TGS** el cual tiene un hash **NTLM** que usualmente esta ligado a usuarios con altos privilegios y así con este hash crackearlo y obtener la contraseñas de los usuarios.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Active/scan/kerbe.png">
   </p>
 
- Gracias al ataque de **Kerberoasting** podemos ver que la cuenta del el usuario administrador es vulnerable a este ataque por lo que logramos obtener el **hash SPN** del usuario administrador.
+ Gracias al ataque de **Kerberoasting** podemos ver que la cuenta del el usuario administrador es vulnerable a este ataque por lo que logramos obtener el **hash TGS** del usuario administrador.
 
-  Para conseguir descifrar la contraseña del usuario **administrador** haré uso de la herramienta **john** para crackear el hash y obtener la contraseña en texto plano de el ticket **SPN.**
+  Para conseguir descifrar la contraseña del usuario **administrador** haré uso de la herramienta **john** para crackear el hash y obtener la contraseña en texto plano de el ticket **TGS.**
 
  <p align="center">
  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Active/scan/kerbe2.png">
@@ -104,7 +104,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
  Como se puede ver la contraseña que logramos crackear es **Ticketmaster1968** y sabiendo que es del usuario **administrador** usare la herramienta de **crackmapexec** para verificar si tengo capacidad de **psexec** la cual nos permitirá acceder a la maquina como el usuario administrador.
 
  <p align="center">
- <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Active/intrusion/crack.png">
+ <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Active/intrusion/crak.png">
  </p>
 
  Como se observa la herramienta me muestra un **"PWn3d!"** lo que significa que puedo acceder a la maquina mediante la herramienta **psexec**.
@@ -112,3 +112,5 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
  <p align="center">
  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Active/intrusion/pwn.png">
  </p>
+
+ Y efectivamente las credenciales son validas para acceder al equipo como **NT AUTHORITY\SYSTEM** el cual es el usuario con máximos privilegios en los equipos Windows.
