@@ -12,7 +12,7 @@ categories:
   - Writeup
   - HackTheBox
 tags:
-  - Deserialization Attacks
+  - Deserialization
   - Virtual Hosting
   - Bash
   - Linux

@@ -12,7 +12,7 @@ categories:
   - Writeup
   - HackTheBox
 tags:
-  - Deserilización
+  - Deserialization
   - Sudo
   - RCE (Remote Code Execution)
   - Linux
