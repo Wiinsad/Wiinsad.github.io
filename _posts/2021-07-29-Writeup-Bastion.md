@@ -15,7 +15,7 @@ tags:
   - Smb
   - Mount
   - Hash NTLM
-  -
+  - Encryption
   - Windows
 ---
 
