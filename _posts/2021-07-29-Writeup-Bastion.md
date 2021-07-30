@@ -173,7 +173,7 @@ Buscando en este archivo podemos ver que se encuentra las credenciales del usuar
 </p>
 
 
-Investigando llegue con una *[herramienta en github](https://github.com/haseebT/mRemoteNG-Decrypt)* la cual esta en python3 y sirve para decifrar las passwords cd mRemoteNG y usando la herramienta pude decifrar la password del usuario **Administrator**.
+Investigando puede encontrar una **[herramienta en github](https://github.com/haseebT/mRemoteNG-Decrypt)** la cual esta en **python3** y sirve para descifrar las passwords que almacena mRemoteNG y usando la herramienta pude descifrar la password del usuario **Administrator**.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Bastion/intrusion/pas.png">
