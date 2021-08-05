@@ -78,10 +78,10 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
 
   Este token lo podemos decodear en la pagina [jwp.io](https://jwt.io/).
 
-  Al decodear el token se puede ver un apartado muy interesante el cual es **header** del mismo el cual lo que hace es llamar a una url en localhost por el puerto **7070** a un archivo **privatekey.key**.
+  Al decodear el token se puede ver un apartado muy interesante el cual es **header** el cual lo que hace es llamar a una url en localhost por el puerto **7070** a un archivo **privatekey.key**.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/scan/tokenk.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/scan/tokenA.png">
   </p>
 
   Y también se puede ver que en el apartado de **PAYLOAD** del mismo token existe un apartado **"admin_cap"** el cual esta seteado a **0**.
@@ -129,4 +129,14 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   </p>
 
 
-  Ahora que tenemos la capacidad de ser admin en la pagina podemos enumerar mas y si vamos al **Admin Panel** tenemos la capcidad de subir archivos.
+  Ahora que tenemos la capacidad de ser admin en la pagina podemos enumerar mas y si vamos al **Admin Panel** tenemos la capacidad de subir archivos.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/upload.png">
+  </p>
+
+  Si entramos a esté apartado podemos ver la siguiente interfaz.
+
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/upload2.png">
+  </p>
