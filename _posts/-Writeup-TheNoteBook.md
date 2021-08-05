@@ -91,7 +91,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/tokenM.png">
   </p>
 
-  Ya teniendo el nuevo token desde el mismo navegador podemos modificar el token yendonos a **inpeccionar** y en el apartado de **almacenamiento** se puede ver el token en el apartado de **auth**.
+  Ya teniendo el nuevo token desde el mismo navegador podemos modificar el token yéndonos a **inpeccionar** y en el apartado de **almacenamiento** se puede ver el token en el apartado de **auth**.
 
   Este campo lo modificare con el nuevo token y al recargar la pagina se puede ver que se agrega a la side bar el campo **admin panel**
 
@@ -108,3 +108,8 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/3.png">
   </p>
+
+
+  Ahora que tenemos la capacidad de ser admin en la pagina podemos enumerar mas y si vamos al **Admin Panel** tenemos la capcidad de subir archivos.
+
+  
