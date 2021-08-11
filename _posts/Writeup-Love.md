@@ -70,7 +70,7 @@ Al entrar se puede observar que existe un panel de login pero al no conocer las 
 openssl s_client -connect 10.10.10.239:443
 ```
 
-  Al hacer esto puedo ver que entre la informacion que me otorga se puede ver que existe un dominio **love.htb** y un subdonmiio **staging.love.htb**.
+  Al hacer esto puedo ver que entre la información que me otorga se puede ver que existe un dominio **love.htb** y un subdominio **staging.love.htb**.
 
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Love/scan/sub.png">
