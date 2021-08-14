@@ -14,7 +14,7 @@ categories:
 tags:
   - Ssrf
   - RCE
-  - KeyRegsitry Abuse
+  - Key Registry Abuse
 ---
 
 <p align="center">
