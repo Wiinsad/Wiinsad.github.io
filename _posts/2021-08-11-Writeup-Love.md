@@ -103,13 +103,13 @@ openssl s_client -connect 10.10.10.239:443
  </p>
 
 
- Sabiendo esto y recordando los puertos que estaban disponibles ingrese el puerto 5000 el cual desde mi navegador no es posible acceder pero ingresando lo como localhost en la web si es posible.
+ Sabiendo esto y recordando los puertos que estaban disponibles ingrese el puerto 5000 el cual desde mi navegador no es posible acceder pero en el escaneo estaba el puerto abierto asi que ingresandolo como **localhost** en la web si es posible.
 
  <p align="center">
  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Love/scan/web4.png">
  </p>
 
- Como se puede ver el contenido que me da son unas credenciales que son para el usuario **admin** pero ingresando estas credenciales en el login de la web que se ingresa por el puerto **80** no es posible acceder pero haciendo **fuzzing** en la web puedo encontrar un subdirectorio **admin**.
+ Como se puede ver el contenido que me da son unas credenciales que son para el usuario **admin** pero ingresando estas credenciales en el login de la web del puerto **80** no es posible acceder pero haciendo **fuzzing** en la web puedo encontrar un subdirectorio **admin**.
 
  <p align="center">
  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Love/scan/fuzz.png">
@@ -128,7 +128,7 @@ openssl s_client -connect 10.10.10.239:443
  </p>
 
 
- Para poder usar este exploit se tienen que setear los datos del payload como **Ip, Username, Password, Ip Destino, Port Destino** y también se tiene que modificar las url que estan ya seteadas y adaptarlas a las que maneja la web eliminando el **/votesystem/** de las mismas.
+ Para poder usar este exploit se tienen que setear los datos del payload como **Ip, Username, Password, Ip Destino, Port Destino** y también se tiene que modificar las url que ya están seteadas y adaptarlas a las que maneja la web eliminando el **/votesystem/** de las mismas.
 
  <p align="center">
  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Love/intrusion/pay.png">
@@ -198,8 +198,10 @@ Una vez creado el binario de igual forma levanto un recurso compartido por **smb
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Love/intrusion/winsh.png">
 </p>
 
-Como se pude ver a la hora de ejecutar el binario que cree en la maquina victima de lado de donde esttoy en escucha con **netcat** por el puerto 443 me otorga la shell como **nt authority\system**.
+Como se pude ver a la hora de ejecutar el binario que cree en la maquina victima de lado de donde estoy en escucha con **netcat** por el puerto 443 me otorga la shell como **nt authority\system**.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/Love/intrusion/root.png">
 </p>
+
+De esta forma teniendo el usuario administrador y así pudiendo visualizar la flag e **root.txt** y rooteando la maquina al **100%**.
