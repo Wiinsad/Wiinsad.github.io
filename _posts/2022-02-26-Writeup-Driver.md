@@ -171,3 +171,5 @@ Lo que hace el exploit es abusar de un DLL de este servicio **spoolsv** y crea u
   <p align="center">
   <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/driver/intrusion/root2.png">
   </p>
+
+  De esta forma podemos entrar al directorio del usuario Administrador y así visualizar la flag de root.
