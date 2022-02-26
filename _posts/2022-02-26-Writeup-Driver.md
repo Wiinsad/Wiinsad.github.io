@@ -1,5 +1,5 @@
 ---
-title: "driver - Hack The Box"
+title: "Driver - Hack The Box"
 layout: single
 excerpt:
 show_date: true
@@ -53,7 +53,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   - **-oN:** Formatos de Nmap en los que se guardará el archivo.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/driver/scan/PortServ.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/driver/scan/Portserv.png">
   </p>
 
   El resultado de el scaneo a puertos y servicios no mostró información interesante así que iniciare la fase de reconocimiento mediante el servicio web aprovechando que esta el puerto **80** abierto.
@@ -117,15 +117,6 @@ Usando el la herramienta de **john** y el diccionario **rockyou.txt** se puede c
 <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/driver/scan/hash.png">
 </p>
 
- <div align="center">
- <table class="center"><tr>
- <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/driver/intrusion/b.png">
- <div class="caption" >Url Predeterminadas.</div></center></td>
- <td><center><img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/driver/intrusion/a.png">
- <div class="caption">Url Adaptadas.</div></center></td>
- </tr></table>
- </div>
-
 ## Lateral Movement
 
 Con esto que acabamos de conseguir y recordando la fase de scaneo podemos ver que el puerto **5985** que es **winrm** el servicio de escritorio remoto de Windows podemos intentar entrar con el usuario tony y su password que crackeamos.
@@ -155,7 +146,7 @@ Así que sabiendo esto aprovechando la herramienta de **evil-winrm** usare el co
 Ya una vez que subi el exploit y ejecute lo siguiente:
 
 ```powershell
-
+  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
   Import-Module .\cve-2021-1675.ps1
   Invoke-Nightmare -DriverName "Xerox" -NewUser "winsad" -NewPassword "winsad"
 ```
