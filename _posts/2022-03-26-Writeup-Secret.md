@@ -52,7 +52,7 @@ Para empezar, hice un escaneo con la herramienta **Nmap** para encontrar los pue
   - **-oN:** Formatos de Nmap en los que se guardará el archivo.
 
   <p align="center">
-  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/secret/scan/PortServ.png">
+  <img src="https://raw.githubusercontent.com/Wiinsad/winsad/master/assets/images/machines/HTB/secret/scan/Portserv.png">
   </p>
 
   Lo que **nmap** nos muestra es existe un servicio ***HTTP*** en el puerto **80** como en el puerto **3000**, así que para examinar la webs entrare a cada uno mediante una navegador web.
